@@ -3,6 +3,13 @@ body {
     background-color: white;
 }
 
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
 .myNav {
     display: flex;
     flex-direction: row;
@@ -16,10 +23,12 @@ body {
     display: flex;
     list-style: none;
     justify-content: space-between;
+    text-decoration: none;
 }
 
-#navItem {
+#navItem ul li {
     margin-top: 8px;
+    margin-left: 20%;
 }
 
 #navItem li {
@@ -31,15 +40,30 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-a {
-    text-decoration: none;
+#textDecoration {
     color: black;
+    text-decoration: none;
+}
+
+#textDecoration:hover {
+    color: #0066FF;
+}
+
+#dropdownMenuLink {
+    color: black;
+    text-decoration: none;
+}
+
+#dropdownMenuLink:hover {
+    color: #0066FF;
 }
 
 .flexDirection {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-right: 70%;
+    position: absolute;
 }
 
 .myName {
@@ -50,4 +74,42 @@ a {
 #myImg {
     border-radius: 50px;
     border: 1px solid #0066FF;
+}
+
+#navMenu {
+    display: none;
+    margin-left: 80%;
+    position: absolute;
+    margin-top: 9px;
+}
+
+#navMenuDarkMode {
+    display: none;
+    margin-left: 60%;
+    position: absolute;
+    margin-top: 9px;
+}
+
+.dropdown-menu {
+    margin-right: 100px;
+}
+
+@media only screen and (max-width: 950px) {
+    body {
+        background-color: lightblue;
+    }
+    #navItem {
+        display: none;
+    }
+    #navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    #navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .flexDirection {
+        margin-right: 65%;
+    }
 }
