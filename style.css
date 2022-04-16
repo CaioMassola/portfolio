@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+html {
+    --bg: #ffffff;
+    --color-text: #000000;
+    --color-hover: #0066FF;
+}
+
 body {
-    background-color: white;
+    background-color: var(--bg);
 }
 
 header {
@@ -14,7 +22,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: white;
+    background-color: var(--bg);
     height: 75px;
     padding-top: 23px;
 }
@@ -38,24 +46,39 @@ header {
 #text {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    color: var(--color-text);
+}
+
+#text:hover {
+    color: var(--color-hover);
 }
 
 #textDecoration {
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
 }
 
 #textDecoration:hover {
-    color: #0066FF;
+    color: var(--color-hover);
 }
 
-#dropdownMenuLink {
+
+#textDecorationDropdown {
     color: black;
     text-decoration: none;
 }
 
+#textDecorationDropdown:hover {
+    color: var(--color-hover);
+}
+
+#dropdownMenuLink {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
 #dropdownMenuLink:hover {
-    color: #0066FF;
+    color: var(--color-hover);
 }
 
 .flexDirection {
@@ -73,7 +96,7 @@ header {
 
 #myImg {
     border-radius: 50px;
-    border: 1px solid #0066FF;
+    border: 2px solid var(--color-hover);
 }
 
 #navMenu {
@@ -96,7 +119,7 @@ header {
 
 @media only screen and (max-width: 950px) {
     body {
-        background-color: lightblue;
+        background-color: var(--bg);
     }
     #navItem {
         display: none;
@@ -113,3 +136,103 @@ header {
         margin-right: 65%;
     }
 }
+
+#divConsole {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20%;
+    justify-content: center;
+}
+
+#consoleLog {
+    font-size: 28px;
+    font-family: 'Righteous', cursive;
+    color: var(--color-text);
+}
+
+#helloworld {
+    font-size: 28px;
+    font-family: 'Righteous', cursive;
+    color: var(--color-hover);
+}
+
+#section1 {
+    margin-top: 80px;
+}
+
+@media only screen and (max-width: 950px) {
+
+    #divConsole {
+        margin-top: 70%;
+    }
+
+    #helloworld {
+        font-size: 20px;
+    }
+
+    #consoleLog {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 949px) {
+
+    #divConsole {
+        margin-top: 50%;
+    }
+
+    #helloworld {
+        font-size: 20px;
+    }
+
+    #consoleLog {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px ) {
+
+
+    #helloworld {
+        font-size: 20px;
+    }
+
+    #consoleLog {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (min-width: 420px ) and (max-width: 500px){
+
+    #divConsole {
+        margin-top: 50%;
+    }
+
+    #helloworld {
+        font-size: 20px;
+    }
+
+    #consoleLog {
+        font-size: 20px;
+    }
+
+}
+
+
+@media screen and (min-width: 320px ) and (max-width: 360px){
+
+    #divConsole {
+        margin-top: 50%;
+    }
+
+    #helloworld {
+        font-size: 20px;
+    }
+
+    #consoleLog {
+        font-size: 20px;
+    }
+
+}
+
