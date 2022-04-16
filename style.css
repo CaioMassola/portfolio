@@ -145,13 +145,13 @@ header {
 }
 
 #consoleLog {
-    font-size: 28px;
+    font-size: 32px;
     font-family: 'Righteous', cursive;
     color: var(--color-text);
 }
 
 #helloworld {
-    font-size: 28px;
+    font-size: 32px;
     font-family: 'Righteous', cursive;
     color: var(--color-hover);
 }
