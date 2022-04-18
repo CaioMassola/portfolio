@@ -15,32 +15,28 @@ var darkMode = {
     name: 'dark'
 }
 
-
 function theme() {
 
     var theme = document.getElementById("theme_1").innerHTML;
-    
+
     if (theme == 'dark_mode') {
         theme = document.getElementById("theme_1").innerHTML = "light_mode";
         theme = document.getElementById("theme_2").innerHTML = "light_mode";
 
-        changeColors(darkMode, html)      
+        changeColors(darkMode, html)
     } else {
         theme = document.getElementById("theme_1").innerHTML = "dark_mode";
         theme = document.getElementById("theme_2").innerHTML = "dark_mode";
         changeColors(initialColors, html)
     }
-
 }
 
 function transformKey(key) {
     return "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
 }
 
-function changeColors (colors, html) {
+function changeColors(colors, html) {
 
     Object.keys(colors).map(key => html.style.setProperty(transformKey(key), colors[key]))
-
-    console.log(colors.bg)
 
 }
