@@ -115,45 +115,6 @@ header {
     margin-right: 50px;
 }
 
-.contato {
-    display: flex;
-    margin-top: -230px;
-    color: var(--color-hover);
-    margin-left: 12.3%;
-    flex-direction: column;
-    position: absolute;
-}
-
-@media screen and (min-width: 951px) and (max-width: 1200px) {
-    .contato {
-        margin-top: -150px;
-        margin-left: 11%;
-    }
-    #divConsole {
-        margin-top: 500px;
-    }
-}
-
-@media only screen and (max-width: 950px) {
-    body {
-        background-color: var(--bg);
-    }
-    #navItem {
-        display: none;
-    }
-    #navMenu {
-        display: flex;
-        margin-top: 6px;
-    }
-    #navMenuDarkMode {
-        display: flex;
-        margin-top: 6px;
-    }
-    .flexDirection {
-        margin-right: 65%;
-    }
-}
-
 #divConsole {
     display: flex;
     flex-direction: row;
@@ -177,15 +138,63 @@ header {
     margin-top: 80px;
 }
 
-@media only screen and (max-width: 950px) {
+.contato {
+    display: flex;
+    margin-top: -230px;
+    color: var(--color-hover);
+    margin-left: 12.3%;
+    flex-direction: column;
+    position: absolute;
+}
+
+@media screen and (min-width: 951px) and (max-width: 1200px) {
+    .contato {
+        margin-top: -200px;
+        margin-left: 14.0%;
+    }
     #divConsole {
-        margin-top: 70%;
+        margin-top: 250px;
     }
-    #helloworld {
-        font-size: 20px;
+    #navItem {
+        display: none;
     }
-    #consoleLog {
-        font-size: 20px;
+    #navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    #navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .flexDirection {
+        margin-right: 65%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    body {
+        background-color: var(--bg);
+    }
+    #navItem {
+        display: none;
+    }
+    #navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    #navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .flexDirection {
+        margin-right: 65%;
+    }
+    .contato {
+        margin-top: -200px;
+        margin-left: 14.0%;
+    }
+    #divConsole {
+        margin-top: 250px;
     }
 }
 
@@ -198,6 +207,11 @@ header {
     }
     #consoleLog {
         font-size: 20px;
+    }
+    .contato {
+        margin-top: -200px;
+        margin-left: 14.0%;
+        position: absolute;
     }
 }
 
@@ -215,7 +229,7 @@ header {
 
 @media screen and (min-width: 420px) and (max-width: 500px) {
     #divConsole {
-        margin-top: 50%;
+        margin-top: 40%;
     }
     #helloworld {
         font-size: 20px;
