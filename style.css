@@ -4,10 +4,13 @@ html {
     --bg: #ffffff;
     --color-text: #000000;
     --color-hover: #0066FF;
+    text-decoration: none;
 }
 
 body {
     background-color: var(--bg);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -26,53 +29,54 @@ header {
     padding-top: 23px;
 }
 
-#navItem ul {
+.navItem ul {
     display: flex;
     list-style: none;
     justify-content: space-between;
-    text-decoration: none;
 }
 
-#navItem ul li {
+.navItem ul li {
     margin-top: 8px;
     margin-left: 20%;
 }
 
-#navItem li {
+.navItem li {
     margin-left: 50px;
 }
 
-#text {
+.dropdown-item {
+    color: black;
+}
+
+.dropdown-item:hover {
+    color: var(--color-hover);
+}
+
+.material-icons-outlined {
+    color: var(--color-text);
+}
+
+.material-icons-outlined:hover {
+    color: var(--color-hover);
+}
+
+.navItem a {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
     color: var(--color-text);
+}
+
+.navItem a:hover {
+    color: var(--color-hover);
 }
 
 #text:hover {
     color: var(--color-hover);
 }
 
-#textDecoration {
-    color: var(--color-text);
-    text-decoration: none;
-}
-
-#textDecoration:hover {
-    color: var(--color-hover);
-}
-
-#textDecorationDropdown {
-    color: black;
-    text-decoration: none;
-}
-
-#textDecorationDropdown:hover {
-    color: var(--color-hover);
-}
-
 #dropdownMenuLink {
     color: var(--color-text);
-    text-decoration: none;
 }
 
 #dropdownMenuLink:hover {
@@ -90,6 +94,14 @@ header {
 .myName {
     margin-top: 5px;
     margin-left: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.myName:hover {
+    color: var(--color-hover);
 }
 
 #myImg {
@@ -97,14 +109,14 @@ header {
     border: 2px solid var(--color-hover);
 }
 
-#navMenu {
+.navMenu {
     display: none;
     margin-left: 80%;
     position: absolute;
     margin-top: 9px;
 }
 
-#navMenuDarkMode {
+.navMenuDarkMode {
     display: none;
     margin-left: 60%;
     position: absolute;
@@ -112,10 +124,12 @@ header {
 }
 
 .dropdown-menu {
-    margin-right: 50px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text);
 }
 
-#divConsole {
+.divConsole {
     display: flex;
     flex-direction: row;
     margin-top: 20%;
@@ -134,10 +148,6 @@ header {
     color: var(--color-hover);
 }
 
-#section1 {
-    margin-top: 80px;
-}
-
 .contato {
     display: flex;
     margin-top: -230px;
@@ -147,42 +157,69 @@ header {
     position: absolute;
 }
 
+.download_pdf {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    justify-content: center;
+}
+
+.btn-pdf {
+    border-radius: 8px;
+    width: 200px;
+    background-color: var(--bg);
+    border: 0.5px solid var(--color-hover);
+    color: var(--color-hover);
+}
+
+.btn-pdf:hover {
+    background-color: var(--color-hover);
+    color: white;
+}
+
+.btn-pdf span {
+    margin-top: -2px;
+    margin-left: 5px;
+    color: var(--color-hover);
+}
+
+.btn-pdf:hover .material-icons-outlined {
+    color: white;
+}
+
 @media screen and (min-width: 951px) and (max-width: 1200px) {
-    .contato {
-        margin-top: -200px;
-        margin-left: 14.0%;
-    }
-    #divConsole {
+    .divConsole {
         margin-top: 250px;
     }
-    #navItem {
+    .navItem {
         display: none;
     }
-    #navMenu {
+    .navMenu {
         display: flex;
         margin-top: 6px;
     }
-    #navMenuDarkMode {
+    .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
     .flexDirection {
         margin-right: 65%;
+    }
+    .contato {
+        margin-top: -18%;
+        margin-left: 14%;
     }
 }
 
 @media only screen and (max-width: 950px) {
-    body {
-        background-color: var(--bg);
-    }
-    #navItem {
+    .navItem {
         display: none;
     }
-    #navMenu {
+    .navMenu {
         display: flex;
         margin-top: 6px;
     }
-    #navMenuDarkMode {
+    .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
@@ -193,14 +230,15 @@ header {
         margin-top: -200px;
         margin-left: 14.0%;
     }
-    #divConsole {
+    .divConsole {
         margin-top: 250px;
     }
 }
 
 @media screen and (min-width: 551px) and (max-width: 949px) {
-    #divConsole {
-        margin-top: 50%;
+    .divConsole {
+        width: 100%;
+        position: static;
     }
     #helloworld {
         font-size: 20px;
@@ -228,7 +266,7 @@ header {
 }
 
 @media screen and (min-width: 420px) and (max-width: 500px) {
-    #divConsole {
+    .divConsole {
         margin-top: 40%;
     }
     #helloworld {
@@ -243,7 +281,7 @@ header {
 }
 
 @media screen and (min-width: 320px) and (max-width: 360px) {
-    #divConsole {
+    .divConsole {
         margin-top: 50%;
     }
     #helloworld {
@@ -254,5 +292,12 @@ header {
     }
     .contato {
         display: none;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1980px) {
+    .contato {
+        margin-top: -15%;
+        margin-left: 13%;
     }
 }

@@ -23,38 +23,38 @@
                     <img src="./assets/img/caioimg.png" height="35px" width="35px" id="myImg" />
                 </div>
                 <div class="myName">
-                    <p id="text">Caio </p>
+                    <p>Caio </p>
                 </div>
             </div>
-            <div id="navItem">
+            <div class="navItem">
                 <ul>
                     <li>
-                        <a href="#" id="textDecoration">
-                            <p id="text">Início</p>
+                        <a href="#">
+                            <p>Início</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="textDecoration">
-                            <p id="text">Sobre</p>
+                        <a href="#">
+                            <p>Sobre</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="textDecoration">
-                            <p id="text">Habilidades</p>
+                        <a href="#">
+                            <p>Habilidades</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="textDecoration">
-                            <p id="text">Projetos</p>
+                        <a href="#">
+                            <p>Projetos</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="textDecoration">
-                            <p id="text">Contato</p>
+                        <a href="#">
+                            <p>Contato</p>
                         </a>
                     </li>
                     <li>
-                        <a id="textDecoration" onclick="theme()">
+                        <a onclick="theme()">
                             <span class="material-icons-outlined">
                                 <p id="theme_1">dark_mode</p>
                             </span>
@@ -62,25 +62,25 @@
                     </li>
                 </ul>
             </div>
-            <div id="navMenuDarkMode">
-                <a id="textDecoration" onclick="theme()">
+            <div class="navMenuDarkMode">
+                <a onclick="theme()">
                     <span class="material-icons-outlined">
                         <p id="theme_2">dark_mode</p>
                     </span>
                 </a>
             </div>
-            <div id="navMenu">
+            <div class="navMenu">
                 <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="material-icons-outlined">
                         menu
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 100px;">
-                    <a class="dropdown-item" href="#" id="textDecorationDropdown">Início</a>
-                    <a class="dropdown-item" href="#" id="textDecorationDropdown">Sobre</a>
-                    <a class="dropdown-item" href="#" id="textDecorationDropdown">Habilidades</a>
-                    <a class="dropdown-item" href="#" id="textDecorationDropdown">Projetos</a>
-                    <a class="dropdown-item" href="#" id="textDecorationDropdown">Contato</a>
+                    <a class="dropdown-item" href="#">Início</a>
+                    <a class="dropdown-item" href="#">Sobre</a>
+                    <a class="dropdown-item" href="#">Habilidades</a>
+                    <a class="dropdown-item" href="#">Projetos</a>
+                    <a class="dropdown-item" href="#">Contato</a>
                 </div>
             </div>
         </div>
@@ -90,16 +90,30 @@
 
 <body>
     <section>
-        <div id="divConsole">
-            <p id="consoleLog">console.log(
-                <p id="helloworld">"Hello World"</p>
-                <p id="consoleLog">)</p>
-            </p>
-        </div>
-        <div class="contato">
-            <i class="bi bi-envelope-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="chmassola@gmail.com"></i>
-            <i class="bi bi-linkedin" data-bs-toggle="tooltip" data-bs-placement="right" title="https://www.linkedin.com/in/caio-massola-37863b169/"></i>
-            <i class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right" title="https://github.com/CaioMassola"></i>
+        <div class="container_section1">
+            <div class="divConsole">
+                <p id="consoleLog">console.log(
+                    <p id="helloworld">"Hello World"</p>
+                    <p id="consoleLog">)</p>
+                </p>
+            </div>
+            <div class="contato">
+                <i class="bi bi-envelope-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="chmassola@gmail.com"></i>
+                <i class="bi bi-linkedin" data-bs-toggle="tooltip" data-bs-placement="right" title="https://www.linkedin.com/in/caio-massola-37863b169/"></i>
+                <i class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right" title="https://github.com/CaioMassola"></i>
+            </div>
+            <div class="download_pdf">
+                <a>
+                    <button class="btn-pdf">
+                        <div style="display: flex; flex-direction: row; margin-top: 12px;">
+                            <span class="material-icons-outlined" >
+                                file_download
+                            </span>
+                            <p style="margin-left: 20px;">Meu currículo</p>
+                        </div>
+                    </button>
+                </a>
+            </div>
         </div>
     </section>
 </body>
