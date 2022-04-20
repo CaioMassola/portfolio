@@ -29,27 +29,27 @@
             <div class="navItem">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="#inicio">
                             <p>Início</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#sobre">
                             <p>Sobre</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#habilidades">
                             <p>Habilidades</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#projetos">
                             <p>Projetos</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#contato">
                             <p>Contato</p>
                         </a>
                     </li>
@@ -76,11 +76,11 @@
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 100px;">
-                    <a class="dropdown-item" href="#">Início</a>
-                    <a class="dropdown-item" href="#">Sobre</a>
-                    <a class="dropdown-item" href="#">Habilidades</a>
-                    <a class="dropdown-item" href="#">Projetos</a>
-                    <a class="dropdown-item" href="#">Contato</a>
+                    <a class="dropdown-item" href="#inicio" onclick="voltarInicio()">Início</a>
+                    <a class="dropdown-item" href="#sobre">Sobre</a>
+                    <a class="dropdown-item" href="#habilidades">Habilidades</a>
+                    <a class="dropdown-item" href="#projetos">Projetos</a>
+                    <a class="dropdown-item" href="#contato">Contato</a>
                 </div>
             </div>
         </div>
@@ -89,18 +89,20 @@
 </header>
 
 <body>
-    <section>
-        <div class="container_section1">
+    <main>
+        <section id="inicio">
+            <div class="contato">
+                <div class="icon_contato">
+                    <i class="bi bi-envelope-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="chmassola@gmail.com"></i>
+                    <i class="bi bi-linkedin" data-bs-toggle="tooltip" data-bs-placement="right" title="https://www.linkedin.com/in/caio-massola-37863b169/"></i>
+                    <i class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right" title="https://github.com/CaioMassola"></i>
+                </div>
+            </div>
             <div class="divConsole">
                 <p id="consoleLog">console.log(
                     <p id="helloworld">"Hello World"</p>
                     <p id="consoleLog">)</p>
                 </p>
-            </div>
-            <div class="contato">
-                <i class="bi bi-envelope-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="chmassola@gmail.com"></i>
-                <i class="bi bi-linkedin" data-bs-toggle="tooltip" data-bs-placement="right" title="https://www.linkedin.com/in/caio-massola-37863b169/"></i>
-                <i class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right" title="https://github.com/CaioMassola"></i>
             </div>
             <div class="download_pdf">
                 <a>
@@ -114,7 +116,13 @@
                     </button>
                 </a>
             </div>
-        </div>
+        </section>
+    </main>
+    <section id="sobre" class="section_page">
+        <p>kkkkkkkkk</p>
+    </section>
+    <section id="habilidades" class="section_page">
+        <p>Ola</p>
     </section>
 </body>
 

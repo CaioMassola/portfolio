@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+* {
+    margin: 0;
+}
+
 html {
     --bg: #ffffff;
     --color-text: #000000;
@@ -132,7 +136,7 @@ header {
 .divConsole {
     display: flex;
     flex-direction: row;
-    margin-top: 20%;
+    margin-top: 10%;
     justify-content: center;
 }
 
@@ -150,17 +154,22 @@ header {
 
 .contato {
     display: flex;
-    margin-top: -230px;
+    width: 100%;
+    margin: 0;
     color: var(--color-hover);
-    margin-left: 12.3%;
     flex-direction: column;
-    position: absolute;
+}
+
+.contato .icon_contato {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10.5%;
 }
 
 .download_pdf {
     display: flex;
     flex-direction: row;
-    margin-top: 1%;
     justify-content: center;
 }
 
@@ -187,10 +196,19 @@ header {
     color: white;
 }
 
+section {
+    min-height: 100vh;
+}
+
+.section_page {
+    padding: 6em;
+}
+
+#inicio {
+    padding: 2em;
+}
+
 @media screen and (min-width: 951px) and (max-width: 1200px) {
-    .divConsole {
-        margin-top: 250px;
-    }
     .navItem {
         display: none;
     }
@@ -202,16 +220,15 @@ header {
         display: flex;
         margin-top: 6px;
     }
-    .flexDirection {
-        margin-right: 65%;
-    }
-    .contato {
-        margin-top: -18%;
-        margin-left: 14%;
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 8%;
     }
 }
 
-@media only screen and (max-width: 950px) {
+@media screen and (min-width: 830px) and (max-width: 950px) {
     .navItem {
         display: none;
     }
@@ -223,81 +240,146 @@ header {
         display: flex;
         margin-top: 6px;
     }
+    .contato {
+        display: none;
+    }
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 6%;
+    }
+    .divConsole {
+        margin-top: 25%;
+    }
+    #consoleLog {
+        font-size: 26px;
+    }
+    #helloworld {
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 829px) {
+    .navItem {
+        display: none;
+    }
+    .navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    .navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .contato {
+        display: none;
+    }
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 4%;
+    }
+    .divConsole {
+        margin-top: 35%;
+    }
+    #consoleLog {
+        font-size: 22px;
+    }
+    #helloworld {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 550px) {
+    .navItem {
+        display: none;
+    }
+    .navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    .navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 4%;
+    }
+    .contato {
+        display: none;
+    }
+    .divConsole {
+        margin-top: 35%;
+    }
+    #consoleLog {
+        font-size: 22px;
+    }
+    #helloworld {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .navItem {
+        display: none;
+    }
+    .navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+    .navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 4%;
+    }
+    .contato {
+        display: none;
+    }
+    .divConsole {
+        margin-top: 35%;
+    }
+    #consoleLog {
+        font-size: 18px;
+    }
+    #helloworld {
+        font-size: 18px;
+    }
     .flexDirection {
-        margin-right: 65%;
+        margin-left: 25px;
     }
-    .contato {
-        margin-top: -200px;
-        margin-left: 14.0%;
+    .btn-pdf {
+        border-radius: 8px;
+        width: 150px;
+        height: 50px;
+        background-color: var(--bg);
+        border: 0.5px solid var(--color-hover);
+        color: var(--color-hover);
+        font-size: 12px;
     }
-    .divConsole {
-        margin-top: 250px;
+    .btn-pdf:hover {
+        background-color: var(--color-hover);
+        color: white;
     }
-}
-
-@media screen and (min-width: 551px) and (max-width: 949px) {
-    .divConsole {
-        width: 100%;
-        position: static;
-    }
-    #helloworld {
+    .btn-pdf span {
+        margin-top: -2px;
+        margin-left: 5px;
         font-size: 20px;
-    }
-    #consoleLog {
-        font-size: 20px;
-    }
-    .contato {
-        margin-top: -200px;
-        margin-left: 14.0%;
-        position: absolute;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    #helloworld {
-        font-size: 20px;
-    }
-    #consoleLog {
-        font-size: 20px;
-    }
-    .contato {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 420px) and (max-width: 500px) {
-    .divConsole {
-        margin-top: 40%;
-    }
-    #helloworld {
-        font-size: 20px;
-    }
-    #consoleLog {
-        font-size: 20px;
-    }
-    .contato {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width: 360px) {
-    .divConsole {
-        margin-top: 50%;
-    }
-    #helloworld {
-        font-size: 20px;
-    }
-    #consoleLog {
-        font-size: 20px;
-    }
-    .contato {
-        display: none;
+        color: var(--color-hover);
     }
 }
 
 @media screen and (min-width: 1500px) and (max-width: 1980px) {
-    .contato {
-        margin-top: -15%;
-        margin-left: 13%;
+    .contato .icon_contato {
+        margin-left: 11.4%;
     }
 }
