@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+section {
+    min-height: 100vh;
+}
+
+#inicio {
+    background-color: blue;
+}
+
+#servicos {
+    background-color: green;
+}
+
+#contato {
+    background-color: red;
+}
