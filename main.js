@@ -40,11 +40,3 @@ function changeColors(colors, html) {
     Object.keys(colors).map(key => html.style.setProperty(transformKey(key), colors[key]))
 
 }
-
-function voltarInicio() {
-    var btn = document.querySelector("#inicio");
-    console.log(btn)
-    btn.addEventListener("click", function() {
-        window.scrollTo(0, 0);
-    });
-}

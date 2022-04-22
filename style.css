@@ -9,6 +9,7 @@ html {
     --color-text: #000000;
     --color-hover: #0066FF;
     text-decoration: none;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -56,6 +57,7 @@ header {
     color: var(--color-hover);
 }
 
+
 .material-icons-outlined {
     color: var(--color-text);
 }
@@ -74,6 +76,7 @@ header {
 .navItem a:hover {
     color: var(--color-hover);
 }
+
 
 #text:hover {
     color: var(--color-hover);
@@ -100,11 +103,14 @@ header {
     margin-left: 20px;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+}
+
+.myName a {
     text-decoration: none;
     color: var(--color-text);
 }
 
-.myName:hover {
+.myName a:hover {
     color: var(--color-hover);
 }
 
@@ -131,6 +137,10 @@ header {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     color: var(--color-text);
+}
+
+.dropdown-menu a:focus {
+    color: white;
 }
 
 .divConsole {
@@ -171,6 +181,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .btn-pdf {
@@ -207,6 +218,45 @@ section {
 #inicio {
     padding: 2em;
 }
+
+#sobre {
+    
+}
+
+.scroll-down {
+    margin: 0;
+    margin-top: 12%   
+}
+
+.btn-scroll {
+    border-radius: 5px;
+    margin-left: 10%;
+    background-color: var(--bg);
+    border: 0.5px solid var(--color-hover);
+}
+
+.btn-scroll:hover {
+    background-color: var(--color-hover);
+}
+
+.btn-scroll span {
+    display: flex;
+    text-align: center;
+    color: var(--color-hover);
+}
+
+.btn-scroll span:hover {
+    display: flex;
+    text-align: center;
+    color: var(--color-hover);
+}
+
+.btn-scroll:hover .material-icons-outlined {
+    color: white;
+}
+
+
+
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
     .navItem {
@@ -258,6 +308,11 @@ section {
     #helloworld {
         font-size: 26px;
     }
+    .scroll-down {
+        margin: 0;
+        margin-top: 15%;
+        display: flex;
+    }
 }
 
 @media screen and (min-width: 551px) and (max-width: 829px) {
@@ -290,6 +345,12 @@ section {
     #helloworld {
         font-size: 22px;
     }
+    .scroll-down {
+        margin: 0;
+        margin-top: 15%;
+        display: flex;
+    }
+
 }
 
 @media screen and (min-width: 480px) and (max-width: 550px) {
@@ -314,13 +375,19 @@ section {
         display: none;
     }
     .divConsole {
-        margin-top: 35%;
+        margin-top: 30%;
     }
     #consoleLog {
         font-size: 22px;
     }
     #helloworld {
         font-size: 22px;
+    }
+    .scroll-down {
+        margin: 0;
+        margin-top: 25%;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -346,7 +413,7 @@ section {
         display: none;
     }
     .divConsole {
-        margin-top: 35%;
+        margin-top: 50%;
     }
     #consoleLog {
         font-size: 18px;
@@ -375,6 +442,12 @@ section {
         margin-left: 5px;
         font-size: 20px;
         color: var(--color-hover);
+    }
+    .scroll-down {
+        margin: 0;
+        margin-top: 25%;
+        display: flex;
+        justify-content: center;
     }
 }
 
