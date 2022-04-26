@@ -653,7 +653,7 @@ section {
     .scroll-down-sobre {
         display: flex;
         justify-content: center;
-        margin-top: 25px
+        margin-top: 50px
     }
     .sobre-mobile {
         display: flex;
