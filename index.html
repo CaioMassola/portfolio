@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,24 +23,26 @@
                     <img src="./assets/img/caioimg.png" height="35px" width="35px" id="myImg" />
                 </div>
                 <div class="myName">
-                    <a href="#sobre"><p>Caio </p></a>
+                    <a href="#sobre">
+                        <p>Caio </p>
+                    </a>
                 </div>
             </div>
             <div class="navItem">
                 <ul>
-                    <li >
-                        <a href="#inicio"  >
-                            <p >Início</p>
+                    <li>
+                        <a href="#inicio">
+                            <p>Início</p>
                         </a>
                     </li>
                     <li>
                         <a href="#sobre">
-                            <p >Sobre</p>
+                            <p>Sobre</p>
                         </a>
                     </li>
                     <li>
                         <a href="#habilidades">
-                            <p >Habilidades</p>
+                            <p>Habilidades</p>
                         </a>
                     </li>
                     <li>
@@ -75,7 +78,7 @@
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 100px;">
-                    <a class="dropdown-item" href="#inicio" >Início</a>
+                    <a class="dropdown-item" href="#inicio">Início</a>
                     <a class="dropdown-item" href="#sobre">Sobre</a>
                     <a class="dropdown-item" href="#habilidades">Habilidades</a>
                     <a class="dropdown-item" href="#projetos">Projetos</a>
@@ -104,7 +107,7 @@
                 </p>
             </div>
             <div class="download_pdf">
-                <a>
+                <a href="assets/doc/CV2022_CHMASSOLA.pdf">
                     <button class="btn-pdf">
                         <div style="display: flex; flex-direction: row; margin-top: 12px;">
                             <span class="material-icons-outlined" >
@@ -125,13 +128,53 @@
                 </a>
             </div>
         </section>
+        <section id="sobre" class="section_page">
+            <div class="sobre-container">
+                <div id="sobre-1">
+                    <div class="div-img-sobre">
+                        <img src="./assets/img/caioimg.png" id="img-sobre" />
+                    </div>
+                </div>
+                <div id="sobre-2">
+                    <div class="title-sobre">
+                        <p>Sobre mim</p>
+                    </div>
+                    <div class="text-sobre">
+                        <p>Olá, meu nome é Caio Massola, sou formado em Sistemas de Informação pela Universidade Anhembi Morumbi, morando na zona sul de São Paulo. Estudo programação desde 2018, e com isso fiquei apaixonado por React e React Native mas também
+                            gosto de trabalhar com backend com NodeJS e PHP. No meu tempo livre busco fazer exercícios, jogar jogos online com meu amigos e assistir filmes/séries sobre heróis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sobre-mobile">
+                <div style="display: flex; flex-direction: column;">
+                    <div class="div-img-sobre-mobile">
+                        <img src="./assets/img/caioimg.png" id="img-sobre" />
+                    </div>
+                    <div>
+                        <div class="title-sobre">
+                            <p>Sobre mim</p>
+                        </div>
+                        <div class="text-sobre">
+                            <p>Olá, meu nome é Caio Massola, sou formado em Sistemas de Informação pela Universidade Anhembi Morumbi, morando na zona sul de São Paulo. Estudo programação desde 2018, e com isso fiquei apaixonado por React e React Native mas
+                                também gosto de trabalhar com backend com NodeJS e PHP. No meu tempo livre busco fazer exercícios, jogar jogos online com meu amigos e assistir filmes/séries sobre heróis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down-sobre">
+                <a href="#habilidades">
+                    <button class="btn-scroll ">
+                        <span class="material-icons-outlined ">
+                            arrow_downward
+                        </span>
+                    </button>
+                </a>
+            </div>
+        </section>
+        <section id="habilidades" class="section_page">
+            <p>habilidades</p>
+        </section>
     </main>
-    <section id="sobre" class="section_page">
-        <p>sobre</p>
-    </section>
-    <section id="habilidades" class="section_page">
-        <p>habilidades</p>
-    </section>
 </body>
 
 </html>
