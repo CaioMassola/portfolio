@@ -303,6 +303,19 @@ section {
     color: white;
 }
 
+.title-habilidades {
+    margin-top: 15px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-habilidades p {
+    font-size: 28px;
+}
+
 @media screen and (min-width: 951px) and (max-width: 1200px) {
     .navItem {
         display: none;
