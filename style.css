@@ -42,7 +42,7 @@ header {
 
 .navItem ul li {
     margin-top: 8px;
-    margin-left: 20%;
+    margin-left: 15%;
 }
 
 .navItem li {
@@ -304,7 +304,6 @@ section {
 }
 
 .title-habilidades {
-    margin-top: 15px;
     width: 100%;
     height: 100px;
     display: flex;
@@ -313,7 +312,61 @@ section {
 }
 
 .title-habilidades p {
+    color: var(--color-text);
     font-size: 28px;
+}
+
+#painel-color {
+    background-color: var(--bg);
+}
+
+.card {
+    border-radius: 20px;
+    border: 1px solid var(--color-hover);
+    background-color: var(--bg);
+    margin-top: 0px;
+}
+
+#img-painel {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 24px;
+    color: var(--color-hover);
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn-painel {
+    border: 1px solid var(--color-hover);
+    background-color: var(--bg);
+    color: var(--color-hover);
+    border-radius: 50px;
+    margin-top: 15px;
+}
+
+#btn-painel:hover {
+    background-color: var(--color-hover);
+    color: #fff;
+}
+
+.separador {
+    display: none;
+}
+
+.scroll-down-habilidades {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8%;
+    margin-top: 5%;
 }
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
@@ -362,6 +415,15 @@ section {
     .scroll-down-sobre {
         margin: 0;
         margin-top: 1%;
+    }
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .separador {
+        display: flex;
+        margin-top: 20px;
     }
 }
 
@@ -429,6 +491,15 @@ section {
         display: flex;
         justify-content: center;
         margin-top: -5px;
+    }
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .separador {
+        display: flex;
+        margin-top: 20px;
     }
 }
 
@@ -501,6 +572,15 @@ section {
         justify-content: center;
         margin-top: -5px;
     }
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .separador {
+        display: flex;
+        margin-top: 20px;
+    }
 }
 
 @media screen and (min-width: 480px) and (max-width: 550px) {
@@ -572,6 +652,15 @@ section {
         display: none;
         justify-content: center;
         margin-top: -5px;
+    }
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .separador {
+        display: flex;
+        margin-top: 20px;
     }
 }
 
@@ -671,6 +760,21 @@ section {
     .sobre-mobile {
         display: flex;
         flex-direction: row;
+    }
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .separador {
+        display: flex;
+        margin-top: 20px;
+    }
+    .scroll-down-habilidades {
+        display: flex;
+        justify-content: center;
+        margin-right: 25px;
+        margin-top: 5%;
     }
 }
 
