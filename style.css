@@ -173,6 +173,7 @@ header {
     display: flex;
     flex-direction: column;
     margin-left: 10.5%;
+    width: 10px;
 }
 
 .download_pdf {
