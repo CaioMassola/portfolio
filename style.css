@@ -42,7 +42,7 @@ header {
 
 .navItem ul li {
     margin-top: 8px;
-    margin-left: 15%;
+    margin-left: 14%;
 }
 
 .navItem li {
@@ -375,6 +375,15 @@ section {
     border-top-right-radius: 20px ;
 }
 
+.table {
+    align-items: center;
+}
+
+.headerTable {
+    color: var(--color-text);
+    text-align: center;
+}
+
 .body-painel-skills {
     margin-top: 20px;
     display: flex;
@@ -382,6 +391,30 @@ section {
     align-items: center;
     justify-content: center;
     max-height: max-content;
+}
+
+.modal-content {
+    background-color: var(--bg);
+}
+
+.modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    color: var(--color-text);
+}
+
+.progress {
+    border-radius: 50px;
+    margin-top: 9px;
+}
+
+.progress-bar{
+    background-color:var(--color-hover);
+    border-radius: 50px;
+}
+
+#btn-modal-close {
+    color: var(--color-hover);
 }
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
