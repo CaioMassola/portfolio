@@ -394,6 +394,23 @@ section {
     max-height: max-content;
 }
 
+table {
+    border: 
+}
+
+table td {
+    height: 20px;
+    border: none;
+}
+
+table td p {
+    margin-top: 20px;
+}
+
+table td img {
+    margin-top: 8px;
+}
+
 .modal-content {
     background-color: var(--bg);
 }
@@ -406,7 +423,7 @@ section {
 
 .progress {
     border-radius: 50px;
-    margin-top: 9px;
+    margin-top: 20px;
 }
 
 .progress-bar{
