@@ -164,8 +164,15 @@ header {
     display: flex;
     width: 100%;
     margin: 0;
-    color: var(--color-hover);
     flex-direction: column;
+}
+
+#contato_icon {
+    color: var(--color-hover);
+}
+
+#contato_icon:hover {
+    color: #cccccc
 }
 
 .contato .icon_contato {
@@ -394,12 +401,9 @@ section {
     max-height: max-content;
 }
 
-table {
-    border: 
-}
-
 table td {
     height: 20px;
+    border: 1px solid var(--color-hover);
     border: none;
 }
 
