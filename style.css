@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 * {
     margin: 0px;
 }
@@ -23,7 +24,7 @@ header {
     width: 100%;
     top: 0;
     left: 0;
-    z-index:  2;
+    z-index: 2;
 }
 
 .myNav {
@@ -312,7 +313,7 @@ section {
     color: white;
 }
 
-.title-habilidades {
+.title-pages {
     width: 100%;
     height: 100px;
     display: flex;
@@ -320,7 +321,7 @@ section {
     justify-content: center;
 }
 
-.title-habilidades p {
+.title-pages p {
     color: var(--color-text);
     font-size: 28px;
 }
@@ -349,7 +350,7 @@ section {
     color: #fff;
 }
 
-.scroll-down-habilidades {
+.scroll-down-pages {
     display: flex;
     justify-content: flex-start;
     margin-left: 8%;
@@ -367,21 +368,21 @@ section {
     width: 250px;
     background-color: var(--bg);
     border-radius: 20px;
-    border: 1px solid var(--color-hover); 
+    border: 1px solid var(--color-hover);
 }
 
 .img-painel {
     height: 55%;
     width: 100%;
     border-top-left-radius: 20px;
-    border-top-right-radius: 20px ;
+    border-top-right-radius: 20px;
 }
 
 .img-skills {
     height: 55%;
     width: 100%;
     border-top-left-radius: 20px;
-    border-top-right-radius: 20px ;
+    border-top-right-radius: 20px;
 }
 
 .table {
@@ -431,8 +432,8 @@ table td img {
     margin-top: 20px;
 }
 
-.progress-bar{
-    background-color:var(--color-hover);
+.progress-bar {
+    background-color: var(--color-hover);
     border-radius: 50px;
 }
 
@@ -440,15 +441,14 @@ table td img {
     color: var(--color-hover);
 }
 
-  /* The actual timeline (the vertical ruler) */
-  .timeline {
+.timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  /* The actual timeline (the vertical ruler) */
-  .timeline::after {
+    margin-top: 40px;
+}
+
+.timeline::after {
     content: '';
     position: absolute;
     width: 6px;
@@ -457,18 +457,16 @@ table td img {
     bottom: 0;
     left: 50%;
     margin-left: -3px;
-  }
-  
-  /* Container around content */
-  .carreira-container {
+}
+
+.carreira-container {
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
     width: 50%;
-  }
-  
-  /* The circles on the timeline */
-  .carreira-container::after {
+}
+
+.carreira-container::after {
     content: '';
     position: absolute;
     width: 25px;
@@ -476,123 +474,158 @@ table td img {
     right: -17px;
     background-color: var(--color-hover);
     border: 4px solid var(--color-hover);
-    top: 5px;
+    top: -5px;
     border-radius: 50%;
     z-index: 1;
-  }
+}
 
-  .item-left {
-   margin-left: 50%;
-  }
-  
-  .left {
+.item-left {
+    margin-left: 50%;
+}
+
+.item-right {
+    margin-left: 10%;
+}
+
+.left {
     left: 0%;
-  }
-  
-  .right {
-    left: 50%;
-  }
-  
-  .right::after {
-    left: -16px;
-  }
+}
 
-  .calendar-label {
-    margin-top: 1px; 
+.right {
+    left: 50%;
+}
+
+.right::after {
+    left: -16px;
+}
+
+.calendar-label {
+    margin-top: 1px;
     margin-left: 5px;
     color: var(--color-text);
-  }
+}
 
-  .carreira-dados {
+.carreira-cargo {
     color: var(--color-text);
     font-family: 'Poppins', sans-serif;
-  }
-  
+    font-size: 26px;
+}
 
-  @media screen and (max-width: 600px) {
+.carreira-dados {
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media screen and (max-width: 600px) {
     .timeline::after {
-    left: 31px;
+        left: 31px;
     }
-    
+
     .carreira-container {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
     }
-    
+
+    .carreira-container::after {
+        top: 20px;
+    }
+
     .container-carreira::before {
-    left: 60px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
     }
-  
-    .left::after, .right::after {
-    left: 15px;
+
+    .left::after,
+    .right::after {
+        left: 15px;
     }
 
     .item-left {
         margin-left: 0%;
     }
-    
-    .right {
-    left: 0%;
+
+    .item-right {
+        margin-left: 0px;
     }
-  }
+
+    .right {
+        left: 0%;
+    }
+
+    .carreira-cargo {
+        font-size: 24px;
+    }
+}
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
 
     .navItem {
         display: none;
     }
+
     .navMenu {
         display: flex;
         margin-top: 6px;
     }
+
     .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
+
     .contato .icon_contato {
         padding-top: 50px;
         display: flex;
         flex-direction: column;
         margin-left: 8%;
     }
+
     .sobre-container {
         flex-direction: column;
         margin-top: -10%;
     }
+
     #sobre-1 {
         width: 100%;
         margin-top: 10%;
     }
+
     #sobre-2 {
         width: 100%;
     }
+
     .title-sobre {
         font-size: 28px;
         margin-left: 50px;
         margin-top: 2px;
     }
+
     .text-sobre {
         font-size: 20px;
         margin-left: 50px;
     }
+
     #img-sobre {
         border-radius: 60px;
         width: 120px;
         height: 120px;
     }
+
     .scroll-down-sobre {
         margin: 0;
         margin-top: 1%;
     }
+
     .card-container {
         flex-direction: column;
         display: flex;
         align-items: center;
     }
+
     .separador {
         display: flex;
         margin-top: 20px;
@@ -604,82 +637,99 @@ table td img {
     .navItem {
         display: none;
     }
+
     .navMenu {
         display: flex;
         margin-top: 6px;
     }
+
     .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
+
     .contato {
         display: none;
     }
+
     .contato .icon_contato {
         padding-top: 50px;
         display: flex;
         flex-direction: column;
         margin-left: 6%;
     }
+
     .divConsole {
         margin-top: 25%;
     }
+
     #consoleLog {
         font-size: 26px;
     }
+
     #helloworld {
         font-size: 26px;
     }
+
     .scroll-down {
         margin: 0;
         margin-top: 15%;
         display: flex;
     }
+
     .sobre-container {
         flex-direction: column;
         margin-top: -10%;
     }
+
     #sobre-1 {
         width: 100%;
         margin-top: 10%;
     }
+
     #sobre-2 {
         width: 100%;
     }
+
     .title-sobre {
         font-size: 28px;
         margin-left: 50px;
         margin-top: 2px;
     }
+
     .text-sobre {
         font-size: 20px;
         margin-left: 50px;
     }
+
     #img-sobre {
         border-radius: 60px;
         width: 120px;
         height: 120px;
     }
+
     .scroll-down-sobre {
         display: flex;
         justify-content: center;
         margin-top: -5px;
     }
+
     .card-container {
         flex-direction: column;
         display: flex;
         align-items: center;
     }
+
     .separador {
         display: flex;
         margin-top: 20px;
     }
-    
+
     .painel-body {
         height: 280px;
         width: 190px;
     }
-    
+
     .body-painel-skills {
         margin-top: 10px;
     }
@@ -689,54 +739,67 @@ table td img {
     .navItem {
         display: none;
     }
+
     .navMenu {
         display: flex;
         margin-top: 6px;
     }
+
     .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
+
     .contato {
         display: none;
     }
+
     .contato .icon_contato {
         padding-top: 50px;
         display: flex;
         flex-direction: column;
         margin-left: 4%;
     }
+
     .divConsole {
         margin-top: 35%;
     }
+
     #consoleLog {
         font-size: 22px;
     }
+
     #helloworld {
         font-size: 22px;
     }
+
     .scroll-down {
         margin: 0;
         margin-top: 15%;
         display: flex;
     }
+
     .sobre-container {
         flex-direction: column;
         margin-top: -10%;
     }
+
     #sobre-1 {
         width: 100%;
         margin-top: 10%;
     }
+
     #sobre-2 {
         width: 100%;
     }
+
     .title-sobre {
         font-size: 24px;
         margin-top: 10px;
         display: flex;
         justify-content: center;
     }
+
     .text-sobre {
         margin-top: 5px;
         font-size: 16px;
@@ -744,21 +807,25 @@ table td img {
         display: flex;
         justify-content: center;
     }
+
     #img-sobre {
         border-radius: 60px;
         width: 120px;
         height: 120px;
     }
+
     .scroll-down-sobre {
         display: flex;
         justify-content: center;
         margin-top: -5px;
     }
+
     .card-container {
         flex-direction: column;
         display: flex;
         align-items: center;
     }
+
     .separador {
         display: flex;
         margin-top: 20px;
@@ -775,7 +842,7 @@ table td img {
         height: 280px;
         width: 190px;
     }
-    
+
     .body-painel-skills {
         margin-top: 10px;
     }
@@ -785,55 +852,68 @@ table td img {
     .navItem {
         display: none;
     }
+
     .navMenu {
         display: flex;
         margin-top: 6px;
     }
+
     .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
+
     .contato .icon_contato {
         padding-top: 50px;
         display: flex;
         flex-direction: column;
         margin-left: 4%;
     }
+
     .contato {
         display: none;
     }
+
     .divConsole {
         margin-top: 30%;
     }
+
     #consoleLog {
         font-size: 22px;
     }
+
     #helloworld {
         font-size: 22px;
     }
+
     .scroll-down {
         margin: 0;
         margin-top: 25%;
         display: flex;
         justify-content: center;
     }
+
     .sobre-container {
         flex-direction: column;
         margin-top: -10%;
     }
+
     #sobre-1 {
         width: 100%;
         margin-top: 10%;
     }
+
     #sobre-2 {
         width: 100%;
     }
+
     .title-sobre {
         font-size: 24px;
         margin-top: 10px;
         display: flex;
         justify-content: center;
     }
+
     .text-sobre {
         margin-top: 5px;
         font-size: 12px;
@@ -841,25 +921,30 @@ table td img {
         margin-left: 5%;
         justify-content: center;
     }
+
     #img-sobre {
         border-radius: 60px;
         width: 120px;
         height: 120px;
     }
+
     .scroll-down-sobre {
         display: none;
         justify-content: center;
         margin-top: -5px;
     }
+
     .card-container {
         flex-direction: column;
         display: flex;
         align-items: center;
     }
+
     .separador {
         display: flex;
         margin-top: 20px;
     }
+
     .div-painel {
         display: flex;
         flex-direction: column;
@@ -871,7 +956,7 @@ table td img {
         height: 280px;
         width: 190px;
     }
-    
+
     .body-painel-skills {
         margin-top: 10px;
     }
@@ -881,35 +966,44 @@ table td img {
     .navItem {
         display: none;
     }
+
     .navMenu {
         display: flex;
         margin-top: 6px;
     }
+
     .navMenuDarkMode {
         display: flex;
         margin-top: 6px;
     }
+
     .contato .icon_contato {
         padding-top: 50px;
         display: flex;
         flex-direction: column;
         margin-left: 4%;
     }
+
     .contato {
         display: none;
     }
+
     .divConsole {
         margin-top: 50%;
     }
+
     #consoleLog {
         font-size: 18px;
     }
+
     #helloworld {
         font-size: 18px;
     }
+
     .flexDirection {
         margin-left: 25px;
     }
+
     .btn-pdf {
         border-radius: 8px;
         width: 150px;
@@ -919,31 +1013,37 @@ table td img {
         color: var(--color-hover);
         font-size: 12px;
     }
+
     .btn-pdf:hover {
         background-color: var(--color-hover);
         color: white;
     }
+
     .btn-pdf span {
         margin-top: -2px;
         margin-left: 5px;
         font-size: 20px;
         color: var(--color-hover);
     }
+
     .scroll-down {
         margin: 0;
         margin-top: 25%;
         display: flex;
         justify-content: center;
     }
+
     .sobre-container {
         display: none;
     }
+
     .div-img-sobre-mobile {
         display: flex;
         width: 100%;
         height: 60px;
         justify-content: center;
     }
+
     #img-sobre {
         border-radius: 60px;
         width: 60px;
@@ -951,6 +1051,7 @@ table td img {
         display: flex;
         justify-content: center;
     }
+
     .title-sobre {
         font-size: 20px;
         margin-top: 10px;
@@ -958,6 +1059,7 @@ table td img {
         display: flex;
         justify-content: center;
     }
+
     .text-sobre {
         margin-top: 5px;
         font-size: 16px;
@@ -965,30 +1067,36 @@ table td img {
         display: flex;
         justify-content: center;
     }
+
     .scroll-down-sobre {
         display: flex;
         justify-content: center;
         margin-top: 50px
     }
+
     .sobre-mobile {
         display: flex;
         flex-direction: row;
     }
+
     .card-container {
         flex-direction: column;
         display: flex;
         align-items: center;
     }
+
     .separador {
         display: flex;
         margin-top: 20px;
     }
-    .scroll-down-habilidades {
+
+    .scroll-down-pages {
         display: flex;
         justify-content: center;
         margin-right: 25px;
         margin-top: 10%;
     }
+
     .div-painel {
         display: flex;
         flex-direction: column;
@@ -1000,7 +1108,7 @@ table td img {
         height: 280px;
         width: 190px;
     }
-    
+
     .body-painel-skills {
         margin-top: 10px;
     }
