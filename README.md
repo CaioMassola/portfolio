@@ -4,6 +4,6 @@
 
 Olá, meu nome é Caio Massola!
 
-Esse é o meu portfólio para monstrar alguns dos meus projetos!
+Esse é o meu portfólio para mostrar alguns dos meus projetos!
 
 
