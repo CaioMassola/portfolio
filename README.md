@@ -1,6 +1,4 @@
-# CaioMassola.github.io
-
-#Portfólio em HTML-CSS-JS
+# Portfólio em HTML-CSS-JS
 
 Olá, meu nome é Caio Massola!
 
