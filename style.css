@@ -576,6 +576,9 @@ table td img {
     color: var(--color-hover);
 }
 
+#TopScrollDown {
+    margin-top: 5%;
+}
 
 @media screen and (max-width: 600px) {
     .timeline::after {
@@ -624,17 +627,21 @@ table td img {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        height: 650px;
+        
+        margin-top: 10%;
     }
 
     .img-portfolio {
         height: 270px;
         width:  300px;
         margin-left: 12%;
+        
     }
 
     .descri-portfolio {
-        height: 400px;
         width:  300px;
+        height: 100%;
         margin-left: 12%;
     }
 
@@ -651,7 +658,7 @@ table td img {
         font-size: 28px;
         color: var(--color-text);
     }
-    
+
 }
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
@@ -1187,7 +1194,6 @@ table td img {
         display: flex;
         justify-content: center;
         margin-right: 25px;
-        margin-top: 10%;
     }
 
     .div-painel {
