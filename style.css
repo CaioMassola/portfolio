@@ -282,8 +282,7 @@ section {
 }
 
 .scroll-down-sobre {
-    margin: 0;
-    margin-top: 9%;
+    margin-top: 40px;
 }
 
 .btn-scroll {
@@ -353,8 +352,7 @@ section {
 .scroll-down-pages {
     display: flex;
     justify-content: flex-start;
-    margin-left: 8%;
-    margin-top: 10%;
+    margin-bottom: 20%;
 }
 
 .div-painel {
@@ -516,6 +514,68 @@ table td img {
     font-family: 'Poppins', sans-serif;
 }
 
+#carousel-icons {
+    color: var(--color-hover);
+}
+
+.carousel-indicators .active {
+    background-color: var(--color-hover);
+    z-index: 2;
+}
+
+.carousel-indicators li {
+    border: 1px solid var(--color-hover);
+}
+
+.painel-portfolio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 280px;
+}
+
+.img-portfolio {
+    height: 200px;
+    width:  400px;
+    border-radius: 15px;
+}
+
+.descri-portfolio {
+    height: 200px;
+    width:  400px;
+    border-radius: 15px;
+}
+
+.title-item-portfolio {
+    font-size: 28px;
+    color: var(--color-text);
+}
+
+.descricao-item-center {
+    display: flex;
+    justify-content: center; 
+    text-align: justify;
+    font-size: 18px;
+    color: var(--color-text);
+
+}
+
+.btn-portfolio {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--color-hover);
+    border: 1px solid var(--color-hover);
+    color: var(--bg);
+    margin-top: 20px;
+}
+
+.btn-portfolio:hover {
+    background-color: var(--bg);
+    border: 1px solid var(--color-hover);
+    color: var(--color-hover);
+}
+
 
 @media screen and (max-width: 600px) {
     .timeline::after {
@@ -559,6 +619,39 @@ table td img {
     .carreira-cargo {
         font-size: 24px;
     }
+
+    .painel-portfolio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .img-portfolio {
+        height: 270px;
+        width:  300px;
+        margin-left: 12%;
+    }
+
+    .descri-portfolio {
+        height: 400px;
+        width:  300px;
+        margin-left: 12%;
+    }
+
+    .descricao-item-center {
+        display: flex;
+        justify-content: center; 
+        text-align: justify;
+        font-size: 18px;
+        color: var(--color-text);
+
+    }
+
+    .title-item-portfolio {
+        font-size: 28px;
+        color: var(--color-text);
+    }
+    
 }
 
 @media screen and (min-width: 951px) and (max-width: 1200px) {
