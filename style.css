@@ -576,10 +576,14 @@ table td img {
     color: var(--color-hover);
 }
 
-#TopScrollDown {
-    margin-top: 5%;
-}
 
+@media screen and (max-width: 1400px) {
+
+    #TopScrollDown{
+        margin-top: 5%; 
+    }
+
+}
 @media screen and (max-width: 600px) {
     .timeline::after {
         left: 31px;
@@ -1213,8 +1217,13 @@ table td img {
     }
 }
 
-@media screen and (min-width: 1500px) and (max-width: 1980px) {
+@media screen and (min-width: 1401px) and (max-width: 1980px) {
     .contato .icon_contato {
         margin-left: 11.4%;
     }
+
+    #TopScrollDown {
+        margin-top: 20%;
+    }
 }
+
