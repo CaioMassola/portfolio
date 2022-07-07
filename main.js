@@ -5,6 +5,7 @@ var initialColors = {
     bg: getStyles(html, "--bg"),
     colorText: getStyles(html, "--color-text"),
     colorHover: getStyles(html, "--color-hover"),
+    colorTextBg: getStyles(html, "--color-textbg"),
     name: 'light'
 }
 
@@ -12,6 +13,7 @@ var darkMode = {
     bg: "#202125",
     colorText: "#ffffff",
     colorHover: "#38CADE",
+    colorTextBg: "#000000",
     name: 'dark'
 }
 
@@ -38,5 +40,5 @@ function transformKey(key) {
 function changeColors(colors, html) {
 
     Object.keys(colors).map(key => html.style.setProperty(transformKey(key), colors[key]))
-
+    console.log(colors)
 }
