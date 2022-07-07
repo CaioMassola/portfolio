@@ -9,6 +9,7 @@ html {
     --bg: #ffffff;
     --color-text: #000000;
     --color-hover: #0066FF;
+    --color-textbg:#ffffff;
     text-decoration: none;
     scroll-behavior: smooth;
 }
@@ -236,7 +237,7 @@ section {
 
 #img-sobre {
     border: 2px solid var(--color-hover);
-    border-radius: 15px;
+    border-radius: 100px;
     width: 200px;
     height: 200px;
 }
@@ -576,7 +577,27 @@ table td img {
     color: var(--color-hover);
 }
 
+footer{
+    background: var(--color-hover);
+    margin-top: -180px;
+    height: 120px;
+    color: var(--color-textbg);
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-social {
+    font-size: x-large;
+    margin-top: 20px;
+}
 
+.footer-desc {
+    font-size: 12px;
+}
 @media screen and (max-width: 1400px) {
 
     #TopScrollDown{
@@ -661,6 +682,10 @@ table td img {
     .title-item-portfolio {
         font-size: 28px;
         color: var(--color-text);
+    }
+
+    footer{
+        margin-top: -50px;
     }
 
 }
@@ -1226,4 +1251,5 @@ table td img {
         margin-top: 20%;
     }
 }
+
 
