@@ -554,7 +554,7 @@ table td img {
 
 .descricao-item-center {
     display: flex;
-    justify-content: center; 
+    justify-content: flex-start; 
     text-align: justify;
     font-size: 18px;
     color: var(--color-text);
@@ -672,7 +672,7 @@ footer{
 
     .descricao-item-center {
         display: flex;
-        justify-content: center; 
+        justify-content: flex-start; 
         text-align: justify;
         font-size: 18px;
         color: var(--color-text);
@@ -1247,9 +1247,23 @@ footer{
         margin-left: 11.4%;
     }
 
-    #TopScrollDown {
+    .scroll-down {
         margin-top: 20%;
     }
+
+    .scroll-down-sobre {
+        margin-top: 15%;
+    }
+
+    .scroll-down-pages {
+        margin-top: 12%;
+        margin-left: 5%;
+    }
+
+    .div-img-sobre {
+        margin-top: -60px;
+    }
+
 }
 
 
