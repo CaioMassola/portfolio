@@ -37,7 +37,7 @@
                     <img src="./assets/img/caiologo.jfif" id="myImg" alt="Imagem do perfil do Caio Massola" />
                 </div>
                 <div class="myName">
-                    <a href="#sobre">
+                    <a href="#sobre" title="Caio">
                         <p>Caio </p>
                     </a>
                 </div>
@@ -45,37 +45,32 @@
             <div class="navItem">
                 <ul>
                     <li>
-                        <a href="#inicio">
+                        <a href="#inicio" title="Início">
                             <p>Início</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#sobre">
+                        <a href="#sobre" title="Sobre">
                             <p>Sobre</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#habilidades">
+                        <a href="#habilidades" title="Habilidades">
                             <p>Habilidades</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#carreira">
+                        <a href="#carreira" title="Carreira">
                             <p>Carreira</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#projetos">
+                        <a href="#projetos" title="Portfolio">
                             <p>Portfólio</p>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="#contato">
-                            <p>Contato</p>
-                        </a>
-                    </li> -->
                     <li>
-                        <a onclick="theme()">
+                        <a onclick="theme()" title="Dark Mode">
                             <span class="material-icons-outlined">
                                 <p id="theme_1">dark_mode</p>
                             </span>
@@ -84,7 +79,7 @@
                 </ul>
             </div>
             <div class="navMenuDarkMode">
-                <a onclick="theme()">
+                <a onclick="theme()" title="Dark Mode">
                     <span class="material-icons-outlined">
                         <p id="theme_2">dark_mode</p>
                     </span>
@@ -92,18 +87,17 @@
             </div>
             <div class="navMenu">
                 <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
+                    aria-expanded="false" title="Menu">
                     <span class="material-icons-outlined">
                         menu
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 100px;">
-                    <a class="dropdown-item" href="#inicio">Início</a>
-                    <a class="dropdown-item" href="#sobre">Sobre</a>
-                    <a class="dropdown-item" href="#habilidades">Habilidades</a>
-                    <a class="dropdown-item" href="#carreira">Carreira</a>
-                    <a class="dropdown-item" href="#projetos">Portfólio</a>
-                    <!-- <a class="dropdown-item" href="#contato">Contato</a> -->
+                    <a class="dropdown-item" href="#inicio" title="Inicio">Início</a>
+                    <a class="dropdown-item" href="#sobre" title="Sobre">Sobre</a>
+                    <a class="dropdown-item" href="#habilidades" title="Habilidades">Habilidades</a>
+                    <a class="dropdown-item" href="#carreira" title="Carreira">Carreira</a>
+                    <a class="dropdown-item" href="#projetos" title="Portfolio">Portfólio</a>
                 </div>
             </div>
         </div>
@@ -132,8 +126,8 @@
                 </p>
             </div>
             <div class="download_pdf">
-                <a href="assets/doc/CV2022_CHMASSOLA.pdf">
-                    <button class="btn-pdf">
+                <a href="assets/doc/CV2022_CHMASSOLA.pdf" title="Currriculo PDF">
+                    <button class="btn-pdf" title="Curriculo PDF">
                         <div style="display: flex; flex-direction: row; margin-top: 12px;">
                             <span class="material-icons-outlined">
                                 file_download
@@ -144,8 +138,8 @@
                 </a>
             </div>
             <div class="scroll-down">
-                <a href="#sobre">
-                    <button class="btn-scroll">
+                <a href="#sobre" title="Sobre">
+                    <button class="btn-scroll" title="Sobre">
                         <span class="material-icons-outlined">
                             arrow_downward
                         </span>
@@ -202,15 +196,15 @@
             </div>
             <div class="scroll-down-sobre">
                 <div class="itens-column">
-                    <a href="#inicio">
-                        <button class="btn-scroll ">
+                    <a href="#inicio" title="Inicio">
+                        <button class="btn-scroll " title="Inicio">
                             <span class="material-icons-outlined ">
                                 arrow_upward
                             </span>
                         </button>
                     </a>
-                    <a href="#habilidades">
-                        <button class="btn-scroll ">
+                    <a href="#habilidades" title="Habilidades">
+                        <button class="btn-scroll " title="Habilidades">
                             <span class="material-icons-outlined ">
                                 arrow_downward
                             </span>
@@ -230,7 +224,7 @@
                         <div class="body-painel-skills">
                             <h5 class="painel-title">Back-End</h5>
                             <a href="#" class="btn btn-primary" id="btn-painel" data-toggle="modal"
-                                data-target="#modalbackend">Tecnologias</a>
+                                data-target="#modalbackend" title="Tecnologias">Tecnologias</a>
                         </div>
                     </div>
                     <div class="separador"></div>
@@ -239,7 +233,7 @@
                         <div class="body-painel-skills">
                             <h5 class="painel-title">Front-End</h5>
                             <a href="#" class="btn btn-primary" id="btn-painel" data-toggle="modal"
-                                data-target="#modalfrontend">Tecnologias</a>
+                                data-target="#modalfrontend" title="Tecnologias">Tecnologias</a>
                         </div>
                     </div>
                     <div class="separador"></div>
@@ -248,22 +242,22 @@
                         <div class="body-painel-skills">
                             <h5 class="painel-title">Mobile</h5>
                             <a href="#" class="btn btn-primary" id="btn-painel" data-toggle="modal"
-                                data-target="#modalmobile">Tecnologias</a>
+                                data-target="#modalmobile" title="Tecnologias">Tecnologias</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="scroll-down-pages">
                 <div class="itens-column" style="margin-top: 30px;">
-                    <a href="#sobre">
-                        <button class="btn-scroll ">
+                    <a href="#sobre" title="Sobre">
+                        <button class="btn-scroll " title="Sobre">
                             <span class="material-icons-outlined ">
                                 arrow_upward
                             </span>
                         </button>
                     </a>
-                    <a href="#carreira">
-                        <button class="btn-scroll ">
+                    <a href="#carreira" title="Carreira">
+                        <button class="btn-scroll " title="Carreira">
                             <span class="material-icons-outlined ">
                                 arrow_downward
                             </span>
@@ -300,15 +294,15 @@
             </div>
             <div class="scroll-down-pages">
                 <div style="display: flex;flex-direction: column; margin-left: 5%;">
-                    <a href="#habilidades">
-                        <button class="btn-scroll ">
+                    <a href="#habilidades" title="Habilidades">
+                        <button class="btn-scroll " title="Habilidades">
                             <span class="material-icons-outlined ">
                                 arrow_upward
                             </span>
                         </button>
                     </a>
-                    <a href="#projetos">
-                        <button class="btn-scroll ">
+                    <a href="#projetos" title="Projetos">
+                        <button class="btn-scroll" title="Projetos">
                             <span class="material-icons-outlined ">
                                 arrow_downward
                             </span>
@@ -331,10 +325,11 @@
                                 <p class="title-item-portfolio">Desafio - Pokémon - React</p>
                                 <p class="descricao-item-center">Este projeto é um desafio desenvolvido em React para
                                     consumir a API do Pokémon!</p>
-                                <a href="https://github.com/CaioMassola/React-Exercise-Pokemon">
-                                    <button class="btn-portfolio">
+                                <a href="https://github.com/CaioMassola/React-Exercise-Pokemon"
+                                    title="Desafio - Pokémon - React">
+                                    <button class="btn-portfolio" title="Desafio - Pokémon - React">
                                         <span class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right"
-                                            title=""></span>
+                                            title="Desafio - Pokémon - React"></span>
                                     </button>
                                 </a>
                             </div>
@@ -347,10 +342,10 @@
                             <div class="descri-portfolio">
                                 <p class="title-item-portfolio">CRUD NestJS</p>
                                 <p class="descricao-item-center">CRUD desenvolvido em NestJS!</p>
-                                <a href="https://github.com/CaioMassola/basic-crud-nestjs">
-                                    <button class="btn-portfolio">
+                                <a href="https://github.com/CaioMassola/basic-crud-nestjs" title="CRUD NestJS">
+                                    <button class="btn-portfolio" title="CRUD NestJS">
                                         <span class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right"
-                                            title=""></span>
+                                            title="CRUD NestJS"></span>
                                     </button>
                                 </a>
                             </div>
@@ -364,9 +359,9 @@
                                 <p class="title-item-portfolio">APP Massola Bank</p>
                                 <p class="descricao-item-center">Projeto desenvolvido com React Native e Redux!</p>
                                 <a href="https://github.com/CaioMassola/app-massola-bank">
-                                    <button class="btn-portfolio">
+                                    <button class="btn-portfolio" title="APP Massola Bank">
                                         <span class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right"
-                                            title=""></span>
+                                            title="APP Massola Bank"></span>
                                     </button>
                                 </a>
                             </div>
@@ -379,10 +374,10 @@
                             <div class="descri-portfolio">
                                 <p class="title-item-portfolio">CRUD AdonisJS</p>
                                 <p class="descricao-item-center">CRUD desenvolvido em AdonisJS!</p>
-                                <a href="https://github.com/CaioMassola/crud-adonis-ts">
-                                    <button class="btn-portfolio">
+                                <a href="https://github.com/CaioMassola/crud-adonis-ts" title="CRUD AdonisJS">
+                                    <button class="btn-portfolio" title="CRUD AdonisJS">
                                         <span class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right"
-                                            title=""></span>
+                                            title="CRUD AdonisJS"></span>
                                     </button>
                                 </a>
                             </div>
@@ -395,10 +390,10 @@
                             <div class="descri-portfolio">
                                 <p class="title-item-portfolio">Mais repositórios no Github</p>
                                 <p class="descricao-item-center">Veja todos os projetos no Github!</p>
-                                <a href="https://github.com/CaioMassola">
-                                    <button class="btn-portfolio">
+                                <a href="https://github.com/CaioMassola" title="Github">
+                                    <button class="btn-portfolio" title="Github">
                                         <span class="bi bi-github" data-bs-toggle="tooltip" data-bs-placement="right"
-                                            title=""></span>
+                                            title="Github"></span>
                                     </button>
                                 </a>
                             </div>
@@ -425,8 +420,8 @@
             </div>
             <div class="scroll-down-pages" id="TopScrollDown">
                 <div style="display: flex;flex-direction: column;margin-left: 5%;">
-                    <a href="#carreira">
-                        <button class="btn-scroll">
+                    <a href="#carreira" title="Carreira">
+                        <button class="btn-scroll" title="Carreira">
                             <span class="material-icons-outlined ">
                                 arrow_upward
                             </span>
@@ -463,7 +458,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Front-End</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btn-modal-close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" title="FrontEnd">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -559,7 +554,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Back-End</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btn-modal-close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" title="Fechar">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -655,7 +650,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Mobile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btn-modal-close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" title="Fechar">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
