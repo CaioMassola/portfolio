@@ -195,6 +195,36 @@
         margin-top: 10px;
     }
 }
+@media screen and (max-width: 600px) {
+    .timeline::after {
+    left: 31px;
+    }
+    
+    .carreira-container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    }
+    
+    .container-carreira::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+    }
+  
+    .left::after, .right::after {
+    left: 15px;
+    }
+
+    .item-left {
+        margin-left: 0%;
+    }
+    
+    .right {
+    left: 0%;
+    }
+  }
 
 @media screen and (min-width: 551px) and (max-width: 829px) {
     .navItem {
