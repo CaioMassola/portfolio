@@ -195,38 +195,96 @@
         margin-top: 10px;
     }
 }
+
 @media screen and (max-width: 600px) {
     .timeline::after {
-    left: 31px;
+        left: 31px;
     }
-    
+
     .carreira-container {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
     }
-    
+
+    .carreira-container::after {
+        top: 20px;
+    }
+
     .container-carreira::before {
-    left: 60px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
     }
-  
-    .left::after, .right::after {
-    left: 15px;
+
+    .left::after,
+    .right::after {
+        left: 15px;
     }
 
     .item-left {
         margin-left: 0%;
     }
-    
-    .right {
-    left: 0%;
+
+    .item-right {
+        margin-left: 0px;
     }
-  }
+
+    .right {
+        left: 0%;
+    }
+
+    .carreira-cargo {
+        font-size: 24px;
+    }
+
+    .painel-portfolio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 650px;
+        
+        margin-top: 10%;
+    }
+
+    .img-portfolio {
+        height: 270px;
+        width:  300px;
+        margin-left: 12%;
+        
+    }
+
+    .descri-portfolio {
+        width:  300px;
+        height: 100%;
+        margin-left: 12%;
+    }
+
+    .descricao-item-center {
+        display: flex;
+        justify-content: flex-start; 
+        text-align: justify;
+        font-size: 18px;
+        color: var(--color-text);
+
+    }
+
+    .title-item-portfolio {
+        font-size: 28px;
+        color: var(--color-text);
+    }
+
+    footer{
+        margin-top: -50px;
+    }
+
+}
 
 @media screen and (min-width: 551px) and (max-width: 829px) {
+    body {
+        background-color: 'red';
+    }
     .navItem {
         display: none;
     }
@@ -340,6 +398,9 @@
 }
 
 @media screen and (min-width: 480px) and (max-width: 550px) {
+    body {
+        background-color: 'red';
+    }
     .navItem {
         display: none;
     }
@@ -454,6 +515,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 479px) {
+
     .navItem {
         display: none;
     }
