@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+    margin: 0px;
+}
+
+html {
+    --bg: #ffffff;
+    --color-text: #000000;
+    --color-hover: #0066FF;
+    --color-textbg:#ffffff;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.myNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: var(--bg);
+    height: 75px;
+    padding-top: 23px;
+}
+
+.navItem ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.navItem ul li {
+    margin-top: 8px;
+    margin-left: 14%;
+}
+
+.navItem li {
+    margin-left: 50px;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.dropdown-item:hover {
+    color: var(--color-hover);
+}
+
+.material-icons-outlined {
+    color: var(--color-text);
+}
+
+.material-icons-outlined:hover {
+    color: var(--color-hover);
+}
+
+.navItem a {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.navItem a:hover {
+    color: var(--color-hover);
+}
+
+#text:hover {
+    color: var(--color-hover);
+}
+
+#dropdownMenuLink {
+    color: var(--color-text);
+}
+
+#dropdownMenuLink:hover {
+    color: var(--color-hover);
+}
+
+.flexDirection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right: 70%;
+    position: absolute;
+}
+
+.myName {
+    margin-top: 5px;
+    margin-left: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.myName a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.myName a:hover {
+    color: var(--color-hover);
+}
+
+#myImg {
+    border-radius: 50px;
+    border: 2px solid var(--color-hover);
+    height: 35px; 
+    width: 35px;
+}
+
+.navMenu {
+    display: none;
+    margin-left: 80%;
+    position: absolute;
+    margin-top: 9px;
+}
+
+.navMenuDarkMode {
+    display: none;
+    margin-left: 60%;
+    position: absolute;
+    margin-top: 9px;
+}
+
+.dropdown-menu {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text);
+}
+
+.dropdown-menu a:focus {
+    color: white;
+}
+
+.divConsole {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+    justify-content: center;
+}
+
+#consoleLog {
+    font-size: 32px;
+    font-family: 'Righteous', cursive;
+    color: var(--color-text);
+}
+
+#helloworld {
+    font-size: 32px;
+    font-family: 'Righteous', cursive;
+    color: var(--color-hover);
+}
+
+.contato {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+}
+
+#contato_icon {
+    color: var(--color-hover);
+}
+
+#contato_icon:hover {
+    color: #cccccc
+}
+
+.contato .icon_contato {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10.5%;
+    width: 10px;
+}
+
+.download_pdf {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-pdf {
+    border-radius: 8px;
+    width: 200px;
+    background-color: var(--bg);
+    border: 0.5px solid var(--color-hover);
+    color: var(--color-hover);
+}
+
+.btn-pdf:hover {
+    background-color: var(--color-hover);
+    color: white;
+}
+
+.btn-pdf span {
+    margin-top: -2px;
+    margin-left: 5px;
+    color: var(--color-hover);
+}
+
+.btn-pdf:hover .material-icons-outlined {
+    color: white;
+}
+
+section {
+    min-height: 100vh;
+}
+
+.section_page {
+    padding-top: 6em;
+}
+
+.sobre-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.div-img-sobre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img-sobre {
+    border: 2px solid var(--color-hover);
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+}
+
+.itens-column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.title-sobre {
+    font-size: 28px;
+    color: var(--color-hover);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 40px;
+}
+
+.text-sobre {
+    font-size: 20px;
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+    width: 90%;
+    margin-top: 40px;
+    text-align: justify;
+}
+
+#inicio {
+    padding: 2em;
+}
+
+#sobre-1 {
+    width: 50%;
+    margin-top: 10%;
+    min-width: 100vh;
+}
+
+#sobre-2 {
+    width: 50%;
+    min-width: 100vh;
+}
+
+.sobre-mobile {
+    display: none;
+}
+
+.scroll-down {
+    margin: 0;
+    margin-top: 12%;
+}
+
+.scroll-down-sobre {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.btn-scroll {
+    border-radius: 5px;
+    margin-left: 10%;
+    background-color: var(--bg);
+    border: 0.5px solid var(--color-hover);
+}
+
+.btn-scroll:hover {
+    background-color: var(--color-hover);
+}
+
+.btn-scroll span {
+    display: flex;
+    text-align: center;
+    color: var(--color-hover);
+}
+
+.btn-scroll span:hover {
+    display: flex;
+    text-align: center;
+    color: var(--color-hover);
+}
+
+.btn-scroll:hover .material-icons-outlined {
+    color: white;
+}
+
+.title-pages {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-pages p {
+    color: var(--color-text);
+    font-size: 28px;
+}
+
+.separador {
+    display: none;
+}
+
+.painel-title {
+    text-align: center;
+    font-size: 24px;
+    color: var(--color-hover);
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn-painel {
+    border: 1px solid var(--color-hover);
+    background-color: var(--bg);
+    color: var(--color-hover);
+    border-radius: 50px;
+    margin-top: 15px;
+}
+
+#btn-painel:hover {
+    background-color: var(--color-hover);
+    color: #fff;
+}
+
+.scroll-down-pages {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20%;
+}
+
+.div-painel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.painel-body {
+    height: 320px;
+    width: 250px;
+    background-color: var(--bg);
+    border-radius: 20px;
+    border: 1px solid var(--color-hover);
+}
+
+.img-painel {
+    height: 55%;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.img-skills {
+    height: 55%;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.table {
+    align-items: center;
+}
+
+.headerTable {
+    color: var(--color-text);
+    text-align: center;
+}
+
+.body-painel-skills {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: max-content;
+}
+
+table td {
+    height: 20px;
+    border: 1px solid var(--color-hover);
+    border: none;
+}
+
+table td p {
+    margin-top: 20px;
+}
+
+table td img {
+    margin-top: 8px;
+}
+
+.modal-content {
+    background-color: var(--bg);
+}
+
+.modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    color: var(--color-text);
+}
+
+.progress {
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    background-color: var(--color-hover);
+    border-radius: 50px;
+}
+
+#btn-modal-close {
+    color: var(--color-hover);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--color-hover);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.carreira-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.carreira-container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: var(--color-hover);
+    border: 4px solid var(--color-hover);
+    top: -5px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.item-left {
+    margin-left: 50%;
+}
+
+.item-right {
+    margin-left: 10%;
+}
+
+.left {
+    left: 0%;
+}
+
+.right {
+    left: 50%;
+}
+
+.right::after {
+    left: -16px;
+}
+
+.calendar-label {
+    margin-top: 1px;
+    margin-left: 5px;
+    color: var(--color-text);
+}
+
+.carreira-cargo {
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+}
+
+.carreira-dados {
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+}
+
+#carousel-icons {
+    color: var(--color-hover);
+}
+
+.carousel-indicators .active {
+    background-color: var(--color-hover);
+    z-index: 2;
+}
+
+.carousel-indicators li {
+    border: 1px solid var(--color-hover);
+}
+
+.painel-portfolio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 280px;
+}
+
+.img-portfolio {
+    height: 200px;
+    width:  400px;
+    border-radius: 15px;
+}
+
+.descri-portfolio {
+    height: 200px;
+    width:  400px;
+    border-radius: 15px;
+}
+
+.title-item-portfolio {
+    font-size: 28px;
+    color: var(--color-text);
+}
+
+.descricao-item-center {
+    display: flex;
+    justify-content: flex-start; 
+    text-align: justify;
+    font-size: 18px;
+    color: var(--color-text);
+
+}
+
+.btn-portfolio {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--color-hover);
+    border: 1px solid var(--color-hover);
+    color: var(--bg);
+    margin-top: 20px;
+}
+
+.btn-portfolio:hover {
+    background-color: var(--bg);
+    border: 1px solid var(--color-hover);
+    color: var(--color-hover);
+}
+
+footer{
+    background: var(--color-hover);
+    margin-top: -180px;
+    height: 120px;
+    color: var(--color-textbg);
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-social {
+    font-size: x-large;
+    margin-top: 20px;
+}
+
+.footer-desc {
+    font-size: 12px;
+}
+
+
+
