@@ -95,6 +95,10 @@
 
 @media screen and (min-width: 830px) and (max-width: 950px) {
 
+    body {
+        background-color: 'red';
+    }
+
     .navItem {
         display: none;
     }
@@ -196,6 +200,197 @@
     }
 }
 
+@media screen and (max-width: 780px) {
+    .navItem {
+        display: none;
+    }
+
+    .navMenu {
+        display: flex;
+        margin-top: 6px;
+    }
+
+    .navMenuDarkMode {
+        display: flex;
+        margin-top: 6px;
+    }
+
+    .contato .icon_contato {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 4%;
+    }
+
+    .contato {
+        display: none;
+    }
+
+    .divConsole {
+        margin-top: 50%;
+    }
+
+    #consoleLog {
+        font-size: 18px;
+    }
+
+    #helloworld {
+        font-size: 18px;
+    }
+
+    .flexDirection {
+        margin-left: 25px;
+    }
+
+    .btn-pdf {
+        border-radius: 8px;
+        width: 150px;
+        height: 50px;
+        background-color: var(--bg);
+        border: 0.5px solid var(--color-hover);
+        color: var(--color-hover);
+        font-size: 12px;
+    }
+
+    .btn-pdf:hover {
+        background-color: var(--color-hover);
+        color: white;
+    }
+
+    .btn-pdf span {
+        margin-top: -2px;
+        margin-left: 5px;
+        font-size: 20px;
+        color: var(--color-hover);
+    }
+
+    .scroll-down {
+        margin: 0;
+        margin-top: 25%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sobre-container {
+        display: none;
+    }
+
+    .div-img-sobre-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #img-sobre {
+        border-radius: 60px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .title-sobre {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-left: -20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .text-sobre {
+        margin-top: 5px;
+        font-size: 16px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .scroll-down-sobre {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px
+    }
+
+    .sobre-mobile {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+
+    .separador {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .scroll-down-pages {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-right: 10px;
+    }
+
+    .painel-portfolio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 650px;
+        
+        margin-top: 10%;
+    }
+
+    .img-portfolio {
+        height: 270px;
+        width:  300px;
+        margin-left: 12%;
+        
+    }
+
+    .descri-portfolio {
+        width:  300px;
+        height: 100%;
+        margin-left: 12%;
+    }
+
+    .descricao-item-center {
+        display: flex;
+        justify-content: flex-start; 
+        text-align: justify;
+        font-size: 18px;
+        color: var(--color-text);
+
+    }
+
+    .title-item-portfolio {
+        font-size: 28px;
+        color: var(--color-text);
+    }
+
+    footer{
+        margin-top: -50px;
+    }
+
+    .div-painel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .painel-body {
+        height: 280px;
+        width: 190px;
+    }
+
+    .body-painel-skills {
+        margin-top: 10px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .timeline::after {
         left: 31px;
@@ -280,6 +475,7 @@
     }
 
 }
+
 
 @media screen and (min-width: 551px) and (max-width: 829px) {
     body {
