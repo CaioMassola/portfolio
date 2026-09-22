@@ -1,0 +1,346 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.13fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-top: 75px;
+  padding-bottom: 125px;
+  min-height: 760px;
+}
+.hero-aura {
+  position: absolute;
+  inset: 0 -25px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 80% 40%, var(--glow), transparent 60%);
+  animation: aura 9s ease-in-out infinite alternate;
+}
+.hero-copy {
+  position: relative;
+  animation: enter-up 0.8s both;
+}
+.eyebrow {
+  font:
+    500 10px/1.5 'Space Grotesk',
+    sans-serif;
+  letter-spacing: 2.2px;
+  color: var(--accent);
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  > span {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent);
+  }
+}
+.hero-name {
+  font:
+    500 17px 'Space Grotesk',
+    sans-serif;
+  margin-bottom: 18px;
+  color: var(--muted);
+  span {
+    font-size: 9px;
+    vertical-align: super;
+    margin-left: 5px;
+    color: var(--accent);
+  }
+}
+h1 {
+  font-size: clamp(39px, 4.1vw, 59px);
+  letter-spacing: -2.7px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  > span {
+    background: linear-gradient(105deg, #6296ff 5%, #5cbcf5 100%);
+    background-clip: text;
+    color: transparent;
+  }
+}
+:root[data-theme='light'] h1 > span {
+  background-image: linear-gradient(100deg, #1e5ad2, #147eae);
+}
+.role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  span {
+    width: 17px;
+    height: 1px;
+    background: var(--accent);
+  }
+}
+.hero-description {
+  max-width: 475px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 46px;
+  border-radius: 7px;
+  padding: 12px 20px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+.primary {
+  background: linear-gradient(110deg, #245bed, #397ffa);
+  color: white;
+  box-shadow: 0 8px 25px #2465ed25;
+  &:hover {
+    box-shadow: 0 10px 28px #2465ed45;
+  }
+}
+.secondary {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  svg {
+    color: var(--accent);
+  }
+}
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 30px;
+  color: var(--muted);
+  a {
+    display: flex;
+    transition: color 0.2s;
+    &:hover {
+      color: var(--accent);
+    }
+  }
+  > div {
+    width: 1px;
+    height: 19px;
+    background: var(--line);
+    margin-inline: 3px;
+  }
+  > span {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 10px;
+  }
+}
+.hero-visual {
+  position: relative;
+  margin-left: 20px;
+  padding-bottom: 80px;
+  animation: enter-up 1s 0.15s both;
+}
+.portrait-frame {
+  position: relative;
+  border: 1px solid #5e8bce70;
+  border-radius: 16px 16px 70px 16px;
+  overflow: hidden;
+  width: 87%;
+  height: 370px;
+  margin-left: auto;
+  box-shadow: 0 20px 70px var(--shadow);
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+}
+.portrait-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 65%, #061329ed);
+}
+.portrait-label {
+  position: absolute;
+  bottom: 23px;
+  left: 23px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  span:first-child {
+    font:
+      600 14px 'Space Grotesk',
+      sans-serif;
+    letter-spacing: 1.8px;
+  }
+  span:last-child {
+    font: 8px monospace;
+    letter-spacing: 1px;
+    color: #bbd5fc;
+  }
+}
+.portrait-corner {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 24px;
+  height: 24px;
+  border-top: 1px solid #a3c4ff;
+  border-right: 1px solid #a3c4ff;
+}
+.floating-tag {
+  position: absolute;
+  right: -15px;
+  top: 46px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 25px var(--shadow);
+  border-radius: 7px;
+  padding: 10px 15px;
+  font-size: 10px;
+  animation: float 7s ease-in-out infinite;
+  svg {
+    color: var(--accent);
+  }
+}
+.code-window {
+  position: relative;
+  margin-top: -88px;
+  margin-left: -20px;
+  width: 91%;
+  border: 1px solid #345780;
+  border-radius: 9px;
+  background: var(--code);
+  color: #c9daef;
+  box-shadow: 0 15px 40px #0003;
+  transform: rotate(-3deg);
+}
+.code-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px 5px 15px;
+  border-bottom: 1px solid #294363;
+  font: 9px monospace;
+  > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #91b5e8;
+  }
+  .icon-button {
+    color: #bdd3f2;
+    width: 28px;
+    height: 24px;
+  }
+}
+.code-window pre {
+  font:
+    10px/1.85 Consolas,
+    monospace;
+  padding: 14px 16px;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.code-muted {
+  color: #8eabc9;
+}
+.code-purple {
+  color: #ba9bf3;
+}
+.code-green {
+  color: #92d8bd;
+}
+.code-blue {
+  color: #7fb9fa;
+}
+.code-yellow {
+  color: #e0c885;
+}
+.code-output {
+  border-top: 1px solid #294363;
+  font: 9px/1.6 monospace;
+  padding: 9px 14px;
+  color: #9ac1fa;
+  min-height: 34px;
+  span {
+    color: #7ee1ba;
+  }
+  .caret {
+    display: inline-block;
+    width: 4px;
+    height: 10px;
+    background: #81b3ff;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    &.still {
+      animation: none;
+    }
+  }
+}
+.hero-bottom {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  > span {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font: 9px monospace;
+    letter-spacing: 1.4px;
+    color: var(--muted);
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    > span {
+      font:
+        500 19px 'Space Grotesk',
+        sans-serif;
+      small {
+        font:
+          10px 'DM Sans',
+          sans-serif;
+        color: var(--muted);
+        margin-left: 8px;
+      }
+    }
+    i {
+      width: 1px;
+      height: 18px;
+      background: var(--line);
+    }
+  }
+}

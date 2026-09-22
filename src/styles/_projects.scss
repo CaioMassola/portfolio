@@ -1,0 +1,401 @@
+.projects-section {
+  padding-bottom: 70px;
+  margin-top: 35px;
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+  border-top: 1px solid var(--line);
+}
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 34px;
+  h2 {
+    margin-bottom: 14px;
+  }
+  p:not(.eyebrow) {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+}
+.carousel-controls {
+  display: flex;
+  gap: 9px;
+  .icon-button {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface-2);
+  }
+}
+.project-carousel {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  position: relative;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 12px;
+  overscroll-behavior-x: contain;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:after {
+    content: '';
+    flex: 0 0 calc(50% - 13px);
+  }
+}
+.project-card {
+  flex: 0 0 calc(50% - 13px);
+  min-width: 0;
+  scroll-snap-align: start;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 0.25s;
+  &:hover {
+    border-color: var(--accent);
+  }
+}
+.project-art {
+  height: 265px;
+  position: relative;
+  overflow: hidden;
+  background: var(--card-art);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.art-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--light-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse, black, transparent);
+}
+.art-trio {
+  background: radial-gradient(ellipse at 50% 60%, #234476, #10213c);
+}
+.art-brand {
+  position: absolute;
+  left: 28px;
+  top: 24px;
+  font:
+    600 27px 'Space Grotesk',
+    sans-serif;
+  color: #d3e6ff;
+  span {
+    color: #649eff;
+  }
+}
+.game-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 45px);
+  gap: 6px;
+  padding: 17px;
+  background: #111d33;
+  border: 1px solid #416a9e;
+  border-radius: 13px;
+  transform: rotate(-10deg);
+  box-shadow: 15px 20px 35px #0004;
+  span {
+    height: 43px;
+    border-radius: 6px;
+    background: #203656;
+    display: grid;
+    place-items: center;
+    font:
+      32px 'Space Grotesk',
+      sans-serif;
+    color: #7eafff;
+    &:nth-child(3n) {
+      color: #c2b3ed;
+    }
+  }
+}
+.art-caption {
+  position: absolute;
+  right: 22px;
+  bottom: 19px;
+  font: 8px monospace;
+  letter-spacing: 2px;
+  color: #92b6df;
+}
+.art-api {
+  gap: 12px;
+  background: radial-gradient(ellipse, #17404d, #102b36);
+}
+.api-client {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+  font: 9px monospace;
+  color: #a3d9e2;
+}
+.api-path {
+  width: 30px;
+  height: 1px;
+  background: #62b3bf;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: -2px;
+    background: #acffeb;
+    border-radius: 50%;
+    animation: packet 2s linear infinite;
+  }
+}
+.api-server {
+  z-index: 1;
+  border: 1px solid #5896a7;
+  border-radius: 12px;
+  background: #143743;
+  padding: 22px 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #95e2cb;
+  box-shadow: 0 10px 35px #0003;
+  strong {
+    font:
+      500 16px 'Space Grotesk',
+      sans-serif;
+    margin-top: 10px;
+  }
+  span {
+    font: 7px monospace;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+}
+.art-lol {
+  background: radial-gradient(ellipse, #334263, #142139);
+}
+.lol-ring {
+  border: 1px solid #d3bc7977;
+  width: 160px;
+  height: 160px;
+  transform: rotate(-8deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 9px #cab97c06,
+    0 0 0 10px #cab97c20;
+  span {
+    font:
+      700 75px Georgia,
+      serif;
+    letter-spacing: -5px;
+    color: #dccc91;
+  }
+  strong {
+    font: 11px monospace;
+    letter-spacing: 8px;
+    color: #dccc91;
+    margin-left: 8px;
+  }
+}
+.quiz-timer {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: #d9cfa6;
+  font: 11px monospace;
+  border: 1px solid #b9a66866;
+  border-radius: 4px;
+  padding: 7px 10px;
+  span {
+    color: #8bdbc8;
+  }
+}
+.art-arena {
+  background: linear-gradient(160deg, #15335a, #102838);
+}
+.arena-field {
+  width: 280px;
+  height: 150px;
+  background: repeating-linear-gradient(90deg, #205455 0 35px, #1b494e 35px 70px);
+  border: 2px solid #86bdb6;
+  transform: perspective(400px) rotateX(40deg) rotateZ(-17deg);
+  position: relative;
+  box-shadow:
+    0 12px 0 #0c242d,
+    0 25px 35px #0005;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    width: 1px;
+    background: #83b4a7;
+  }
+}
+.field-center {
+  position: absolute;
+  left: calc(50% - 28px);
+  top: calc(50% - 28px);
+  width: 56px;
+  height: 56px;
+  border: 1px solid #83b4a7;
+  border-radius: 50%;
+}
+.car {
+  position: absolute;
+  width: 37px;
+  height: 22px;
+  box-shadow:
+    0 5px #153f70,
+    3px 9px #091322;
+}
+.blue-car {
+  background: #64a6ff;
+  top: 65px;
+  left: 50px;
+}
+.orange-car {
+  background: #eba96b;
+  top: 35px;
+  right: 40px;
+  box-shadow:
+    0 5px #89572a,
+    3px 9px #091322;
+}
+.ball {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #e9f1ee;
+  top: 87px;
+  left: 153px;
+  box-shadow: 0 5px 7px #0005;
+}
+.arena-brand {
+  position: absolute;
+  bottom: 14px;
+  right: 20px;
+  color: #c7e6ef;
+  font:
+    600 13px 'Space Grotesk',
+    sans-serif;
+  letter-spacing: 1px;
+  span {
+    display: block;
+    text-align: right;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #76b4e7;
+  }
+}
+.project-body {
+  padding: 27px 29px;
+}
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  font: 9px monospace;
+  letter-spacing: 1px;
+  color: var(--accent);
+  > span:last-child {
+    color: var(--muted);
+  }
+}
+.project-body h3 {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.9px;
+  margin: 15px 0 12px;
+}
+.project-body > p {
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 66px;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  span {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--muted);
+    padding: 3px 8px;
+    font-size: 9px;
+  }
+}
+.project-links {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text);
+    &:hover {
+      color: var(--accent);
+    }
+  }
+  .demo-link {
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+  }
+}
+.carousel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+  > span {
+    font: 12px monospace;
+    color: var(--accent);
+    span {
+      color: var(--muted);
+    }
+  }
+}
+.carousel-dots {
+  display: flex;
+  gap: 7px;
+  button {
+    padding: 0;
+    width: 24px;
+    height: 22px;
+    background: transparent;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 9px;
+      height: 3px;
+      background: var(--line);
+      border-radius: 3px;
+    }
+    &.active:after {
+      background: var(--accent);
+    }
+  }
+}

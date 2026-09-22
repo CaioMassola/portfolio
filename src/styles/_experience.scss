@@ -1,0 +1,75 @@
+.experience h2 {
+  margin-bottom: 42px;
+}
+.timeline article {
+  display: grid;
+  grid-template-columns: 255px 1fr 40px;
+  gap: 35px;
+  position: relative;
+  padding: 0 0 38px 22px;
+  &:not(:last-child):before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+}
+.timeline-date {
+  position: relative;
+  font:
+    10px 'Space Grotesk',
+    sans-serif;
+  color: var(--muted);
+  padding-top: 5px;
+  letter-spacing: 0.8px;
+  b {
+    display: block;
+    margin-top: 12px;
+    font-size: 8px;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    background: var(--accent-soft);
+    border-radius: 4px;
+    width: max-content;
+    padding: 4px 7px;
+  }
+}
+.timeline-dot {
+  position: absolute;
+  left: -22px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  border-radius: 50%;
+}
+.job {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+}
+.company {
+  font-size: 11px;
+  color: var(--accent);
+}
+.job h3 {
+  font-size: 21px;
+  letter-spacing: -0.5px;
+  font-weight: 500;
+  margin: 9px 0 12px;
+}
+.job p {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 710px;
+  margin: 0;
+}
+.job-index {
+  font:
+    20px 'Space Grotesk',
+    sans-serif;
+  color: var(--line);
+}

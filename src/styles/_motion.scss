@@ -1,0 +1,58 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.7s,
+    transform 0.7s;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+.sr-only,
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.skip-link:focus {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  background: var(--surface);
+  padding: 10px 20px;
+}
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes packet {
+  to {
+    transform: translateX(25px);
+  }
+}
+@keyframes aura {
+  to {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+}

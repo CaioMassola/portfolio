@@ -1,0 +1,118 @@
+.technology-line {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  .shell {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding-block: 23px;
+    > span {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      color: var(--muted);
+      font:
+        500 15px 'Space Grotesk',
+        sans-serif;
+    }
+    .tech-star {
+      font-size: 14px;
+      color: var(--accent);
+    }
+  }
+}
+.section {
+  padding-top: 105px;
+}
+h2 {
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  font-size: 36px;
+  margin-bottom: 24px;
+  span {
+    color: var(--muted);
+  }
+}
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+}
+.about-content {
+  padding-top: 30px;
+  p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+  p:first-child {
+    font-size: 17px;
+    color: var(--text);
+  }
+}
+.education {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 35px;
+  color: var(--accent);
+  strong {
+    display: block;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+}
+.principles {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  span {
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--muted);
+  }
+  svg {
+    color: var(--accent);
+  }
+}
+.skills {
+  border-bottom: 1px solid var(--line);
+  padding-block: 40px 50px;
+  > p {
+    font:
+      11px 'Space Grotesk',
+      sans-serif;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    > span {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 6px 13px;
+      border-radius: 5px;
+      font-size: 11px;
+      color: var(--muted);
+      transition:
+        border-color 0.2s,
+        transform 0.2s;
+      &:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
