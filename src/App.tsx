@@ -1,3 +1,4 @@
+import ActionTooltips from './components/layout/ActionTooltips';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import SectionNavigation from './components/layout/SectionNavigation';
@@ -51,6 +52,7 @@ export default function App() {
       </main>
       <SectionNavigation language={language} />
       <Footer t={t} />
+      <ActionTooltips />
     </>
   );
 }

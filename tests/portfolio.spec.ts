@@ -1,4 +1,4 @@
-﻿import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 for (const width of [390, 1440, 1920, 2560]) {
   test(`editorial project grid adapts at ${width}px`, async ({ page }) => {
@@ -13,7 +13,9 @@ for (const width of [390, 1440, 1920, 2560]) {
 
     const columns = await page
       .locator('.project-carousel')
-      .evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length);
+      .evaluate(
+        (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length,
+      );
 
     expect(columns).toBe(width <= 760 ? 1 : 2);
   });
@@ -67,4 +69,54 @@ test('extracted sections retain photo, CV, links and saved preferences', async (
     );
     await expect(links.nth(index)).toHaveAttribute('target', '_blank');
   }
+});
+
+test('action tooltips support keyboard, Escape, hover and translations', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.locator('select').selectOption('en');
+
+  const button = page.getByRole('button', { name: 'Switch to light theme' });
+  const tooltip = page.getByRole('tooltip');
+
+  await button.focus();
+  await expect(tooltip).toHaveText('Switch to light theme');
+  await expect(button).toHaveAttribute(
+    'aria-describedby',
+    (await tooltip.getAttribute('id')) as string,
+  );
+  await page.keyboard.press('Escape');
+  await expect(tooltip).toBeHidden();
+  await expect(button).toBeFocused();
+  await expect(button).not.toHaveAttribute('aria-describedby');
+  await button.hover();
+  await expect(tooltip).toBeVisible();
+  await tooltip.hover();
+  await expect(tooltip).toBeVisible();
+  await button.click();
+  await expect(tooltip).toHaveText('Switch to dark theme');
+  await page.locator('select').selectOption('pt');
+  await page.locator('.theme-toggle').blur();
+  await page.locator('.theme-toggle').focus();
+  await expect(tooltip).toHaveText(
+    (await page.locator('.theme-toggle').getAttribute('aria-label')) as string,
+  );
+});
+
+test('tooltips fit the mobile viewport and describe icon links', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.locator('.menu-toggle').focus();
+
+  const tooltip = page.getByRole('tooltip');
+
+  await expect(tooltip).toBeVisible();
+
+  const bounds = await tooltip.boundingBox();
+
+  expect(bounds!.x).toBeGreaterThanOrEqual(8);
+  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(382);
+  await page.locator('.hero-socials a').first().focus();
+  await expect(tooltip).toHaveText('GitHub');
 });
