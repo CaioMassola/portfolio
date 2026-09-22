@@ -32,7 +32,16 @@ h1, h2, h3, .brand { font-family: Georgia, 'Times New Roman', serif; }
 .eyebrow > span { width: 22px; height: 1px; border-radius: 0; box-shadow: none; }
 .hero-name { display: none; }
 .hero h1 { max-width: 820px; font-size: clamp(58px, 7vw, 104px); font-weight: 400; line-height: .92; letter-spacing: -.065em; margin-bottom: 36px; }
-.hero h1 > span, :root[data-theme='light'] h1 > span { background: none; color: var(--accent); font-style: italic; }
+.hero h1 > .headline-accent, :root[data-theme='light'] h1 > .headline-accent { background: none; color: var(--accent); font-style: italic; }
+.headline-line {
+  display: inline-block;
+  animation: headline-enter 1.6s cubic-bezier(.25, .1, .25, 1) .15s both;
+}
+.headline-accent { animation-delay: .80s; }
+@keyframes headline-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .role { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
 .hero-description { max-width: 570px; font-size: 17px; line-height: 1.6; }
 .button { min-height: 48px; border-radius: 0; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
@@ -40,6 +49,13 @@ h1, h2, h3, .brand { font-family: Georgia, 'Times New Roman', serif; }
 .primary { background: var(--text); color: var(--bg); box-shadow: none; }
 .primary:hover { box-shadow: none; }
 .secondary { background: transparent; border-color: var(--text); }
+.hero-actions .secondary {
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+  &:hover, &:focus-visible {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+}
 .hero-socials { margin-top: 42px; }
 .hero-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: center; justify-self: center; width: 100%; margin: 0; padding: 0; animation: none; transform: none; }
 .portrait-frame { width: min(100%, 430px); height: auto; aspect-ratio: 1; margin: 0 auto; border: 2px solid var(--accent); border-radius: 50%; box-shadow: none; filter: grayscale(1) contrast(1.04); }

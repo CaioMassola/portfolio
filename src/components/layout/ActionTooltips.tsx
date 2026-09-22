@@ -9,6 +9,8 @@ export default function ActionTooltips() {
   useEffect(() => {
     const tooltip = document.createElement('div');
     let active: HTMLElement | null = null;
+    let dismissed: HTMLElement | null = null;
+    let suspended = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
 
     tooltip.id = id;
@@ -41,15 +43,21 @@ export default function ActionTooltips() {
 
       const rect = active.getBoundingClientRect();
       const bounds = tooltip.getBoundingClientRect();
+      const isNavigation = active.matches('.section-navigation button');
       const left = Math.max(
         8,
         Math.min(
-          rect.left + (rect.width - bounds.width) / 2,
+          isNavigation
+            ? rect.left - bounds.width - 8
+            : rect.left + (rect.width - bounds.width) / 2,
           window.innerWidth - bounds.width - 8,
         ),
       );
-      const top =
-        rect.top >= bounds.height + 16 ? rect.top - bounds.height - 8 : rect.bottom + 8;
+      const top = isNavigation
+        ? rect.top + (rect.height - bounds.height) / 2
+        : rect.top >= bounds.height + 16
+          ? rect.top - bounds.height - 8
+          : rect.bottom + 8;
 
       tooltip.style.left = `${left}px`;
       tooltip.style.top = `${Math.max(8, Math.min(top, window.innerHeight - bounds.height - 8))}px`;
@@ -72,6 +80,7 @@ export default function ActionTooltips() {
     };
 
     const enter = (event: Event) => {
+      if (suspended) return;
       if (event instanceof PointerEvent && event.pointerType === 'touch') return;
 
       const element =
@@ -79,21 +88,74 @@ export default function ActionTooltips() {
           ? event.target.closest<HTMLElement>(targets)
           : null;
 
-      if (element) show(element);
+      if (element && element !== dismissed) show(element);
       else if (event.target === tooltip) clearTimeout(timer);
     };
 
-    const leave = () => {
+    const leave = (event: Event) => {
+      if (
+        dismissed &&
+        event.target instanceof Node &&
+        dismissed.contains(event.target) &&
+        !dismissed.contains((event as PointerEvent | FocusEvent).relatedTarget as Node | null)
+      ) {
+        dismissed = null;
+      }
+
       clearTimeout(timer);
       timer = setTimeout(() => {
-        if (active?.matches(':hover, :focus') || tooltip.matches(':hover')) return;
+        const keepFocus =
+          event.type !== 'pointerout' || !active?.matches('.theme-toggle');
+
+        if (
+          active?.matches(keepFocus ? ':hover, :focus' : ':hover') ||
+          tooltip.matches(':hover')
+        )
+          return;
 
         hide();
       }, 150);
     };
 
     const keydown = (event: KeyboardEvent) => {
+      if (event.key === 'Tab') {
+        suspended = false;
+        dismissed = null;
+      }
+
       if (event.key === 'Escape') hide();
+    };
+
+    const suspend = () => {
+      suspended = true;
+      hide();
+    };
+
+    const visibilityChange = () => {
+      if (document.hidden) suspend();
+    };
+
+    const pointerMove = (event: PointerEvent) => {
+      if (!suspended || document.hidden || !document.hasFocus()) return;
+
+      suspended = false;
+      dismissed = null;
+      enter(event);
+    };
+
+    const click = (event: MouseEvent) => {
+      const element =
+        event.target instanceof Element ? event.target.closest<HTMLElement>(targets) : null;
+
+      if (element?.matches('.theme-toggle:hover')) {
+        dismissed = null;
+        show(element);
+
+        return;
+      }
+
+      dismissed = element;
+      hide();
     };
 
     const observer = new MutationObserver(position);
@@ -109,6 +171,11 @@ export default function ActionTooltips() {
     document.addEventListener('focusin', enter);
     document.addEventListener('focusout', leave);
     document.addEventListener('keydown', keydown);
+    document.addEventListener('click', click, true);
+    document.addEventListener('pointermove', pointerMove);
+    document.addEventListener('visibilitychange', visibilityChange);
+    window.addEventListener('blur', suspend);
+    window.addEventListener('pagehide', suspend);
     window.addEventListener('scroll', hide, true);
     window.addEventListener('resize', hide);
 
@@ -121,6 +188,11 @@ export default function ActionTooltips() {
       document.removeEventListener('focusin', enter);
       document.removeEventListener('focusout', leave);
       document.removeEventListener('keydown', keydown);
+      document.removeEventListener('click', click, true);
+      document.removeEventListener('pointermove', pointerMove);
+      document.removeEventListener('visibilitychange', visibilityChange);
+      window.removeEventListener('blur', suspend);
+      window.removeEventListener('pagehide', suspend);
       window.removeEventListener('scroll', hide, true);
       window.removeEventListener('resize', hide);
     };

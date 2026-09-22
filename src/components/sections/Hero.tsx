@@ -34,9 +34,9 @@ export default function Hero({ t, language }: HeroProps) {
         </p>
         <p className="hero-name">Caio Massola</p>
         <h1>
-          {t.headline[0]}
+          <span className="headline-line">{t.headline[0]}</span>
           <br />
-          <span>{t.headline[1]}</span>
+          <span className="headline-line headline-accent">{t.headline[1]}</span>
         </h1>
         <div className="role">
           <span /> {t.role}

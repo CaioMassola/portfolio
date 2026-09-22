@@ -101,6 +101,92 @@ describe('icon action tooltips', () => {
     expect(tooltip.hidden).toBeTrue();
   });
 
+  it('dismisses clicked controls until the pointer leaves or keyboard navigation resumes', () => {
+    const icon = document.createElement('span');
+
+    button.append(icon);
+    hover(button);
+    icon.click();
+    expect(tooltip.hidden).toBeTrue();
+    hover(button);
+    expect(tooltip.hidden).toBeTrue();
+    host.dispatchEvent(new PointerEvent('pointerout', { bubbles: true }));
+    button.dispatchEvent(new PointerEvent('pointerout', { bubbles: true, relatedTarget: icon }));
+    hover(icon);
+    expect(tooltip.hidden).toBeTrue();
+    button.dispatchEvent(new PointerEvent('pointerout', { bubbles: true, relatedTarget: host }));
+    hover(button);
+    expect(tooltip.hidden).toBeFalse();
+    document.dispatchEvent(new MouseEvent('click'));
+    expect(tooltip.hidden).toBeTrue();
+    hover(button);
+    host.click();
+    expect(tooltip.hidden).toBeTrue();
+  });
+
+  it('keeps the theme tooltip on click, updates its label and hides on pointer exit', async () => {
+    button.classList.add('theme-toggle');
+
+    let hovered = true;
+
+    spyOn(button, 'matches').and.callFake((selector: string) =>
+      selector === '.theme-toggle' ||
+      (hovered && [':hover', ':hover, :focus', '.theme-toggle:hover'].includes(selector)),
+    );
+    hover(button);
+    button.click();
+    button.setAttribute('aria-label', 'Switch back');
+    await Promise.resolve();
+    expect(tooltip.hidden).toBeFalse();
+    expect(tooltip.textContent).toBe('Switch back');
+    hovered = false;
+    button.dispatchEvent(new PointerEvent('pointerout', { bubbles: true }));
+    jasmine.clock().tick(200);
+    expect(tooltip.hidden).toBeTrue();
+  });
+
+  it('keeps restored page focus hidden until deliberate pointer or keyboard interaction', () => {
+    const hidden = spyOnProperty(document, 'hidden', 'get').and.returnValue(false);
+    const focused = spyOn(document, 'hasFocus').and.returnValue(true);
+    const move = () => button.dispatchEvent(new PointerEvent('pointermove', { bubbles: true }));
+
+    hover(button);
+    move();
+    expect(tooltip.hidden).toBeFalse();
+    document.dispatchEvent(new Event('visibilitychange'));
+    expect(tooltip.hidden).toBeFalse();
+    hidden.and.returnValue(true);
+    document.dispatchEvent(new Event('visibilitychange'));
+    expect(tooltip.hidden).toBeTrue();
+    move();
+    expect(tooltip.hidden).toBeTrue();
+    hidden.and.returnValue(false);
+    focused.and.returnValue(false);
+    move();
+    expect(tooltip.hidden).toBeTrue();
+    focused.and.returnValue(true);
+    button.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+    expect(tooltip.hidden).toBeTrue();
+    move();
+    expect(tooltip.hidden).toBeFalse();
+    window.dispatchEvent(new Event('blur'));
+    expect(tooltip.hidden).toBeTrue();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    button.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+    expect(tooltip.hidden).toBeFalse();
+    window.dispatchEvent(new Event('pagehide'));
+    expect(tooltip.hidden).toBeTrue();
+  });
+
+  it('centers navigation tooltips to the left of the icon', () => {
+    host.classList.add('section-navigation');
+    spyOn(button, 'getBoundingClientRect').and.returnValue({ left: 400, top: 100, width: 40, height: 40 } as DOMRect);
+    spyOn(tooltip, 'getBoundingClientRect').and.returnValue({ width: 120, height: 30 } as DOMRect);
+    hover(button);
+    expect(tooltip.style.left).toBe('272px');
+    expect(tooltip.style.top).toBe('105px');
+  });
+
   it('updates labels and positions above or below the control within viewport edges', async () => {
     spyOn(tooltip, 'getBoundingClientRect').and.returnValue({
       width: 120,

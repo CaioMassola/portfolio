@@ -96,12 +96,46 @@ test('action tooltips support keyboard, Escape, hover and translations', async (
   await expect(tooltip).toBeVisible();
   await button.click();
   await expect(tooltip).toHaveText('Switch to dark theme');
+  await page.mouse.move(0, 0);
+  await expect(tooltip).toBeHidden();
+  await expect(page.locator('.theme-toggle')).toBeFocused();
+  await page.locator('.theme-toggle').hover();
+  await expect(tooltip).toHaveText('Switch to dark theme');
+  await page.locator('.theme-toggle').click();
+  await expect(tooltip).toHaveText('Switch to light theme');
+  await page.locator('h1').click();
+  await expect(tooltip).toBeHidden();
   await page.locator('select').selectOption('pt');
   await page.locator('.theme-toggle').blur();
   await page.locator('.theme-toggle').focus();
   await expect(tooltip).toHaveText(
     (await page.locator('.theme-toggle').getAttribute('aria-label')) as string,
   );
+});
+
+test('tooltips stay dismissed when returning to the page', async ({ page }) => {
+  await page.goto('/');
+
+  const link = page.locator('.hero-socials a').first();
+  const tooltip = page.getByRole('tooltip');
+
+  await link.focus();
+  await expect(tooltip).toBeVisible();
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event('blur'));
+    window.dispatchEvent(new Event('pagehide'));
+    window.dispatchEvent(new Event('pageshow'));
+    window.dispatchEvent(new Event('focus'));
+    document.activeElement?.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+  });
+  await expect(tooltip).toBeHidden();
+  await expect(link).not.toHaveAttribute('aria-describedby');
+  await page.keyboard.press('Tab');
+  await expect(tooltip).toBeVisible();
+  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+  await expect(tooltip).toBeHidden();
+  await link.hover();
+  await expect(tooltip).toBeVisible();
 });
 
 test('tooltips fit the mobile viewport and describe icon links', async ({ page }) => {
