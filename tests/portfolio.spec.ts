@@ -39,7 +39,16 @@ test('extracted sections retain photo, CV, links and saved preferences', async (
     'naturalWidth',
     1075,
   );
-  expect((await page.request.get('/Caio-Massola-CV.pdf')).status()).toBe(200);
+
+  const resumes = [
+    '/Caio-Massola-CV-PT.pdf',
+    '/Caio-Massola-CV-EN.pdf',
+    '/Caio-Massola-CV-ES.pdf',
+  ];
+
+  for (const resume of resumes) {
+    expect((await page.request.get(resume)).status()).toBe(200);
+  }
 
   const repositories = [
     'tic-tac-toe',

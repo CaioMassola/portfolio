@@ -103,6 +103,9 @@ describe('portfolio application', () => {
     expect(host.querySelectorAll('.skills span').length).toBeGreaterThan(10);
     expect(host.querySelectorAll('.timeline article').length).toBe(3);
     expect(host.querySelectorAll('.demo-link').length).toBe(3);
+    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
+      '/Caio-Massola-CV-PT.pdf',
+    );
 
     click('.theme-toggle');
     expect(document.documentElement.dataset.theme).toBe('light');
@@ -136,6 +139,9 @@ describe('portfolio application', () => {
     expect(document.title).toContain('Front-End Software Engineer');
     expect(host.querySelector('nav')?.getAttribute('aria-label')).toBe('Navigation');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe('Menu');
+    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
+      '/Caio-Massola-CV-EN.pdf',
+    );
     click('.menu-toggle');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe(
       'Close menu',
@@ -150,6 +156,9 @@ describe('portfolio application', () => {
     select.value = 'es';
     await act(async () => select.dispatchEvent(new Event('change', { bubbles: true })));
     expect(document.documentElement.lang).toBe('es');
+    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
+      '/Caio-Massola-CV-ES.pdf',
+    );
     expect(host.querySelector('nav')?.getAttribute('aria-label')).toBe('Navegación');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe('Menú');
     click('.menu-toggle');

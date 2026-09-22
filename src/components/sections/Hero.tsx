@@ -16,7 +16,13 @@ interface HeroProps {
   reduced: boolean;
 }
 
-export default function Hero({ t }: HeroProps) {
+const cvByLanguage: Record<Language, string> = {
+  pt: '/Caio-Massola-CV-PT.pdf',
+  en: '/Caio-Massola-CV-EN.pdf',
+  es: '/Caio-Massola-CV-ES.pdf',
+};
+
+export default function Hero({ t, language }: HeroProps) {
   return (
     <section
       className="hero shell"
@@ -46,7 +52,7 @@ export default function Hero({ t }: HeroProps) {
           </a>
           <a
             className="button secondary"
-            href="/Caio-Massola-CV.pdf"
+            href={cvByLanguage[language]}
             download
           >
             {t.cv}
