@@ -108,7 +108,11 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
 .contact > p:not(.eyebrow) { margin: 0 0 30px; font-size: 16px; }
 .contact-orbit { display: none; }
 .contact-email, .contact-socials { justify-content: flex-start; }
+.contact .button, .contact-email, .contact-socials a, .footer > .brand { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
+.contact .button:hover { background: var(--accent); color: #fff; }
+.contact-email:hover, .contact-socials a:hover { color: var(--accent); }
 .footer { padding-block: 40px; }
+.footer > .brand:hover { color: var(--accent); }
 
 @media (max-width: 760px) {
   .shell { width: calc(100% - 32px); }

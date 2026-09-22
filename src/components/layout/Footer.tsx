@@ -1,4 +1,4 @@
-import { Code2, ArrowUp } from 'lucide-react';
+import { Code2 } from 'lucide-react';
 
 import type { Copy } from '../../content';
 
@@ -18,12 +18,6 @@ export default function Footer({ t }: { t: Copy }) {
       <p>
         © {new Date().getFullYear()} Caio Massola. {t.footer}
       </p>
-      <a
-        href="#inicio"
-        aria-label={t.top}
-      >
-        <ArrowUp size={19} />
-      </a>
     </footer>
   );
 }

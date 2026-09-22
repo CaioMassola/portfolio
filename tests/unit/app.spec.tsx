@@ -76,6 +76,13 @@ function click(selector: string) {
   act(() => element.click());
 }
 
+async function dispatchViewportEvent(type: 'scroll' | 'resize') {
+  await act(async () => {
+    window.dispatchEvent(new Event(type));
+    await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+  });
+}
+
 describe('portfolio application', () => {
   beforeEach(() => {
     host = document.createElement('div');
@@ -130,6 +137,35 @@ describe('portfolio application', () => {
       {} as IntersectionObserver,
     );
     expect(visible.classList.contains('is-visible')).toBeTrue();
+  });
+
+  it('navigates between the visible sections', async () => {
+    const scrollIntoView = spyOn(HTMLElement.prototype, 'scrollIntoView');
+
+    await renderApp();
+
+    const navigation = host.querySelector('.section-navigation')!;
+    const [previous, next] = Array.from(navigation.querySelectorAll('button'));
+
+    expect(previous.disabled).toBeTrue();
+    next.click();
+    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+    expect(scrollIntoView.calls.mostRecent().object.id).toBe('sobre');
+
+    ['inicio', 'sobre', 'experiencia', 'projetos', 'contato'].forEach((id) => {
+      spyOn(document.getElementById(id)!, 'getBoundingClientRect').and.returnValue({
+        top: 0,
+      } as DOMRect);
+    });
+    await dispatchViewportEvent('resize');
+
+    expect(next.disabled).toBeTrue();
+    previous.click();
+    expect(scrollIntoView.calls.mostRecent().object.id).toBe('projetos');
+
+    spyOnProperty(window, 'scrollY', 'get').and.returnValue(999999);
+    await dispatchViewportEvent('scroll');
+    expect(next.disabled).toBeTrue();
   });
 
   it('loads English with light theme and switches language and theme', async () => {

@@ -76,6 +76,10 @@
     cursor: pointer;
     font-weight: 600;
     padding: 7px 2px;
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
     option {
       background: var(--surface);
       color: var(--text);
@@ -102,6 +106,9 @@
   &:disabled {
     opacity: 0.35;
   }
+}
+.icon-button.theme-toggle {
+  border-radius: 50%;
 }
 .menu-toggle {
   display: none;

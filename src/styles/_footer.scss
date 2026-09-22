@@ -13,12 +13,4 @@
   > .brand {
     font-size: 15px;
   }
-  > a:last-child {
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-  }
 }

@@ -1,5 +1,6 @@
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import SectionNavigation from './components/layout/SectionNavigation';
 import Hero from './components/sections/Hero';
 import TechnologyStrip from './components/sections/TechnologyStrip';
 import About from './components/sections/About';
@@ -48,6 +49,7 @@ export default function App() {
         />
         <Contact t={t} />
       </main>
+      <SectionNavigation language={language} />
       <Footer t={t} />
     </>
   );
