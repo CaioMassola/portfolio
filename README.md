@@ -1,81 +1,101 @@
-﻿# Caio Massola — Portfólio
+# Caio Massola — Portfólio
 
-Portfólio em **Vite, React, TypeScript e SCSS**, com foto e informações do CV, três idiomas, dois temas e carrossel de projetos.
+Portfólio pessoal de Caio Massola, engenheiro de software front-end. O site apresenta minha trajetória profissional, tecnologias, projetos e canais de contato em uma interface editorial e responsiva.
 
-## Desenvolvimento
+## Destaques
 
-```sh
+- Conteúdo em português, inglês e espanhol
+- Temas claro e escuro com preferência salva no navegador
+- Layout responsivo para desktop e dispositivos móveis
+- Imagens reais e links dos projetos
+- Download do currículo em PDF
+- Navegação por teclado e suporte a leitores de tela
+- Animações compatíveis com `prefers-reduced-motion`
+
+## Projetos apresentados
+
+| Projeto           | Tecnologias                     | Links                                                                                                                                    |
+| ----------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Tic Tac Toe       | Next.js, TypeScript e WebSocket | [Aplicação](https://tic-tac-toe-five-blond-67.vercel.app/) · [Código](https://github.com/CaioMassola/tic-tac-toe)                        |
+| Tic Tac Toe API   | Java, Spring Boot e STOMP       | [Status da API](https://tic-tac-toe-backend-5si6.onrender.com/api/health) · [Código](https://github.com/CaioMassola/tic-tac-toe-backend) |
+| LoL Quiz          | React, TypeScript e Riot API    | [Aplicação](https://lol-quiz-tau.vercel.app/) · [Código](https://github.com/CaioMassola/lol-quiz)                                        |
+| Block Boost Arena | Java, renderização 3D e TCP     | [Código](https://github.com/CaioMassola/block-boost-arena)                                                                               |
+
+## Tecnologias do portfólio
+
+- React 19
+- TypeScript
+- Vite
+- SCSS
+- Lucide React
+- Karma, Jasmine e Istanbul
+- Playwright
+
+## Executar localmente
+
+Requisitos: Node.js 20.19 ou superior e npm.
+
+```bash
 npm install
 npm run dev
 ```
 
-Abra http://127.0.0.1:5173.
+O servidor será iniciado em http://127.0.0.1:5173/.
 
-## Organização do código
+## Scripts
+
+| Comando                   | Descrição                                      |
+| ------------------------- | ---------------------------------------------- |
+| `npm run dev`             | Inicia o ambiente de desenvolvimento           |
+| `npm run build`           | Valida o TypeScript e gera o build de produção |
+| `npm run preview`         | Executa localmente o build de produção         |
+| `npm run lint`            | Analisa o código com ESLint                    |
+| `npm run format`          | Formata os arquivos com Prettier               |
+| `npm run format:check`    | Verifica a formatação sem alterar arquivos     |
+| `npm run test:unit`       | Executa os testes unitários e gera a cobertura |
+| `npm run test:unit:watch` | Executa os testes unitários em modo contínuo   |
+| `npm run test:e2e`        | Executa os testes de interface com Playwright  |
+
+## Testes
+
+Os testes unitários são executados com Karma e Jasmine no Microsoft Edge headless. O processo falha se statements, branches, functions ou lines ficarem abaixo de 100% de cobertura.
+
+O relatório HTML é gerado em `coverage/karma/html/index.html`.
+
+Os testes E2E com Playwright verificam:
+
+- Grade de projetos em diferentes larguras de tela
+- Persistência de idioma e tema
+- Foto, currículo e links externos
+- Conteúdo e navegação essenciais
+
+## Estrutura principal
 
 ```text
 src/
-  App.tsx                  Composição das seções da página
-  content.ts               Textos traduzidos e dados dos projetos
-  components/
-    layout/                Header e Footer
-    hero/                  Console animado
-    sections/              Hero, About, Skills, Experience, Projects e Contact
-    projects/              Card e ilustrações dos projetos
-  hooks/
-    useCarousel.ts         Navegação e sincronização da rolagem
-    usePreferences.ts      Idioma, tema, metadados e persistência
-    useReducedMotion.ts    Preferência de movimento do navegador
-    useReveal.ts           Animações de entrada das seções
-  lib/                     Links públicos e acesso ao armazenamento
-  styles.scss              Importação dos estilos
-  styles/                  SCSS separado por seção, temas e responsividade
-public/
-  caio.jpeg                Foto fornecida
-  Caio-Massola-CV.pdf       Currículo fornecido
- tests/
-  portfolio.spec.ts        Testes de navegação e regressão no navegador
+├── components/   Componentes de layout, seções e projetos
+├── hooks/        Preferências, movimento reduzido e animações
+├── lib/          Links públicos e persistência local
+├── styles/       Estilos organizados por seção
+├── App.tsx       Composição da página
+└── content.ts    Textos traduzidos e dados dos projetos
+
+tests/
+├── unit/         Testes unitários com Karma e Jasmine
+└── portfolio.spec.ts  Testes E2E com Playwright
 ```
 
-Os arquivos antigos estão em `legacy/`, fora do build e das verificações.
+## Build de produção
 
-## Formatação e validação
-
-```sh
-npm run format
-npm run format:check
-npm run lint
-npm run build
-npm run test:e2e
-```
-
-Prettier mantém indentação de dois espaços, elementos JSX hierárquicos e um atributo por linha. JSX, TypeScript, SCSS, HTML e configurações são formatados.
-
-Os testes usam Microsoft Edge instalado e iniciam seu próprio Vite na porta 5174. O servidor de desenvolvimento da porta 5173 pode continuar aberto. A suíte verifica:
-
-- Avançar e voltar por todos os projetos em 390, 1440, 1920 e 2560 px, com animações normais.
-- Cliques rápidos sem perder o destino solicitado.
-- Indicadores, teclado, rolagem nativa e redimensionamento com movimento reduzido.
-- Persistência de idioma e tema, foto, currículo e links GitHub.
-
-O cálculo do carrossel usa coordenadas relativas à sua própria área de rolagem. Assim, a margem centralizada da página e as animações de entrada não alteram o destino dos botões.
-
-## Funcionalidades
-
-- Português, inglês e espanhol.
-- Tema escuro azul/preto e tema claro azul. Preferências salvas em localStorage, com fallback em memória quando o armazenamento é bloqueado.
-- Foto pessoal, console animado com pausa e animações de entrada que respeitam movimento reduzido.
-- Carrossel com setas, indicadores, teclado e rolagem por toque.
-- Tic Tac Toe front-end e back-end, LoL Quiz e Block Boost Arena, com links GitHub.
-- E-mail, LinkedIn, GitHub e download do CV em português.
-
-Os cards usam ilustrações CSS, não screenshots. As fontes externas possuem fallback local. A experiência profissional reflete o currículo fornecido.
-
-## Build estático
-
-```sh
+```bash
 npm run build
 npm run preview
 ```
 
-Publique `dist/` na raiz de uma hospedagem estática. A pasta inclui foto e CV. Para hospedar em subdiretório, configure `base` no Vite e ajuste os links dos arquivos públicos.
+Os arquivos estáticos são gerados em `dist/`.
+
+## Contato
+
+- [LinkedIn](https://www.linkedin.com/in/caio-massola-37863b169/)
+- [GitHub](https://github.com/CaioMassola)
+- [E-mail](mailto:chmassola@gmail.com)

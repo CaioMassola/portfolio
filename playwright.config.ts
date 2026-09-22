@@ -10,7 +10,7 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:5174',
     trace: 'retain-on-failure',
     ...devices['Desktop Edge'],
-    channel: 'msedge',
+    ...(process.env.CI ? {} : { channel: 'msedge' }),
   },
   webServer: {
     command: 'npm run dev -- --port 5174 --strictPort',

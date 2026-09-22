@@ -4,7 +4,9 @@ const path = require('node:path');
 
 process.env.CHROME_BIN =
   process.env.CHROME_BIN ||
-  'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
+  (process.env.CI
+    ? require('playwright').chromium.executablePath()
+    : 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe');
 
 module.exports = (config) => {
   config.set({
