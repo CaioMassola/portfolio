@@ -1,13 +1,14 @@
 import { Code2 } from 'lucide-react';
 
-import type { Copy } from '../../content';
+import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 
-export default function Footer({ t }: { t: Copy }) {
+export default function Footer({ t, language }: { t: Copy; language: Language }) {
   return (
     <footer className="shell footer">
       <a
         className="brand"
-        href="#inicio"
+        href={`#${sectionIds[language][0]}`}
       >
         <Code2 size={22} />
         <span>

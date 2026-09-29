@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUp } from 'lucide-react';
 
 import type { Language } from '../../content';
 
-const sectionIds = ['inicio', 'sobre', 'experiencia', 'projetos', 'contato'];
+import { sectionIds as localizedSectionIds } from '../../lib/sections';
 
 const labels: Record<Language, { previous: string; next: string }> = {
   pt: { previous: 'Seção anterior', next: 'Próxima seção' },
@@ -12,6 +12,7 @@ const labels: Record<Language, { previous: string; next: string }> = {
 };
 
 export default function SectionNavigation({ language }: { language: Language }) {
+  const sectionIds = localizedSectionIds[language];
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function SectionNavigation({ language }: { language: Language }) 
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
     };
-  }, []);
+  }, [sectionIds]);
 
   const goTo = (index: number) => {
     document.getElementById(sectionIds[index])?.scrollIntoView({

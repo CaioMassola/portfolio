@@ -1,17 +1,19 @@
 import { ArrowUpRight, Mail, Linkedin, Github } from 'lucide-react';
 
-import type { Copy } from '../../content';
+import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 import { github, linkedin } from '../../lib/profile';
 
 interface ContactProps {
+  language: Language;
   t: Copy;
 }
 
-export default function Contact({ t }: ContactProps) {
+export default function Contact({ t, language }: ContactProps) {
   return (
     <section
       className="shell contact section reveal"
-      id="contato"
+      id={sectionIds[language][4]}
     >
       <div
         className="contact-orbit"

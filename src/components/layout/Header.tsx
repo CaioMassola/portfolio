@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Code2, Globe2, Sun, Moon, Menu, X } from 'lucide-react';
 
 import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 
 interface HeaderProps {
   t: Copy;
@@ -19,14 +20,14 @@ export default function Header({
   setTheme,
 }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const sections = ['sobre', 'experiencia', 'projetos', 'contato'];
+  const sections = sectionIds[language].slice(1);
 
   return (
     <header className="header">
       <div className="shell header-inner">
         <a
           className="brand"
-          href="#inicio"
+          href={`#${sectionIds[language][0]}`}
           aria-label="Caio Massola"
         >
           <Code2 size={25} />

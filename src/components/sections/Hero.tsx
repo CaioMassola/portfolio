@@ -9,6 +9,7 @@ import {
 import type { Copy } from '../../content';
 import type { Language } from '../../content';
 import { github, linkedin } from '../../lib/profile';
+import { sectionIds } from '../../lib/sections';
 
 interface HeroProps {
   t: Copy;
@@ -26,7 +27,7 @@ export default function Hero({ t, language }: HeroProps) {
   return (
     <section
       className="hero shell"
-      id="inicio"
+      id={sectionIds[language][0]}
     >
       <div className="hero-copy">
         <p className="eyebrow">
@@ -45,7 +46,7 @@ export default function Hero({ t, language }: HeroProps) {
         <div className="hero-actions">
           <a
             className="button primary"
-            href="#projetos"
+            href={`#${sectionIds[language][3]}`}
           >
             {t.projectsCta}
             <ArrowUpRight size={18} />

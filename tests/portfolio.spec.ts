@@ -1,5 +1,27 @@
 import { expect, test } from '@playwright/test';
 
+test('section URLs follow the selected language and preserve old links', async ({ page }) => {
+  await page.goto('/#sobre');
+  await page.locator('select').selectOption('en');
+  await expect(page).toHaveURL(/#about$/);
+  await expect(page.locator('.navigation a').first()).toHaveAttribute('href', '#about');
+  await page.locator('.hero-actions .primary').click();
+  await expect(page).toHaveURL(/#projects$/);
+  await page.locator('select').selectOption('es');
+  await expect(page).toHaveURL(/#proyectos$/);
+  await page.reload();
+  await expect(page).toHaveURL(/#proyectos$/);
+  await page.goto('/#sobre');
+  await expect(page).toHaveURL(/#acerca$/);
+  await expect(page.locator('#acerca')).toBeInViewport();
+  await page.locator('select').selectOption('pt');
+  await expect(page).toHaveURL(/#sobre$/);
+  await page.locator('.navigation a').last().click();
+  await expect(page).toHaveURL(/#contato$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/#sobre$/);
+});
+
 for (const width of [390, 1440, 1920, 2560]) {
   test(`editorial project grid adapts at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });

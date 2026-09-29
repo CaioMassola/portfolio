@@ -1,17 +1,19 @@
 import { projects } from '../../content';
-import type { Copy } from '../../content';
+import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 import ProjectCard from '../projects/ProjectCard';
 
 interface ProjectsProps {
+  language: Language;
   t: Copy;
   reduced: boolean;
 }
 
-export default function Projects({ t }: ProjectsProps) {
+export default function Projects({ t, language }: ProjectsProps) {
   return (
     <section
       className="projects-section section reveal"
-      id="projetos"
+      id={sectionIds[language][3]}
     >
       <div className="shell">
         <div className="section-heading">

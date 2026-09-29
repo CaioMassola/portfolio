@@ -12,12 +12,14 @@ import Contact from './components/sections/Contact';
 import { usePreferences } from './hooks/usePreferences';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useReveal } from './hooks/useReveal';
+import { useSectionHash } from './hooks/useSectionHash';
 
 export default function App() {
   const { language, theme, setLanguage, setTheme, t } = usePreferences();
   const reduced = useReducedMotion();
 
   useReveal();
+  useSectionHash(language);
 
   return (
     <>
@@ -41,17 +43,18 @@ export default function App() {
           reduced={reduced}
         />
         <TechnologyStrip />
-        <About t={t} />
+        <About t={t} language={language} />
         <Skills t={t} />
-        <Experience t={t} />
+        <Experience t={t} language={language} />
         <Projects
+          language={language}
           t={t}
           reduced={reduced}
         />
-        <Contact t={t} />
+        <Contact t={t} language={language} />
       </main>
       <SectionNavigation language={language} />
-      <Footer t={t} />
+      <Footer t={t} language={language} />
       <ActionTooltips />
     </>
   );

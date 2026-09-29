@@ -1,14 +1,16 @@
-import type { Copy } from '../../content';
+import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 
 interface ExperienceProps {
+  language: Language;
   t: Copy;
 }
 
-export default function Experience({ t }: ExperienceProps) {
+export default function Experience({ t, language }: ExperienceProps) {
   return (
     <section
       className="shell section experience reveal"
-      id="experiencia"
+      id={sectionIds[language][2]}
     >
       <p className="eyebrow">{t.experienceLabel}</p>
       <h2>{t.experienceTitle}</h2>

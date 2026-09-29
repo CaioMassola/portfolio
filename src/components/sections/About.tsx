@@ -1,16 +1,18 @@
 import { GraduationCap, Check } from 'lucide-react';
 
-import type { Copy } from '../../content';
+import type { Copy, Language } from '../../content';
+import { sectionIds } from '../../lib/sections';
 
 interface AboutProps {
+  language: Language;
   t: Copy;
 }
 
-export default function About({ t }: AboutProps) {
+export default function About({ t, language }: AboutProps) {
   return (
     <section
       className="shell about section reveal"
-      id="sobre"
+      id={sectionIds[language][1]}
     >
       <div>
         <p className="eyebrow">{t.aboutLabel}</p>
