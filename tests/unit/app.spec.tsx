@@ -141,8 +141,19 @@ describe('portfolio application', () => {
 
   it('navigates between the visible sections', async () => {
     const scrollIntoView = spyOn(HTMLElement.prototype, 'scrollIntoView');
+    const scrollY = spyOnProperty(window, 'scrollY', 'get').and.returnValue(0);
+    const ids = ['inicio', 'sobre', 'experiencia', 'projetos', 'contato'];
+    const bounds = spyOn(HTMLElement.prototype, 'getBoundingClientRect').and.callFake(
+      function (this: HTMLElement) {
+        return { top: ids.indexOf(this.id) * 1000 } as DOMRect;
+      },
+    );
+
+    spyOnProperty(window, 'innerHeight', 'get').and.returnValue(800);
+    spyOnProperty(document.documentElement, 'scrollHeight', 'get').and.returnValue(5000);
 
     await renderApp();
+    await dispatchViewportEvent('scroll');
 
     const navigation = host.querySelector('.section-navigation')!;
     const [previous, next] = Array.from(navigation.querySelectorAll('button'));
@@ -152,18 +163,14 @@ describe('portfolio application', () => {
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
     expect(scrollIntoView.calls.mostRecent().object.id).toBe('sobre');
 
-    ['inicio', 'sobre', 'experiencia', 'projetos', 'contato'].forEach((id) => {
-      spyOn(document.getElementById(id)!, 'getBoundingClientRect').and.returnValue({
-        top: 0,
-      } as DOMRect);
-    });
+    bounds.and.returnValue({ top: 0 } as DOMRect);
     await dispatchViewportEvent('resize');
 
     expect(next.disabled).toBeTrue();
     previous.click();
     expect(scrollIntoView.calls.mostRecent().object.id).toBe('projetos');
 
-    spyOnProperty(window, 'scrollY', 'get').and.returnValue(999999);
+    scrollY.and.returnValue(4200);
     await dispatchViewportEvent('scroll');
     expect(next.disabled).toBeTrue();
   });
