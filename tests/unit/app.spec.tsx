@@ -105,8 +105,8 @@ describe('portfolio application', () => {
 
     expect(document.documentElement.lang).toBe('pt-BR');
     expect(document.documentElement.dataset.theme).toBe('dark');
-    expect(host.querySelectorAll('.project-card').length).toBe(4);
-    expect(host.querySelectorAll('.project-shot img').length).toBe(4);
+    expect(host.querySelectorAll('.project-card').length).toBe(5);
+    expect(host.querySelectorAll('.project-shot img').length).toBe(5);
     expect(host.querySelectorAll('.skills span').length).toBeGreaterThan(10);
     expect(host.querySelectorAll('.timeline article').length).toBe(3);
     expect(host.querySelectorAll('.demo-link').length).toBe(3);

@@ -1,5 +1,6 @@
 import { Github, ArrowUpRight } from 'lucide-react';
 
+import { projects } from '../../content';
 import type { Copy, Project } from '../../content';
 import { github } from '../../lib/profile';
 import ProjectArt from './ProjectArt';
@@ -17,7 +18,7 @@ export default function ProjectCard({ project, index, t }: ProjectCardProps) {
       <div className="project-body">
         <div className="project-meta">
           <span>{t.projectTypes[index]}</span>
-          <span>0{index + 1} / 04</span>
+          <span>{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
         </div>
         <h3>{t.projectNames[index]}</h3>
         <p>{t.projectDescriptions[index]}</p>

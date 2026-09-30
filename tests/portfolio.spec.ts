@@ -29,7 +29,7 @@ for (const width of [390, 1440, 1920, 2560]) {
 
     const cards = page.locator('.project-card');
 
-    await expect(cards).toHaveCount(4);
+    await expect(cards).toHaveCount(5);
     await expect(cards.first()).toBeVisible();
     await expect(page.locator('.carousel-controls')).toBeHidden();
 
@@ -79,6 +79,7 @@ test('extracted sections retain photo, CV, links and saved preferences', async (
     'tic-tac-toe-backend',
     'lol-quiz',
     'block-boost-arena',
+    'price-alert-bot',
   ];
   const links = page.locator('.project-links > a:first-child');
 

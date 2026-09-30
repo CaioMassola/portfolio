@@ -3,6 +3,7 @@ const projectImages = {
   api: '/project-tic-tac-toe-api-health.png',
   lol: '/project-lol-quiz.png',
   arena: '/project-arena.png',
+  price: '/project-price-alert-bot.png',
 } as const;
 
 const projectImageLabels = {
@@ -10,6 +11,7 @@ const projectImageLabels = {
   api: 'Repositório do back-end Tic Tac Toe no GitHub',
   lol: 'Tela inicial do projeto LoL Quiz',
   arena: 'Partida do jogo Block Boost Arena',
+  price: 'Alerta do Price Alert Bot no Discord com preço, loja e histórico de uma oferta',
 } as const;
 
 interface ProjectArtProps {
