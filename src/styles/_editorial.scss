@@ -109,7 +109,7 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
 .art-trio img { object-position: center top; }
 .art-api img { object-position: left top; }
 .art-arena img { object-position: center center; }
-.art-price { height: auto; aspect-ratio: 622 / 482; background: #27272b; }
+.art-price { background: #27272b; }
 .art-price img { object-fit: contain; }
 .art-price .project-shot-label { display: none; }
 .project-card:hover .art-price img { transform: none; }
