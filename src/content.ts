@@ -64,7 +64,7 @@ export const copy = {
       'Um clássico, uma nova experiência. Jogo da velha com salas online, chat em tempo real, temas e três idiomas.',
       'O motor das partidas. API com regras validadas pelo servidor, salas para dois jogadores e atualizações em tempo real.',
       'Você reconhece um campeão em 50 milissegundos? Um quiz visual de League of Legends que desafia sua memória.',
-      'Futebol com carros, turbo e saltos. Um jogo 3D original em Java com física própria, bots e multiplayer por IP.',
+      'Futebol com carros, turbo e saltos. Um jogo 3D em Java inspirado em Rocket League, com física própria, bots e multiplayer por IP.',
       'Monitoramento de preços com histórico e alertas de ofertas no Discord. Um bot em Java e Spring Boot, executado com Docker, que ajuda a acompanhar oportunidades de compra.',
     ],
     projectTypes: [
@@ -154,7 +154,7 @@ export const copy = {
       'A classic, a new experience. Tic-tac-toe with online rooms, real-time chat, themes and three languages.',
       'The engine behind the matches. Server-validated rules, two-player rooms and real-time updates.',
       'Can you recognize a champion in 50 milliseconds? A visual League of Legends quiz that challenges your memory.',
-      'Car soccer, boost and jumps. An original Java 3D game with custom physics, bots and direct-IP multiplayer.',
+      'Car soccer, boost and jumps. A Java 3D game inspired by Rocket League, with custom physics, bots and direct-IP multiplayer.',
       'Price tracking with historical data and deal alerts on Discord. A Java and Spring Boot bot running with Docker that helps you keep an eye on buying opportunities.',
     ],
     projectTypes: [
@@ -245,7 +245,7 @@ export const copy = {
       'Un clásico, una nueva experiencia. Tres en raya con salas en línea, chat en tiempo real, temas y tres idiomas.',
       'El motor de las partidas. Reglas validadas por el servidor, salas para dos jugadores y actualizaciones en tiempo real.',
       '¿Reconoces a un campeón en 50 milisegundos? Un quiz visual de League of Legends que desafía tu memoria.',
-      'Fútbol con coches, turbo y saltos. Un juego 3D original en Java con física propia, bots y multijugador por IP.',
+      'Fútbol con coches, turbo y saltos. Un juego 3D en Java inspirado en Rocket League, con física propia, bots y multijugador por IP.',
       'Seguimiento de precios con historial y alertas de ofertas en Discord. Un bot en Java y Spring Boot, ejecutado con Docker, para estar al tanto de oportunidades de compra.',
     ],
     projectTypes: [
