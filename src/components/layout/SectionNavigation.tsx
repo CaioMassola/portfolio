@@ -5,6 +5,13 @@ import type { Language } from '../../content';
 
 import { sectionIds as localizedSectionIds } from '../../lib/sections';
 
+const navigationSections = Object.fromEntries(
+  Object.entries(localizedSectionIds).map(([language, ids]) => [
+    language,
+    [...ids.slice(0, 2), 'technologies', ...ids.slice(2)],
+  ]),
+) as Record<Language, string[]>;
+
 const labels: Record<Language, { previous: string; next: string }> = {
   pt: { previous: 'Seção anterior', next: 'Próxima seção' },
   en: { previous: 'Previous section', next: 'Next section' },
@@ -12,7 +19,7 @@ const labels: Record<Language, { previous: string; next: string }> = {
 };
 
 export default function SectionNavigation({ language }: { language: Language }) {
-  const sectionIds = localizedSectionIds[language];
+  const sectionIds = navigationSections[language];
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {

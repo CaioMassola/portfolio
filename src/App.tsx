@@ -3,7 +3,6 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import SectionNavigation from './components/layout/SectionNavigation';
 import Hero from './components/sections/Hero';
-import TechnologyStrip from './components/sections/TechnologyStrip';
 import About from './components/sections/About';
 import Skills from './components/sections/Skills';
 import Experience from './components/sections/Experience';
@@ -42,19 +41,38 @@ export default function App() {
           language={language}
           reduced={reduced}
         />
-        <TechnologyStrip />
-        <About t={t} language={language} />
-        <Skills t={t} />
-        <Experience t={t} language={language} />
-        <Projects
-          language={language}
-          t={t}
-          reduced={reduced}
-        />
-        <Contact t={t} language={language} />
+        <div className="post-intro">
+          <About
+            t={t}
+            language={language}
+          />
+
+          <Skills
+            t={t}
+            language={language}
+          />
+          <Experience
+            t={t}
+            language={language}
+          />
+          <Projects
+            language={language}
+            t={t}
+            reduced={reduced}
+          />
+          <Contact
+            t={t}
+            language={language}
+          />
+        </div>
       </main>
       <SectionNavigation language={language} />
-      <Footer t={t} language={language} />
+      <div className="post-intro">
+        <Footer
+          t={t}
+          language={language}
+        />
+      </div>
       <ActionTooltips />
     </>
   );

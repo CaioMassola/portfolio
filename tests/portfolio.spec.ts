@@ -10,7 +10,7 @@ test('section URLs follow the selected language and preserve old links', async (
   await page.locator('select').selectOption('es');
   await expect(page).toHaveURL(/#proyectos$/);
   await page.reload();
-  await expect(page).toHaveURL(/#proyectos$/);
+  await expect(page).not.toHaveURL(/#/);
   await page.goto('/#sobre');
   await expect(page).toHaveURL(/#acerca$/);
   await expect(page.locator('#acerca')).toBeInViewport();
@@ -53,11 +53,11 @@ test('extracted sections retain photo, CV, links and saved preferences', async (
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'make a difference.',
+    'Caio Massola',
   );
   await page.locator('select').selectOption('es');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'marcan la diferencia.',
+    'Caio Massola',
   );
   await expect(page.locator('.portrait-frame img')).toHaveJSProperty(
     'naturalWidth',
@@ -137,11 +137,13 @@ test('action tooltips support keyboard, Escape, hover and translations', async (
 });
 
 test('tooltips stay dismissed when returning to the page', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/#sobre');
 
   const link = page.locator('.hero-socials a').first();
   const tooltip = page.getByRole('tooltip');
 
+  await expect(link).toBeVisible();
+  await link.scrollIntoViewIfNeeded();
   await link.focus();
   await expect(tooltip).toBeVisible();
   await page.evaluate(() => {
@@ -174,6 +176,70 @@ test('tooltips fit the mobile viewport and describe icon links', async ({ page }
 
   expect(bounds!.x).toBeGreaterThanOrEqual(8);
   expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(382);
+  await expect(page.locator('.hero-socials a').first()).toBeVisible();
   await page.locator('.hero-socials a').first().focus();
   await expect(tooltip).toHaveText('GitHub');
 });
+
+test('reloading About keeps the typing introduction in view', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.navigation a').first().click();
+  await expect(page).toHaveURL(/#sobre$/);
+  await page.reload();
+  await expect(page).not.toHaveURL(/#sobre$/);
+
+  const code = page.locator('.hero-code');
+
+  await expect(code).toBeInViewport();
+  await page.locator('.about-introduction').evaluate(async (element) => {
+    await Promise.all(element.getAnimations().map((animation) => animation.finished));
+  });
+  await expect(code).toBeInViewport();
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
+  await page.locator('.navigation a').first().click();
+  await expect(page.locator('.about-introduction')).toBeInViewport();
+});
+test('language changes preserve the visible section position', async ({ page }) => {
+  await page.goto('/#experiencia');
+
+  const section = page.locator('.career-section');
+
+  await expect(section).toBeInViewport();
+  await expect.poll(async () => Math.round(await section.evaluate(e => e.getBoundingClientRect().top))).toBe(105);
+
+  for (const language of ['en', 'es', 'pt']) {
+    const before = await section.evaluate(e => e.getBoundingClientRect().top);
+
+    await page.locator('select').selectOption(language);
+    await expect.poll(async () => Math.abs(await section.evaluate(e => e.getBoundingClientRect().top) - before)).toBeLessThan(2);
+    await expect(page.locator('.career-step').first()).toHaveClass(/is-visible/);
+  }
+});
+
+for (const width of [1440, 390]) {
+  test(`opening the language control does not scroll at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/#experiencia');
+
+    const section = page.locator('.career-section');
+
+    await expect.poll(async () => Math.round(await section.evaluate(e => e.getBoundingClientRect().top))).toBe(105);
+
+    for (const trigger of ['select', '.language-control svg']) {
+      const before = await section.evaluate(e => e.getBoundingClientRect().top);
+
+      await page.locator(trigger).click();
+      expect(Math.abs(await section.evaluate(e => e.getBoundingClientRect().top) - before)).toBeLessThan(2);
+      await page.keyboard.press('Home');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await expect(page.locator('select')).toHaveValue('en');
+      await expect.poll(async () => Math.abs(await section.evaluate(e => e.getBoundingClientRect().top) - before)).toBeLessThan(2);
+      await page.locator('select').click();
+      await page.keyboard.press('Home');
+      await page.keyboard.press('Enter');
+      await expect(page.locator('select')).toHaveValue('pt');
+      await expect.poll(async () => Math.abs(await section.evaluate(e => e.getBoundingClientRect().top) - before)).toBeLessThan(2);
+    }
+  });
+}

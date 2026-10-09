@@ -1,11 +1,11 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { copy } from '../content';
 import type { Language } from '../content';
 import { readPreference, savePreference } from '../lib/storage';
 
 export function usePreferences() {
-  const [language, setLanguage] = useState<Language>(() => {
+  const [language, updateLanguage] = useState<Language>(() => {
     const value = readPreference('cm-language');
 
     return value === 'en' || value === 'es' ? value : 'pt';
@@ -13,6 +13,35 @@ export function usePreferences() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() =>
     readPreference('cm-theme') === 'light' ? 'light' : 'dark',
   );
+  const readingPosition = useRef<{ element: HTMLElement; top: number } | null>(null);
+
+  const setLanguage = (next: Language) => {
+    if (next === language) return;
+
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('main section'));
+    const element = sections.find(
+      (section) => section.getBoundingClientRect().bottom > 120,
+    );
+
+    if (element) {
+      readingPosition.current = { element, top: element.getBoundingClientRect().top };
+    }
+
+    updateLanguage(next);
+  };
+
+  useLayoutEffect(() => {
+    const position = readingPosition.current;
+
+    if (!position) return;
+
+    readingPosition.current = null;
+    window.scrollBy({
+      top: position.element.getBoundingClientRect().top - position.top,
+      behavior: 'instant',
+    });
+  }, [language]);
+
   const t = copy[language];
 
   useEffect(() => {

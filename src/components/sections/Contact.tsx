@@ -1,64 +1,41 @@
-import { ArrowUpRight, Mail, Linkedin, Github } from 'lucide-react';
-
+﻿import { Mail, MessageCircle } from 'lucide-react';
 import type { Copy, Language } from '../../content';
 import { sectionIds } from '../../lib/sections';
-import { github, linkedin } from '../../lib/profile';
+import { whatsapp } from '../../lib/profile';
 
-interface ContactProps {
-  language: Language;
-  t: Copy;
-}
+const copy = {
+  pt: { title: 'Vamos conversar?', text: 'Para falar sobre uma oportunidade, um projeto ou trocar experiências em tecnologia, entre em contato.', whatsapp: 'Conversar no WhatsApp', email: 'Prefere e-mail?', label: 'CONTATO DIRETO' },
+  en: { title: 'Let’s talk.', text: 'Get in touch about an opportunity, a project, or to share experiences in technology.', whatsapp: 'Chat on WhatsApp', email: 'Prefer email?', label: 'GET IN TOUCH' },
+  es: { title: '¿Conversamos?', text: 'Escríbeme para hablar de una oportunidad, un proyecto o compartir experiencias en tecnología.', whatsapp: 'Hablar por WhatsApp', email: '¿Prefieres un correo?', label: 'CONTACTO DIRECTO' },
+};
 
-export default function Contact({ t, language }: ContactProps) {
+export default function Contact({ t, language }: { t: Copy; language: Language }) {
+  const text = copy[language];
+
   return (
-    <section
-      className="shell contact section reveal"
-      id={sectionIds[language][4]}
-    >
-      <div
-        className="contact-orbit"
-        aria-hidden="true"
-      />
+    <section className="shell contact section reveal" id={sectionIds[language][4]}>
       <p className="eyebrow">{t.contactLabel}</p>
-      <h2>
-        {t.contactTitle[0]}
-        <br />
-        <span>{t.contactTitle[1]}</span>
-      </h2>
-      <p>{t.contactText}</p>
-      <a
-        className="button primary"
-        href="mailto:chmassola@gmail.com"
-      >
-        {t.email}
-        <ArrowUpRight size={18} />
-      </a>
-      <a
-        className="contact-email"
-        href="mailto:chmassola@gmail.com"
-      >
-        <Mail size={16} />
-        chmassola@gmail.com
-      </a>
-      <div className="contact-socials">
-        <a
-          href={linkedin}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Linkedin size={17} />
-          LinkedIn
-          <ArrowUpRight size={14} />
-        </a>
-        <a
-          href={github}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Github size={17} />
-          GitHub
-          <ArrowUpRight size={14} />
-        </a>
+      <div className="contact-layout">
+        <div className="contact-copy">
+          <h2>{text.title}</h2>
+          <p>{text.text}</p>
+        </div>
+        <div className="contact-actions">
+          <p className="eyebrow">{text.label}</p>
+          {whatsapp && (
+            <a className="button primary whatsapp-link" href={whatsapp} target="_blank" rel="noreferrer">
+              <MessageCircle size={21} aria-hidden="true" />
+              {text.whatsapp}
+            </a>
+          )}
+          <div className="contact-email-option">
+            <p>{text.email}</p>
+            <a className="contact-email" href="mailto:chmassola@gmail.com">
+              <Mail size={18} aria-hidden="true" />
+              chmassola@gmail.com
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

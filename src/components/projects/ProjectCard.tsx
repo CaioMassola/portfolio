@@ -14,7 +14,15 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index, t }: ProjectCardProps) {
   return (
     <article className="project-card">
-      <ProjectArt id={project.id} />
+      <a
+        className="project-image-link"
+        href={project.demo || `${github}/${project.repo}`}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${project.demo ? t.demo : t.projectLink}: ${t.projectNames[index]}`}
+      >
+        <ProjectArt id={project.id} />
+      </a>
       <div className="project-body">
         <div className="project-meta">
           <span>{t.projectTypes[index]}</span>
@@ -35,7 +43,6 @@ export default function ProjectCard({ project, index, t }: ProjectCardProps) {
           >
             <Github size={17} />
             {t.projectLink}
-            <ArrowUpRight size={17} />
           </a>
           {project.demo && (
             <a

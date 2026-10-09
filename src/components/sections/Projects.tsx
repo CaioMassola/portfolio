@@ -12,15 +12,14 @@ interface ProjectsProps {
 export default function Projects({ t, language }: ProjectsProps) {
   return (
     <section
-      className="projects-section section reveal"
+      className="shell projects-section section reveal"
       id={sectionIds[language][3]}
     >
-      <div className="shell">
+      <div>
         <div className="section-heading">
           <div>
             <p className="eyebrow">{t.projectsLabel}</p>
             <h2>{t.projectsTitle}</h2>
-            <p>{t.projectsIntro}</p>
           </div>
         </div>
         <div className="project-carousel">

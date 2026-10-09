@@ -2,6 +2,7 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 
 import App from '../../src/App';
+import { usePreferences } from '../../src/hooks/usePreferences';
 import { readPreference, savePreference } from '../../src/lib/storage';
 
 (
@@ -142,7 +143,7 @@ describe('portfolio application', () => {
   it('navigates between the visible sections', async () => {
     const scrollIntoView = spyOn(HTMLElement.prototype, 'scrollIntoView');
     const scrollY = spyOnProperty(window, 'scrollY', 'get').and.returnValue(0);
-    const ids = ['inicio', 'sobre', 'experiencia', 'projetos', 'contato'];
+    const ids = ['inicio', 'sobre', 'technologies', 'experiencia', 'projetos', 'contato'];
     const bounds = spyOn(HTMLElement.prototype, 'getBoundingClientRect').and.callFake(
       function (this: HTMLElement) {
         return { top: ids.indexOf(this.id) * 1000 } as DOMRect;
@@ -210,6 +211,25 @@ describe('portfolio application', () => {
     );
   });
 
+  it('ignores the current language and switches without a visible section', async () => {
+    function PreferencesControl() {
+      const { language, setLanguage } = usePreferences();
+
+      return <button onClick={() => setLanguage(language === 'pt' ? 'pt' : 'es')}>{language}</button>;
+    }
+
+    localStorage.clear();
+    await act(async () => root.render(<PreferencesControl />));
+    click('button');
+    expect(host.textContent).toBe('pt');
+    await act(async () => root.unmount());
+    localStorage.setItem('cm-language', 'en');
+    root = createRoot(host);
+    await act(async () => root.render(<PreferencesControl />));
+    click('button');
+    expect(host.textContent).toBe('es');
+    expect(document.documentElement.lang).toBe('es');
+  });
   it('falls back to Portuguese and remains usable when storage is blocked', async () => {
     const get = spyOn(Storage.prototype, 'getItem').and.throwError('blocked');
     const set = spyOn(Storage.prototype, 'setItem').and.throwError('blocked');

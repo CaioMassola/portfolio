@@ -337,9 +337,9 @@
   }
 }
 .project-links {
-  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   margin-top: 24px;
-  padding-top: 17px;
+  padding-bottom: 17px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -397,5 +397,13 @@
     &.active:after {
       background: var(--accent);
     }
+  }
+}
+
+.project-image-link {
+  display: block;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
   }
 }

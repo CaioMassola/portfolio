@@ -1,0 +1,17 @@
+// Shared section rhythm. Each divider belongs to the section that follows it.
+:root { --section-space: 120px; }
+.post-intro > section.section,
+.post-intro > section.skills {
+  margin-block: 0;
+  padding-block: var(--section-space);
+  border-top: 1px solid var(--text);
+  border-bottom: 0;
+}
+.post-intro > section.about-introduction { border-top: 0; align-items: start; }
+.hero-opening .hero-bottom { bottom: 0; padding: 0; }
+.post-intro > .contact { padding-inline: 0; }
+// Do not add an extra trailing gap after the final timeline entry.
+.timeline article:last-child { padding-bottom: 0; }
+@media (max-width: 760px) {
+  :root { --section-space: 76px; }
+}

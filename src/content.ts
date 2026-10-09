@@ -7,9 +7,9 @@ export const copy = {
     role: 'Engenheiro de Software Front-End',
     location: 'São Paulo, Brasil',
     hello: 'CAIO MASSOLA — PORTFÓLIO',
-    headline: ['Eu desenho no código.', 'E penso no produto.'],
+    headline: ['Sou Caio Massola', '.'],
     intro:
-      'Engenheiro front-end há mais de 6 anos. Construo produtos web e mobile claros, rápidos e feitos para durar.',
+      'Engenheiro de software front-end com mais de 6 anos de experiência em aplicações web e mobile.',
     projectsCta: 'Conheça meus projetos',
     cv: 'Baixar currículo',
     scroll: 'ROLE PARA VER O TRABALHO',
@@ -20,12 +20,14 @@ export const copy = {
     aboutText:
       'Sou Caio Henrique Massola, engenheiro de software com foco em Front-End. Trabalho na construção e evolução de produtos digitais, conectando interfaces, pessoas e tecnologia.',
     aboutSecond:
-      'Minha trajetória passa pelo desenvolvimento full stack e mobile. Essa visão me ajuda a construir interfaces que funcionam bem por fora e se conectam bem por dentro.',
+      'Na SoftExpert, trabalho na evolução de um produto corporativo com React e TypeScript: componentes reutilizáveis, Design System com Storybook, testes e integrações com APIs REST e AWS.',
+    aboutBackground: 'Antes disso, desenvolvi aplicações web com Angular, serviços com Node.js e MySQL e aplicativos com React Native. Essa experiência me ajuda a pensar na interface e também nos dados e serviços que a sustentam.',
+    educationLabel: 'Formação acadêmica',
     education: 'Bacharel em Sistemas de Informação',
     school: 'Universidade Anhembi Morumbi · 2018 — 2021',
     skillsTitle: 'Tecnologias com que construo',
     experienceLabel: '02 — TRAJETÓRIA',
-    experienceTitle: 'Evolução, uma entrega por vez.',
+    experienceTitle: 'Minha trajetória profissional',
     current: 'ATUAL',
     jobs: [
       {
@@ -51,7 +53,7 @@ export const copy = {
       },
     ],
     projectsLabel: '03 — PROJETOS SELECIONADOS',
-    projectsTitle: 'Trabalho que explica o trabalho.',
+    projectsTitle: 'Meus projetos',
     projectsIntro:
       'Projetos pessoais, com problemas, decisões e tecnologias diferentes.',
     projectLink: 'Explorar no GitHub',
@@ -98,9 +100,9 @@ export const copy = {
     role: 'Front-End Software Engineer',
     location: 'São Paulo, Brazil',
     hello: 'HELLO THERE, I’M CAIO',
-    headline: ['Interfaces that', 'make a difference.'],
+    headline: ['I’m Caio Massola', '.'],
     intro:
-      'I turn complex challenges into simple experiences. Over 6 years building web and mobile products with attention to every detail.',
+      'Front-end software engineer with over 6 years of experience building web and mobile applications.',
     projectsCta: 'Explore my projects',
     cv: 'Download résumé',
     scroll: 'EXPLORE MY WORLD',
@@ -111,12 +113,14 @@ export const copy = {
     aboutText:
       'I’m Caio Henrique Massola, a software engineer focused on Front-End. I build and evolve digital products, connecting interfaces, people and technology.',
     aboutSecond:
-      'My background spans full stack and mobile development. This perspective helps me create interfaces that work beautifully and integrate seamlessly.',
+      'At SoftExpert, I develop a business software product with React and TypeScript: reusable components, a Storybook design system, tests, and integrations with REST APIs and AWS.',
+    aboutBackground: 'Previously, I built Angular web applications, Node.js and MySQL services, and React Native apps. That experience helps me consider both the interface and the data and services behind it.',
+    educationLabel: 'Education',
     education: 'Bachelor’s in Information Systems',
     school: 'Anhembi Morumbi University · 2018 — 2021',
     skillsTitle: 'Technologies I build with',
     experienceLabel: '02 — MY JOURNEY',
-    experienceTitle: 'Growing, one delivery at a time.',
+    experienceTitle: 'My professional journey',
     current: 'CURRENT',
     jobs: [
       {
@@ -142,7 +146,7 @@ export const copy = {
       },
     ],
     projectsLabel: '03 — BEYOND THE EXPECTED',
-    projectsTitle: 'Ideas brought to life.',
+    projectsTitle: 'My projects',
     projectsIntro: 'Code, curiosity and a drive to build. Explore my personal projects.',
     projectLink: 'Explore on GitHub',
     demo: 'Open project',
@@ -188,9 +192,9 @@ export const copy = {
     role: 'Ingeniero de Software Front-End',
     location: 'São Paulo, Brasil',
     hello: 'HOLA, SOY CAIO',
-    headline: ['Interfaces que', 'marcan la diferencia.'],
+    headline: ['Soy Caio Massola', '.'],
     intro:
-      'Transformo desafíos complejos en experiencias simples. Más de 6 años construyendo productos web y móviles con atención a cada detalle.',
+      'Ingeniero de software front-end con más de 6 años de experiencia en aplicaciones web y móviles.',
     projectsCta: 'Explora mis proyectos',
     cv: 'Descargar currículum',
     scroll: 'EXPLORA MI UNIVERSO',
@@ -201,12 +205,14 @@ export const copy = {
     aboutText:
       'Soy Caio Henrique Massola, ingeniero de software enfocado en Front-End. Construyo y evoluciono productos digitales, conectando interfaces, personas y tecnología.',
     aboutSecond:
-      'Mi trayectoria abarca el desarrollo full stack y móvil. Esa perspectiva me ayuda a crear interfaces que funcionan bien y se integran de forma coherente.',
+      'En SoftExpert, trabajo en la evolución de un producto empresarial con React y TypeScript: componentes reutilizables, un Design System con Storybook, pruebas e integraciones con APIs REST y AWS.',
+    aboutBackground: 'Antes desarrollé aplicaciones web con Angular, servicios con Node.js y MySQL y aplicaciones con React Native. Esa experiencia me ayuda a pensar tanto en la interfaz como en los datos y servicios que la sostienen.',
+    educationLabel: 'Formación académica',
     education: 'Grado en Sistemas de Información',
     school: 'Universidad Anhembi Morumbi · 2018 — 2021',
     skillsTitle: 'Tecnologías con las que construyo',
     experienceLabel: '02 — TRAYECTORIA',
-    experienceTitle: 'Evolucionando con cada entrega.',
+    experienceTitle: 'Mi trayectoria profesional',
     current: 'ACTUAL',
     jobs: [
       {
@@ -232,7 +238,7 @@ export const copy = {
       },
     ],
     projectsLabel: '03 — MÁS ALLÁ DE LO OBVIO',
-    projectsTitle: 'Ideas que cobraron vida.',
+    projectsTitle: 'Mis proyectos',
     projectsIntro:
       'Código, curiosidad y ganas de construir. Explora mis proyectos personales.',
     projectLink: 'Explorar en GitHub',

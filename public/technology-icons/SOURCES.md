@@ -1,0 +1,1 @@
+Icons: Devicon v2.17.0 (https://github.com/devicons/devicon/tree/v2.17.0), MIT; Testing Library: Simple Icons (https://github.com/simple-icons/simple-icons), CC0. Brand names and logos belong to their respective owners.
