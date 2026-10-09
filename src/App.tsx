@@ -1,3 +1,4 @@
+import MiniGame from './components/layout/MiniGame';
 import ActionTooltips from './components/layout/ActionTooltips';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -73,6 +74,7 @@ export default function App() {
           language={language}
         />
       </div>
+      <MiniGame language={language} />
       <ActionTooltips />
     </>
   );
