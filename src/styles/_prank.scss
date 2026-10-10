@@ -3,22 +3,6 @@
   color: var(--accent);
   opacity: 1;
 }
-.prank-message:not(:empty) {
-  position: fixed;
-  left: 50%;
-  bottom: 28px;
-  translate: -50% 0;
-  z-index: 50;
-  padding: 12px 22px;
-  max-width: calc(100vw - 32px);
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: 0 8px 28px var(--shadow);
-  text-align: center;
-  pointer-events: none;
-}
 // Mirror text blocks without changing layout, scroll or fixed-position containers.
 body.prank-chaos
   :is(
@@ -59,25 +43,6 @@ body.prank-chaos
     opacity: 0.85;
   }
 }
-.prank-scribbles .prank-message {
-  bottom: 88px;
-}
-.prank-clear {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  translate: -50% 0;
-  z-index: 51;
-  min-height: 44px;
-  padding: 10px 22px;
-  border: 2px solid #171713;
-  border-radius: 8px;
-  background: #fff4dd;
-  color: #171713;
-  font-weight: 600;
-  box-shadow: 0 4px 20px #0004;
-}
-
 .prank-button {
   position: fixed;
   left: 24px;

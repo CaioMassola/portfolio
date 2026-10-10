@@ -3,15 +3,7 @@ import { createPortal } from 'react-dom';
 import type { Language } from '../../content';
 import { pickPrank, type PrankEffect } from '../../lib/pranks';
 
-const labels = {
-  pt: { button: 'Não clique', message: 'Eu avisei 😅', clear: 'Limpar bagunça' },
-  en: { button: 'Don’t click', message: 'I warned you 😅', clear: 'Clean up the mess' },
-  es: {
-    button: 'No hagas clic',
-    message: 'Te lo advertí 😅',
-    clear: 'Limpiar el desastre',
-  },
-};
+const labels = { pt: 'N\u00e3o clique', en: 'Don\u2019t click', es: 'No hagas clic' };
 const crayons = ['#fa3353', '#ffc62e', '#3c69ff', '#24be65', '#b347dc', '#ff8730'];
 // Fixed artwork keeps the drawing stable while the language or other UI changes.
 const scribbles = Array.from({ length: 42 }, (_, stroke) =>
@@ -61,7 +53,7 @@ export default function PrankButton({ language }: { language: Language }) {
       <button
         ref={trigger}
         className="prank-button"
-        aria-label={text.button}
+        aria-label={text}
         aria-pressed={Boolean(active)}
         onClick={() => {
           if (active) {
@@ -117,23 +109,7 @@ export default function PrankButton({ language }: { language: Language }) {
               </svg>
             </div>
           )}
-          <div
-            className="prank-message"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {active ? text.message : ''}
-          </div>
-          {active === 'scribbles' && (
-            <button
-              className="prank-clear"
-              autoFocus
-              onClick={() => setActive(null)}
-            >
-              {text.clear}
-            </button>
-          )}
+
         </>,
         document.body,
       )}

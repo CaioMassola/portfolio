@@ -27,13 +27,11 @@ describe('temporary mirrored text prank', () => {
     expect(document.body.classList.contains('prank-chaos')).toBeFalse();
     act(() => button.click());
     expect(document.body.classList.contains('prank-chaos')).toBeTrue();
-    expect(document.querySelector('.prank-message')!.textContent).toBe('Eu avisei 😅');
     expect(button.getAttribute('aria-pressed')).toBe('true');
     act(() => jasmine.clock().tick(9999));
     expect(document.body.classList.contains('prank-chaos')).toBeTrue();
     act(() => jasmine.clock().tick(1));
     expect(document.body.classList.contains('prank-chaos')).toBeFalse();
-    expect(document.querySelector('.prank-message')!.textContent).toBe('');
     expect(button.getAttribute('aria-pressed')).toBe('false');
     act(() => button.click());
     expect(document.body.classList.contains('prank-scribbles')).toBeTrue();
@@ -43,11 +41,7 @@ describe('temporary mirrored text prank', () => {
     act(() => host.querySelector('button')!.click());
     act(() => jasmine.clock().tick(5000));
     act(() => root.render(<PrankButton language="en" />));
-    expect(document.querySelector('.prank-message')!.textContent).toBe('I warned you 😅');
     act(() => root.render(<PrankButton language="es" />));
-    expect(document.querySelector('.prank-message')!.textContent).toBe(
-      'Te lo advertí 😅',
-    );
     act(() => jasmine.clock().tick(5000));
     expect(document.body.classList.contains('prank-chaos')).toBeFalse();
     act(() => host.querySelector('button')!.click());
@@ -106,7 +100,7 @@ describe('prank overlays and escape', () => {
 
       if (effect === 'scribbles') {
         expect(document.querySelectorAll('.prank-scribble-overlay path').length).toBe(42);
-        act(() => document.querySelector<HTMLButtonElement>('.prank-clear')!.click());
+        act(() => button.click());
         expect(document.activeElement).toBe(button);
       } else {
         act(() =>

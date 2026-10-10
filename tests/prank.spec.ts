@@ -16,7 +16,7 @@ for (const width of [390, 1440]) {
     const before = await page.evaluate(() => scrollY);
 
     await page.locator('.prank-button').click();
-    await expect(page.locator('.prank-message')).toHaveText('Eu avisei 😅');
+    await expect(page.locator('.prank-message, .prank-clear')).toHaveCount(0);
     await expect(page.locator('.prank-cracks')).toBeVisible();
     expect(
       await page
@@ -26,9 +26,6 @@ for (const width of [390, 1440]) {
     expect(
       await page.locator('.contact h2').evaluate((e) => getComputedStyle(e).scale),
     ).toBe('-1 1');
-    expect(
-      await page.locator('.prank-message').evaluate((e) => getComputedStyle(e).scale),
-    ).toBe('none');
     expect(await page.evaluate(() => scrollY)).toBe(before);
     await expect(page.locator('body')).not.toHaveClass(/prank-chaos/, { timeout: 12000 });
     await expect(page.locator('.prank-cracks')).toHaveCount(0);
@@ -53,9 +50,9 @@ for (const [index, effect] of ['chaos', 'scribbles'].entries()) {
     await expect(page.locator('body')).toHaveClass(new RegExp(`prank-${effect}`));
 
     if (effect === 'scribbles') {
-      await expect(page.locator('.prank-clear')).toBeFocused();
+      await expect(page.locator('.prank-button')).toBeFocused();
       await page.screenshot({ path: 'test-results/prank-scribbles.png' });
-      await page.getByRole('button', { name: 'Limpar bagunça' }).click();
+      await page.locator('.prank-button').click();
       await expect(page.locator('.prank-button')).toBeFocused();
     } else {
       await page.keyboard.press('Escape');
@@ -88,7 +85,7 @@ test('earthquake animates only with motion enabled and restores after Escape', a
   );
   expect(
     await page
-      .locator('.prank-message')
+      .locator('.prank-button')
       .evaluate((e) => getComputedStyle(e).animationName),
   ).toBe('none');
   await page.keyboard.press('Escape');

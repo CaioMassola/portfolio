@@ -79,16 +79,24 @@
   aspect-ratio: 1;
   border-radius: 8px;
 }
-.game-board-mini button[aria-disabled='false']:hover {
+.game-board-mini button::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.game-board-mini button[aria-disabled='false']:hover::before {
   background: var(--accent-soft);
 }
 .game-board-mini button[aria-disabled='true'] {
   cursor: default;
 }
-.game-board-mini .is-winner {
+.game-board-mini .is-winner::before {
   background: var(--accent-soft);
 }
 .game-mark {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
