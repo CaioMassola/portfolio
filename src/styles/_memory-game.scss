@@ -1,0 +1,97 @@
+﻿@use './mini-game';
+
+.memory-game {
+  @extend .mini-game;
+  left: 24px;
+  right: auto;
+}
+.memory-launcher {
+  @extend .game-launcher;
+}
+.memory-panel {
+  @extend .game-panel;
+}
+.memory-heading {
+  @extend .game-heading;
+}
+.memory-status {
+  @extend .game-status;
+}
+.memory-restart {
+  @extend .game-restart;
+  margin-top: 4px;
+}
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.memory-card {
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  perspective: 600px;
+  min-width: 0;
+}
+.memory-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+.memory-card.is-flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+.memory-card-back,
+.memory-card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  backface-visibility: hidden;
+  background: var(--surface-2);
+}
+.memory-card-back {
+  color: var(--accent);
+}
+.memory-card-face {
+  transform: rotateY(180deg);
+}
+.memory-card-face img {
+  padding: 4px;
+  box-sizing: content-box;
+  border-radius: 6px;
+  background: #f4f1e9;
+}
+.memory-card.is-matched .memory-card-face {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.memory-card[aria-disabled='true'] {
+  cursor: default;
+}
+.memory-card[aria-disabled='false']:hover .memory-card-back {
+  border-color: var(--accent);
+}
+.memory-score {
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+@media (max-width: 760px) {
+  .memory-game {
+    left: 10px;
+    right: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .memory-card-inner {
+    transition: none;
+  }
+}

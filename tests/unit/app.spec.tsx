@@ -9,11 +9,6 @@ import { readPreference, savePreference } from '../../src/lib/storage';
   globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }
 ).IS_REACT_ACT_ENVIRONMENT = true;
 
-interface MediaMock extends MediaQueryList {
-  emit: (matches: boolean) => void;
-}
-
-let media: MediaMock;
 let observerCallback: IntersectionObserverCallback;
 let observed: Element[];
 let root: Root;
@@ -37,37 +32,10 @@ class ObserverMock {
   }
 }
 
-function makeMedia(initial = false): MediaMock {
-  let listener: ((event: MediaQueryListEvent) => void) | undefined;
-  const value = {
-    matches: initial,
-    media: '(prefers-reduced-motion: reduce)',
-    onchange: null,
-    addEventListener: (_type: string, callback: EventListenerOrEventListenerObject) => {
-      listener = callback as (event: MediaQueryListEvent) => void;
-    },
-    removeEventListener: () => {
-      listener = undefined;
-    },
-    addListener: () => undefined,
-    removeListener: () => undefined,
-    dispatchEvent: () => true,
-    emit(matches: boolean) {
-      value.matches = matches;
-      listener?.({ matches } as MediaQueryListEvent);
-    },
-  };
-
-  return value as MediaMock;
-}
-
-async function renderApp(language?: string, theme?: string, reduced = false) {
+async function renderApp(language?: string, theme?: string) {
   localStorage.clear();
   if (language) localStorage.setItem('cm-language', language);
   if (theme) localStorage.setItem('cm-theme', theme);
-  media = makeMedia(reduced);
-  window.matchMedia = () => media;
-
   await act(async () => root.render(<App />));
 }
 
@@ -111,9 +79,9 @@ describe('portfolio application', () => {
     expect(host.querySelectorAll('.skills span').length).toBeGreaterThan(10);
     expect(host.querySelectorAll('.timeline article').length).toBe(3);
     expect(host.querySelectorAll('.demo-link').length).toBe(3);
-    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
-      '/Caio-Massola-CV-PT.pdf',
-    );
+    expect(
+      host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href'),
+    ).toBe('/Caio-Massola-CV-PT.pdf');
 
     click('.theme-toggle');
     expect(document.documentElement.dataset.theme).toBe('light');
@@ -124,9 +92,6 @@ describe('portfolio application', () => {
     expect(host.querySelector('.navigation')?.classList.contains('open')).toBeTrue();
     click('.navigation a');
     expect(host.querySelector('.navigation')?.classList.contains('open')).toBeFalse();
-
-    act(() => media.emit(true));
-    act(() => media.emit(false));
 
     const visible = observed[0];
 
@@ -177,15 +142,15 @@ describe('portfolio application', () => {
   });
 
   it('loads English with light theme and switches language and theme', async () => {
-    await renderApp('en', 'light', true);
+    await renderApp('en', 'light');
 
     expect(document.documentElement.lang).toBe('en');
     expect(document.title).toContain('Front-End Software Engineer');
     expect(host.querySelector('nav')?.getAttribute('aria-label')).toBe('Navigation');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe('Menu');
-    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
-      '/Caio-Massola-CV-EN.pdf',
-    );
+    expect(
+      host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href'),
+    ).toBe('/Caio-Massola-CV-EN.pdf');
     click('.menu-toggle');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe(
       'Close menu',
@@ -200,9 +165,9 @@ describe('portfolio application', () => {
     select.value = 'es';
     await act(async () => select.dispatchEvent(new Event('change', { bubbles: true })));
     expect(document.documentElement.lang).toBe('es');
-    expect(host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href')).toBe(
-      '/Caio-Massola-CV-ES.pdf',
-    );
+    expect(
+      host.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('href'),
+    ).toBe('/Caio-Massola-CV-ES.pdf');
     expect(host.querySelector('nav')?.getAttribute('aria-label')).toBe('Navegación');
     expect(host.querySelector('.menu-toggle')?.getAttribute('aria-label')).toBe('Menú');
     click('.menu-toggle');
@@ -215,7 +180,11 @@ describe('portfolio application', () => {
     function PreferencesControl() {
       const { language, setLanguage } = usePreferences();
 
-      return <button onClick={() => setLanguage(language === 'pt' ? 'pt' : 'es')}>{language}</button>;
+      return (
+        <button onClick={() => setLanguage(language === 'pt' ? 'pt' : 'es')}>
+          {language}
+        </button>
+      );
     }
 
     localStorage.clear();

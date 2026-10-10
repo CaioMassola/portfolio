@@ -6,7 +6,6 @@ import ProjectCard from '../projects/ProjectCard';
 interface ProjectsProps {
   language: Language;
   t: Copy;
-  reduced: boolean;
 }
 
 export default function Projects({ t, language }: ProjectsProps) {

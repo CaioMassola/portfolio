@@ -30,16 +30,7 @@
     min-width: 185px;
   }
 }
-.contact-orbit {
-  position: absolute;
-  inset: 30px 15%;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  transform: rotate(-25deg);
-  z-index: -1;
-  opacity: 0.3;
-  pointer-events: none;
-}
+
 .contact-email {
   display: flex;
   align-items: center;
@@ -48,16 +39,4 @@
   margin-top: 20px;
   font-size: 12px;
   color: var(--muted);
-}
-.contact-socials {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 30px;
-  a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-  }
 }

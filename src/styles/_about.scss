@@ -1,26 +1,4 @@
-.technology-line {
-  background: var(--surface);
-  border-block: 1px solid var(--line);
-  .shell {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    padding-block: 23px;
-    > span {
-      display: flex;
-      align-items: center;
-      gap: 17px;
-      color: var(--muted);
-      font:
-        500 15px 'Space Grotesk',
-        sans-serif;
-    }
-    .tech-star {
-      font-size: 14px;
-      color: var(--accent);
-    }
-  }
-}
+
 .section {
   padding-top: 105px;
 }

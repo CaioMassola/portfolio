@@ -62,15 +62,15 @@ h1, h2, h3, .brand { font-family: Georgia, 'Times New Roman', serif; }
 :root[data-theme='light'] .portrait-frame { filter: none; }
 .portrait-frame img { object-position: center center; }
 .portrait-shade, .portrait-label, .portrait-corner { display: none; }
-.portrait-number { display: block; margin-bottom: 12px; font: 11px monospace; color: var(--muted); }
-.portrait-note { margin: 12px 0 0; font: 11px/1.5 monospace; text-transform: uppercase; color: var(--muted); }
+
+
 .hero-bottom { bottom: 35px; border-color: var(--text); }
 .hero-bottom > span { font-family: Arial, sans-serif; }
 
-.technology-line { background: var(--text); border: 0; color: var(--bg); width: 100%; margin: 0; }
-.technology-line .shell { padding-block: 15px; }
-.technology-line .shell > span { color: inherit; font-family: Arial, sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: .08em; }
-.technology-line .tech-star { color: var(--accent); }
+
+
+
+
 .section { padding-top: 140px; }
 h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter-spacing: -.045em; }
 .about { grid-template-columns: .85fr 1.15fr; border-top: 0; padding-top: 72px; }
@@ -126,11 +126,11 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
 .contact h2 { max-width: 950px; font-size: clamp(54px, 7vw, 100px); letter-spacing: -.05em; }
 .contact h2 span { color: var(--accent); font-style: italic; }
 .contact > p:not(.eyebrow) { margin: 0 0 30px; font-size: 16px; }
-.contact-orbit { display: none; }
-.contact-email, .contact-socials { justify-content: flex-start; }
-.contact .button, .contact-email, .contact-socials a, .footer > .brand { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
+
+.contact-email { justify-content: flex-start; }
+.contact .button, .contact-email, .footer > .brand { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
 .contact .button:hover { background: var(--accent); color: #fff; }
-.contact-email:hover, .contact-socials a:hover { color: var(--accent); }
+.contact-email:hover:hover { color: var(--accent); }
 .footer { padding-block: 40px; }
 .footer > .brand:hover { color: var(--accent); }
 
@@ -140,7 +140,7 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
   .hero h1 { font-size: clamp(52px, 15vw, 74px); }
   .hero-visual { width: 100%; max-width: none; transform: none; }
   .portrait-frame { width: min(82vw, 430px); height: auto; margin: 0 auto; }
-  .technology-line { transform: none; }
+
   .about, .experience { grid-template-columns: 1fr; }
   .about-content { padding-top: 20px; }
   .timeline { grid-column: 1; grid-row: auto; }

@@ -137,6 +137,7 @@ test('action tooltips support keyboard, Escape, hover and translations', async (
 });
 
 test('tooltips stay dismissed when returning to the page', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#sobre');
 
   const link = page.locator('.hero-socials a').first();
@@ -144,6 +145,9 @@ test('tooltips stay dismissed when returning to the page', async ({ page }) => {
 
   await expect(link).toBeVisible();
   await link.scrollIntoViewIfNeeded();
+  await page.evaluate(() => new Promise<void>(resolve => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  }));
   await link.focus();
   await expect(tooltip).toBeVisible();
   await page.evaluate(() => {

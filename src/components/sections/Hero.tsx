@@ -1,12 +1,9 @@
-import type { Copy } from '../../content';
 import type { Language } from '../../content';
 
 import { sectionIds } from '../../lib/sections';
 
 interface HeroProps {
-  t: Copy;
   language: Language;
-  reduced: boolean;
 }
 
 export default function Hero({ language }: HeroProps) {

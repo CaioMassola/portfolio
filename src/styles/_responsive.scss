@@ -59,13 +59,7 @@
   .project-art {
     height: 245px;
   }
-  .technology-line .shell {
-    gap: 15px;
-    > span {
-      gap: 10px;
-      font-size: 13px;
-    }
-  }
+
   h2 {
     font-size: 32px;
   }
@@ -273,20 +267,7 @@
       }
     }
   }
-  .technology-line .shell {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 19px 12px;
-    padding-block: 23px;
-    > span {
-      font-size: 12px;
-      gap: 10px;
-      justify-content: center;
-    }
-    .tech-star {
-      font-size: 11px;
-    }
-  }
+
   .section {
     padding-top: 70px;
   }
@@ -544,9 +525,7 @@
   .contact > p:not(.eyebrow) {
     font-size: 12px;
   }
-  .technology-line .shell > span {
-    font-size: 11px;
-  }
+
   .about h2 {
     font-size: 29px;
   }

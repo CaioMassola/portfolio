@@ -22,6 +22,7 @@ export default function Footer({ t, language }: { t: Copy; language: Language })
         <a href={github} target="_blank" rel="noreferrer"><Github size={18} aria-hidden="true" />GitHub</a>
         {instagram && <a href={instagram} target="_blank" rel="noreferrer"><Instagram size={18} aria-hidden="true" />Instagram</a>}
       </div>
+
       <p>
         © {new Date().getFullYear()} Caio Massola. {t.footer}
       </p>

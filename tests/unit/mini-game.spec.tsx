@@ -1,4 +1,4 @@
-﻿import { act } from 'react';
+import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import MiniGame from '../../src/components/layout/MiniGame';
 import { botMove, winner, winningLines, type Mark } from '../../src/lib/ticTacToe';
@@ -9,7 +9,9 @@ describe('tic tac toe rules', () => {
       for (const line of winningLines) {
         const board: Mark[] = Array(9).fill(null);
 
-        line.forEach((index) => { board[index] = mark; });
+        line.forEach((index) => {
+          board[index] = mark;
+        });
         expect(winner(board)).toEqual(line);
       }
     }
@@ -38,19 +40,29 @@ describe('mini game controls and matches', () => {
   let wide: boolean;
   let frame: FrameRequestCallback;
 
-  const click = (selector: string) => act(() => host.querySelector<HTMLButtonElement>(selector)!.click());
-  const cell = (index: number) => click(`.game-board-mini button:nth-of-type(${index + 1})`);
+  const click = (selector: string) =>
+    act(() => host.querySelector<HTMLButtonElement>(selector)!.click());
+  const cell = (index: number) =>
+    click(`.game-board-mini button:nth-of-type(${index + 1})`);
   const tick = () => act(() => jasmine.clock().tick(450));
-  const key = (value: string) => act(() => host.querySelector('aside')!.dispatchEvent(new KeyboardEvent('keydown', { key: value, bubbles: true })));
-  const render = (language: 'pt' | 'en' | 'es' = 'en') => act(() => root.render(<MiniGame language={language} />));
+  const key = (value: string) =>
+    act(() =>
+      host
+        .querySelector('aside')!
+        .dispatchEvent(new KeyboardEvent('keydown', { key: value, bubbles: true })),
+    );
+  const render = (language: 'pt' | 'en' | 'es' = 'en') =>
+    act(() => root.render(<MiniGame language={language} />));
 
   beforeEach(() => {
     jasmine.clock().install();
     wide = false;
     spyOn(window, 'matchMedia').and.callFake(() => ({ matches: wide }) as MediaQueryList);
-    spyOn(window, 'requestAnimationFrame').and.callFake((callback) => { frame = callback;
+    spyOn(window, 'requestAnimationFrame').and.callFake((callback) => {
+      frame = callback;
 
- return 1; });
+      return 1;
+    });
     spyOn(Math, 'random').and.returnValue(0);
     host = document.createElement('div');
     document.body.append(host);
@@ -84,10 +96,11 @@ describe('mini game controls and matches', () => {
     root = createRoot(host);
   });
 
-  it('starts open on wide screens and preserves moves on language changes', () => {
+  it('starts closed on wide screens and preserves moves on language changes', () => {
     wide = true;
     render('pt');
-    expect(host.querySelector<HTMLElement>('.game-panel')!.hidden).toBeFalse();
+    expect(host.querySelector<HTMLElement>('.game-panel')!.hidden).toBeTrue();
+    click('.game-launcher');
     cell(0);
     cell(0);
     cell(1);
@@ -136,7 +149,9 @@ describe('mini game controls and matches', () => {
       expect(host.querySelectorAll('.game-mark').length).toBe(before);
       click('.game-restart');
       expect(host.querySelectorAll('.game-mark').length).toBe(0);
-      expect(host.querySelector('.game-status')!.textContent).toBe('Your turn. You are X.');
+      expect(host.querySelector('.game-status')!.textContent).toBe(
+        'Your turn. You are X.',
+      );
     });
   }
 });

@@ -1,3 +1,5 @@
+import PrankButton from './components/layout/PrankButton';
+import MemoryGame from './components/layout/MemoryGame';
 import MiniGame from './components/layout/MiniGame';
 import ActionTooltips from './components/layout/ActionTooltips';
 import Header from './components/layout/Header';
@@ -10,13 +12,11 @@ import Experience from './components/sections/Experience';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import { usePreferences } from './hooks/usePreferences';
-import { useReducedMotion } from './hooks/useReducedMotion';
 import { useReveal } from './hooks/useReveal';
 import { useSectionHash } from './hooks/useSectionHash';
 
 export default function App() {
   const { language, theme, setLanguage, setTheme, t } = usePreferences();
-  const reduced = useReducedMotion();
 
   useReveal();
   useSectionHash(language);
@@ -37,11 +37,7 @@ export default function App() {
         setTheme={setTheme}
       />
       <main id="main">
-        <Hero
-          t={t}
-          language={language}
-          reduced={reduced}
-        />
+        <Hero language={language} />
         <div className="post-intro">
           <About
             t={t}
@@ -59,7 +55,6 @@ export default function App() {
           <Projects
             language={language}
             t={t}
-            reduced={reduced}
           />
           <Contact
             t={t}
@@ -75,6 +70,8 @@ export default function App() {
         />
       </div>
       <MiniGame language={language} />
+      <MemoryGame language={language} />
+      <PrankButton language={language} />
       <ActionTooltips />
     </>
   );
