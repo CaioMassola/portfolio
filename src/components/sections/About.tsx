@@ -1,4 +1,4 @@
-import { ArrowUpRight, Download, Github, Linkedin, Instagram, GraduationCap } from 'lucide-react';
+import { Download, Github, Linkedin, Instagram, GraduationCap } from 'lucide-react';
 import type { Copy, Language } from '../../content';
 import { github, linkedin, instagram } from '../../lib/profile';
 import { sectionIds } from '../../lib/sections';
@@ -34,7 +34,6 @@ export default function About({ t, language }: AboutProps) {
             href={`#${sectionIds[language][3]}`}
           >
             {t.projectsCta}
-            <ArrowUpRight size={18} />
           </a>
           <a
             className="button secondary"
@@ -68,7 +67,10 @@ export default function About({ t, language }: AboutProps) {
             rel="noreferrer"
             aria-label="Instagram"
           >
-            <Instagram size={19} aria-hidden="true" />
+            <Instagram
+              size={19}
+              aria-hidden="true"
+            />
           </a>
         </div>
       </div>

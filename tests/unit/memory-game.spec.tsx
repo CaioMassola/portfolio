@@ -7,15 +7,22 @@ describe('memory game', () => {
   let host: HTMLDivElement;
   let root: Root;
   let frame: FrameRequestCallback;
-  const render = (language: 'en' | 'es' | 'pt' = 'en') => act(() => root.render(<MemoryGame language={language} />));
-  const click = (selector: string) => act(() => host.querySelector<HTMLButtonElement>(selector)!.click());
+  const render = (language: 'en' | 'es' | 'pt' = 'en') =>
+    act(() => root.render(<MemoryGame language={language} />));
+  const click = (selector: string) =>
+    act(() => host.querySelector<HTMLButtonElement>(selector)!.click());
   const card = (index: number) => click(`.memory-card:nth-child(${index + 1})`);
   const tick = () => act(() => jasmine.clock().tick(900));
-  const key = (key: string) => act(() => host.querySelector('aside')!.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true })));
+  const key = (key: string) =>
+    act(() =>
+      host
+        .querySelector('aside')!
+        .dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true })),
+    );
 
   beforeEach(() => {
     jasmine.clock().install();
-    spyOn(Math, 'random').and.returnValue(.999);
+    spyOn(Math, 'random').and.returnValue(0.999);
     spyOn(window, 'requestAnimationFrame').and.callFake((callback) => {
       frame = callback;
 
@@ -29,6 +36,28 @@ describe('memory game', () => {
     act(() => root.unmount());
     host.remove();
     jasmine.clock().uninstall();
+  });
+
+  it('arcade embeds twelve pairs and resets all cards', () => {
+    act(() =>
+      root.render(
+        <MemoryGame
+          language="pt"
+          arcade
+        />,
+      ),
+    );
+    expect(host.querySelectorAll('.memory-card').length).toBe(24);
+
+    for (let i = 0; i < 12; i++) {
+      card(i);
+      card(i + 12);
+    }
+
+    expect(host.querySelector('.memory-score')!.textContent).toContain('12 / 12');
+    expect(host.querySelector('.memory-status')!.textContent).toContain('Boa!');
+    click('.memory-restart');
+    expect(host.querySelectorAll('.is-matched').length).toBe(0);
   });
 
   it('creates independent shuffled decks with exactly six pairs', () => {
@@ -76,7 +105,9 @@ describe('memory game', () => {
     expect(host.querySelector('.memory-score')!.textContent).toContain('1 attempts');
     tick();
     expect(host.querySelectorAll('.is-flipped').length).toBe(0);
-    expect(host.querySelector('.memory-card')!.getAttribute('aria-label')).toContain('face down');
+    expect(host.querySelector('.memory-card')!.getAttribute('aria-label')).toContain(
+      'face down',
+    );
   });
 
   it('keeps matches, translates in place and announces completion', () => {
@@ -94,8 +125,12 @@ describe('memory game', () => {
       card(i + 6);
     }
 
-    expect(host.querySelector('.memory-status')!.textContent).toBe('Nice! You found every pair.');
-    expect(host.querySelector('.memory-score')!.textContent).toBe('6 / 6 pairs · 6 attempts');
+    expect(host.querySelector('.memory-status')!.textContent).toBe(
+      'Nice! You found every pair.',
+    );
+    expect(host.querySelector('.memory-score')!.textContent).toBe(
+      '6 / 6 pairs · 6 attempts',
+    );
     expect(host.querySelectorAll('.is-matched').length).toBe(12);
     click('.memory-restart');
     expect(host.querySelectorAll('.is-flipped').length).toBe(0);

@@ -1,6 +1,6 @@
 ﻿import { useEffect } from 'react';
 
-export function useReveal() {
+export function useReveal(arcade: boolean) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,5 +19,5 @@ export function useReveal() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [arcade]);
 }

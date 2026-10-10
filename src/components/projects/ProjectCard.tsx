@@ -1,4 +1,4 @@
-import { Github, ArrowUpRight } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 import { projects } from '../../content';
 import type { Copy, Project } from '../../content';
@@ -26,7 +26,10 @@ export default function ProjectCard({ project, index, t }: ProjectCardProps) {
       <div className="project-body">
         <div className="project-meta">
           <span>{t.projectTypes[index]}</span>
-          <span>{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
+          <span>
+            {String(index + 1).padStart(2, '0')} /{' '}
+            {String(projects.length).padStart(2, '0')}
+          </span>
         </div>
         <h3>{t.projectNames[index]}</h3>
         <p>{t.projectDescriptions[index]}</p>
@@ -52,7 +55,7 @@ export default function ProjectCard({ project, index, t }: ProjectCardProps) {
               rel="noreferrer"
               aria-label={`${t.demo}: ${t.projectNames[index]}`}
             >
-              <ArrowUpRight size={19} />
+              {t.demo}
             </a>
           )}
         </div>

@@ -69,6 +69,20 @@ describe('portfolio application', () => {
     localStorage.clear();
   });
 
+  it('switches between classic and arcade and restores the saved mode', async () => {
+    await renderApp();
+    click('.arcade-toggle');
+    expect(host.querySelector('.arcade-home')).not.toBeNull();
+    expect(localStorage.getItem('cm-arcade')).toBe('on');
+    click('.arcade-toggle');
+    expect(host.querySelector('.hero-code')).not.toBeNull();
+    click('.arcade-toggle');
+    await act(async () => root.unmount());
+    root = createRoot(host);
+    await act(async () => root.render(<App />));
+    expect(host.querySelector('.arcade-home')).not.toBeNull();
+  });
+
   it('renders every section and exercises the Portuguese controls', async () => {
     await renderApp();
 
@@ -129,6 +143,15 @@ describe('portfolio application', () => {
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
     expect(scrollIntoView.calls.mostRecent().object.id).toBe('sobre');
 
+    host.querySelector<HTMLElement>('#sobre')!.style.scrollMarginTop = '20px';
+    document.documentElement.style.scrollPaddingTop = '105px';
+    bounds.and.callFake(function (this: HTMLElement) {
+      return { top: ids.indexOf(this.id) * 1000 - 875 } as DOMRect;
+    });
+    await dispatchViewportEvent('scroll');
+    next.click();
+    expect(scrollIntoView.calls.mostRecent().object.id).toBe('technologies');
+    document.documentElement.style.scrollPaddingTop = '';
     bounds.and.returnValue({ top: 0 } as DOMRect);
     await dispatchViewportEvent('resize');
 

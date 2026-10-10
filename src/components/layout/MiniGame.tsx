@@ -48,7 +48,13 @@ const labels = {
   },
 };
 
-export default function MiniGame({ language }: { language: Language }) {
+export default function MiniGame({
+  language,
+  arcade = false,
+}: {
+  language: Language;
+  arcade?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const [interacted, setInteracted] = useState(false);
   const [board, setBoard] = useState<Mark[]>(Array(9).fill(null));
@@ -89,6 +95,91 @@ export default function MiniGame({ language }: { language: Language }) {
     setOpen(expanded);
     requestAnimationFrame(() => (expanded ? minimize : launcher).current?.focus());
   };
+
+  const content = (
+    <>
+      <p
+        className="game-status"
+        role="status"
+      >
+        {status}
+      </p>
+      <div
+        className="game-board-mini"
+        role="group"
+        aria-label={text.game}
+      >
+        <svg
+          className="game-grid"
+          viewBox="0 0 240 240"
+          aria-hidden="true"
+        >
+          <path
+            d={
+              arcade
+                ? 'M80 0v240M160 0v240M0 80h240M0 160h240'
+                : 'M79 5 Q76 120 81 235 M159 5 Q164 120 159 235 M5 80 Q120 75 235 81 M5 159 Q120 164 235 159'
+            }
+          />
+        </svg>
+        {board.map((mark, index) => (
+          <button
+            key={index}
+            className={line?.includes(index) ? 'is-winner' : ''}
+            aria-label={`${text.cell} ${index + 1}: ${mark || text.empty}`}
+            aria-disabled={Boolean(mark || line || thinking || !board.includes(null))}
+            onClick={() => {
+              if (mark || line || thinking) return;
+
+              setBoard((current) =>
+                current.map((value, cell) => (cell === index ? 'X' : value)),
+              );
+            }}
+          >
+            {mark && (
+              <svg
+                viewBox="0 0 80 80"
+                className={`game-mark mark-${mark}`}
+                aria-hidden="true"
+              >
+                {mark === 'X' ? (
+                  <path
+                    pathLength="1"
+                    d={
+                      arcade
+                        ? 'M20 20 60 60M60 20 20 60'
+                        : 'M20 17 Q40 42 61 63 M62 18 Q41 38 19 62'
+                    }
+                  />
+                ) : (
+                  <path
+                    pathLength="1"
+                    d={
+                      arcade
+                        ? 'M40 15a25 25 0 1 0 0 50a25 25 0 1 0 0-50'
+                        : 'M40 15 C7 12 7 65 40 65 C73 65 72 12 40 15'
+                    }
+                  />
+                )}
+              </svg>
+            )}
+          </button>
+        ))}
+      </div>
+      <button
+        className="game-restart"
+        onClick={() => setBoard(Array(9).fill(null))}
+      >
+        <RotateCcw
+          size={14}
+          aria-hidden="true"
+        />
+        {text.restart}
+      </button>
+    </>
+  );
+  if (arcade)
+    return <div className="arcade-embedded arcade-embedded-game">{content}</div>;
 
   return (
     <aside
@@ -134,70 +225,7 @@ export default function MiniGame({ language }: { language: Language }) {
             />
           </button>
         </div>
-        <p
-          className="game-status"
-          role="status"
-        >
-          {status}
-        </p>
-        <div
-          className="game-board-mini"
-          role="group"
-          aria-label={text.game}
-        >
-          <svg
-            className="game-grid"
-            viewBox="0 0 240 240"
-            aria-hidden="true"
-          >
-            <path d="M79 5 Q76 120 81 235 M159 5 Q164 120 159 235 M5 80 Q120 75 235 81 M5 159 Q120 164 235 159" />
-          </svg>
-          {board.map((mark, index) => (
-            <button
-              key={index}
-              className={line?.includes(index) ? 'is-winner' : ''}
-              aria-label={`${text.cell} ${index + 1}: ${mark || text.empty}`}
-              aria-disabled={Boolean(mark || line || thinking || !board.includes(null))}
-              onClick={() => {
-                if (mark || line || thinking) return;
-
-                setBoard((current) =>
-                  current.map((value, cell) => (cell === index ? 'X' : value)),
-                );
-              }}
-            >
-              {mark && (
-                <svg
-                  viewBox="0 0 80 80"
-                  className={`game-mark mark-${mark}`}
-                  aria-hidden="true"
-                >
-                  {mark === 'X' ? (
-                    <path
-                      pathLength="1"
-                      d="M20 17 Q40 42 61 63 M62 18 Q41 38 19 62"
-                    />
-                  ) : (
-                    <path
-                      pathLength="1"
-                      d="M40 15 C7 12 7 65 40 65 C73 65 72 12 40 15"
-                    />
-                  )}
-                </svg>
-              )}
-            </button>
-          ))}
-        </div>
-        <button
-          className="game-restart"
-          onClick={() => setBoard(Array(9).fill(null))}
-        >
-          <RotateCcw
-            size={14}
-            aria-hidden="true"
-          />
-          {text.restart}
-        </button>
+        {content}
       </div>
     </aside>
   );

@@ -51,12 +51,24 @@ const names = {
   java: 'Java',
   docker: 'Docker',
   git: 'Git',
+  nextjs: 'Next.js',
+  nodejs: 'Node.js',
+  mysql: 'MySQL',
+  jest: 'Jest',
+  storybook: 'Storybook',
+  amazonwebservices: 'AWS',
 };
 
-export default function MemoryGame({ language }: { language: Language }) {
+export default function MemoryGame({
+  language,
+  arcade = false,
+}: {
+  language: Language;
+  arcade?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const [interacted, setInteracted] = useState(false);
-  const [deck, setDeck] = useState(createMemoryDeck);
+  const [deck, setDeck] = useState(() => createMemoryDeck(arcade));
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
   const [attempts, setAttempts] = useState(0);
@@ -97,6 +109,91 @@ export default function MemoryGame({ language }: { language: Language }) {
       setFlipped([flipped[0], index]);
     }
   };
+
+  const content = (
+    <>
+      <p
+        className="memory-status"
+        role="status"
+      >
+        {matched.length === deck.length ? text.win : text.intro}
+      </p>
+      <div
+        className="memory-board"
+        role="group"
+        aria-label={text.title}
+      >
+        {deck.map((technology, index) => {
+          const found = matched.includes(index);
+          const visible = found || flipped.includes(index);
+
+          return (
+            <button
+              key={index}
+              className={`memory-card${visible ? ' is-flipped' : ''}${found ? ' is-matched' : ''}`}
+              aria-label={`${text.card} ${index + 1}: ${visible ? names[technology] : text.hidden}${found ? `, ${text.matched}` : ''}`}
+              aria-disabled={found || visible || flipped.length === 2}
+              onClick={() => flip(index)}
+            >
+              <span
+                className="memory-card-inner"
+                aria-hidden="true"
+              >
+                <span className="memory-card-back">
+                  {arcade ? (
+                    <svg
+                      viewBox="0 0 64 76"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M22 24h20v14H32v9m0 7v5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="5"
+                      />
+                    </svg>
+                  ) : (
+                    <Code2 size={24} />
+                  )}
+                </span>
+                <span className="memory-card-face">
+                  <img
+                    src={`/technology-icons/${technology}.svg`}
+                    alt=""
+                    width="34"
+                    height="34"
+                  />
+                </span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <p
+        className="memory-score"
+        role="status"
+      >
+        {matched.length / 2} / {deck.length / 2} {text.pairs} · {attempts} {text.attempts}
+      </p>
+      <button
+        className="memory-restart"
+        onClick={() => {
+          setDeck(createMemoryDeck(arcade));
+          setFlipped([]);
+          setMatched([]);
+          setAttempts(0);
+        }}
+      >
+        <RotateCcw
+          size={14}
+          aria-hidden="true"
+        />
+        {text.restart}
+      </button>
+    </>
+  );
+  if (arcade)
+    return <div className="arcade-embedded arcade-embedded-memory">{content}</div>;
 
   return (
     <aside
@@ -142,70 +239,7 @@ export default function MemoryGame({ language }: { language: Language }) {
             />
           </button>
         </div>
-        <p
-          className="memory-status"
-          role="status"
-        >
-          {matched.length === 12 ? text.win : text.intro}
-        </p>
-        <div
-          className="memory-board"
-          role="group"
-          aria-label={text.title}
-        >
-          {deck.map((technology, index) => {
-            const found = matched.includes(index);
-            const visible = found || flipped.includes(index);
-
-            return (
-              <button
-                key={index}
-                className={`memory-card${visible ? ' is-flipped' : ''}${found ? ' is-matched' : ''}`}
-                aria-label={`${text.card} ${index + 1}: ${visible ? names[technology] : text.hidden}${found ? `, ${text.matched}` : ''}`}
-                aria-disabled={found || visible || flipped.length === 2}
-                onClick={() => flip(index)}
-              >
-                <span
-                  className="memory-card-inner"
-                  aria-hidden="true"
-                >
-                  <span className="memory-card-back">
-                    <Code2 size={24} />
-                  </span>
-                  <span className="memory-card-face">
-                    <img
-                      src={`/technology-icons/${technology}.svg`}
-                      alt=""
-                      width="34"
-                      height="34"
-                    />
-                  </span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
-        <p
-          className="memory-score"
-          role="status"
-        >
-          {matched.length / 2} / 6 {text.pairs} · {attempts} {text.attempts}
-        </p>
-        <button
-          className="memory-restart"
-          onClick={() => {
-            setDeck(createMemoryDeck());
-            setFlipped([]);
-            setMatched([]);
-            setAttempts(0);
-          }}
-        >
-          <RotateCcw
-            size={14}
-            aria-hidden="true"
-          />
-          {text.restart}
-        </button>
+        {content}
       </div>
     </aside>
   );

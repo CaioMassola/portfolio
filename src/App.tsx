@@ -1,3 +1,7 @@
+import ArcadePortfolio, { ArcadeFooter } from './components/arcade/ArcadePortfolio';
+import { useEffect, useState } from 'react';
+import Arcade from './components/arcade/Arcade';
+import { readPreference, savePreference } from './lib/storage';
 import PrankButton from './components/layout/PrankButton';
 import MemoryGame from './components/layout/MemoryGame';
 import MiniGame from './components/layout/MiniGame';
@@ -18,7 +22,28 @@ import { useSectionHash } from './hooks/useSectionHash';
 export default function App() {
   const { language, theme, setLanguage, setTheme, t } = usePreferences();
 
-  useReveal();
+  const [arcade, setArcade] = useState(() => readPreference('cm-arcade') === 'on');
+
+  useEffect(() => {
+    document.documentElement.dataset.arcade = String(arcade);
+    savePreference('cm-arcade', arcade ? 'on' : 'off');
+
+    return () => {
+      delete document.documentElement.dataset.arcade;
+    };
+  }, [arcade]);
+
+  const toggleArcade = () => {
+    setArcade((value) => !value);
+    window.history.replaceState(
+      window.history.state,
+      '',
+      window.location.pathname + window.location.search,
+    );
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  useReveal(arcade);
   useSectionHash(language);
 
   return (
@@ -35,43 +60,63 @@ export default function App() {
         theme={theme}
         setLanguage={setLanguage}
         setTheme={setTheme}
+        arcade={arcade}
+        toggleArcade={toggleArcade}
       />
       <main id="main">
-        <Hero language={language} />
-        <div className="post-intro">
-          <About
-            t={t}
+        {arcade ? <Arcade language={language} /> : <Hero language={language} />}
+        {arcade ? (
+          <ArcadePortfolio
             language={language}
+            t={t}
           />
+        ) : (
+          <div className="post-intro">
+            <About
+              t={t}
+              language={language}
+            />
 
-          <Skills
-            t={t}
-            language={language}
-          />
-          <Experience
-            t={t}
-            language={language}
-          />
-          <Projects
-            language={language}
-            t={t}
-          />
-          <Contact
+            <Skills
+              t={t}
+              language={language}
+            />
+            <Experience
+              t={t}
+              language={language}
+            />
+            <Projects
+              language={language}
+              t={t}
+            />
+            <Contact
+              t={t}
+              language={language}
+            />
+          </div>
+        )}
+      </main>
+      <SectionNavigation
+        language={language}
+        arcade={arcade}
+      />
+      {arcade ? (
+        <ArcadeFooter language={language} />
+      ) : (
+        <div className="post-intro">
+          <Footer
             t={t}
             language={language}
           />
         </div>
-      </main>
-      <SectionNavigation language={language} />
-      <div className="post-intro">
-        <Footer
-          t={t}
-          language={language}
-        />
-      </div>
-      <MiniGame language={language} />
-      <MemoryGame language={language} />
-      <PrankButton language={language} />
+      )}
+      {!arcade && (
+        <>
+          <MiniGame language={language} />
+          <MemoryGame language={language} />
+        </>
+      )}
+      {arcade && <PrankButton language={language} />}
       <ActionTooltips />
     </>
   );

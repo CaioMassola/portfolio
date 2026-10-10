@@ -1,6 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 test.use({ reducedMotion: 'reduce' });
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('cm-arcade', 'on'));
+});
 
 for (const width of [390, 1440]) {
   test(`prank mirrors text and restores without moving the page at ${width}px`, async ({
@@ -24,13 +27,13 @@ for (const width of [390, 1440]) {
         .evaluate((e) => getComputedStyle(e).pointerEvents),
     ).toBe('none');
     expect(
-      await page.locator('.contact h2').evaluate((e) => getComputedStyle(e).scale),
+      await page.locator('.ap-contact h2').evaluate((e) => getComputedStyle(e).scale),
     ).toBe('-1 1');
     expect(await page.evaluate(() => scrollY)).toBe(before);
     await expect(page.locator('body')).not.toHaveClass(/prank-chaos/, { timeout: 12000 });
     await expect(page.locator('.prank-cracks')).toHaveCount(0);
     expect(
-      await page.locator('.contact h2').evaluate((e) => getComputedStyle(e).scale),
+      await page.locator('.ap-contact h2').evaluate((e) => getComputedStyle(e).scale),
     ).toBe('none');
     expect(await page.evaluate(() => scrollY)).toBe(before);
     await expect(page.locator('.prank-button')).toHaveAttribute('aria-pressed', 'false');
@@ -75,7 +78,7 @@ test('earthquake animates only with motion enabled and restores after Escape', a
   await page.goto('/');
   await page.locator('.prank-button').click();
 
-  const title = page.locator('.contact h2');
+  const title = page.locator('.ap-contact h2');
 
   expect(await title.evaluate((e) => getComputedStyle(e).animationName)).toBe('none');
   expect(await title.evaluate((e) => getComputedStyle(e).rotate)).toBe('180deg');

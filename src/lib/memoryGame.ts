@@ -7,8 +7,19 @@
   'git',
 ] as const;
 
-export function createMemoryDeck() {
-  const deck = [...memoryTechnologies, ...memoryTechnologies];
+export const arcadeMemoryTechnologies = [
+  ...memoryTechnologies,
+  'nextjs',
+  'nodejs',
+  'mysql',
+  'jest',
+  'storybook',
+  'amazonwebservices',
+] as const;
+
+export function createMemoryDeck(arcade = false) {
+  const technologies = arcade ? arcadeMemoryTechnologies : memoryTechnologies;
+  const deck = [...technologies, ...technologies];
 
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

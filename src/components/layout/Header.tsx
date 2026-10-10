@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Code2, Globe2, Sun, Moon, Menu, X } from 'lucide-react';
+import { Gamepad2, Code2, Globe2, Sun, Moon, Menu, X } from 'lucide-react';
 
 import type { Copy, Language } from '../../content';
 import { sectionIds } from '../../lib/sections';
 
 interface HeaderProps {
+  arcade: boolean;
+  toggleArcade: () => void;
   t: Copy;
   language: Language;
   theme: 'dark' | 'light';
@@ -13,6 +15,8 @@ interface HeaderProps {
 }
 
 export default function Header({
+  arcade,
+  toggleArcade,
   t,
   language,
   theme,
@@ -57,6 +61,21 @@ export default function Header({
           ))}
         </nav>
         <div className="preferences">
+          <button
+            type="button"
+            className="arcade-toggle"
+            role="switch"
+            aria-checked={arcade}
+            aria-label={language === 'en' ? 'Arcade mode' : 'Modo arcade'}
+            onClick={toggleArcade}
+          >
+            <span className="arcade-toggle-thumb">
+              <Gamepad2
+                size={20}
+                aria-hidden="true"
+              />
+            </span>
+          </button>
           <label className="language-control">
             <Globe2 size={16} />
             <span className="sr-only">{t.language}</span>

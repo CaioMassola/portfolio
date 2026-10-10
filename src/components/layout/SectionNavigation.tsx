@@ -18,7 +18,13 @@ const labels: Record<Language, { previous: string; next: string }> = {
   es: { previous: 'Sección anterior', next: 'Siguiente sección' },
 };
 
-export default function SectionNavigation({ language }: { language: Language }) {
+export default function SectionNavigation({
+  language,
+  arcade,
+}: {
+  language: Language;
+  arcade: boolean;
+}) {
   const sectionIds = navigationSections[language];
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -32,17 +38,23 @@ export default function SectionNavigation({ language }: { language: Language }) 
           .map((id) => document.getElementById(id))
           .filter((section): section is HTMLElement => Boolean(section));
 
-        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        if (
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 4
+        ) {
           setActiveIndex(sections.length - 1);
 
           return;
         }
 
-        const marker = 120;
+        const padding =
+          parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
         let current = 0;
 
         sections.forEach((section, index) => {
-          if (section.getBoundingClientRect().top <= marker) current = index;
+          const margin = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+          if (section.getBoundingClientRect().top <= padding + margin + 2)
+            current = index;
         });
         setActiveIndex(current);
       });
@@ -57,7 +69,7 @@ export default function SectionNavigation({ language }: { language: Language }) 
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
     };
-  }, [sectionIds]);
+  }, [sectionIds, arcade]);
 
   const goTo = (index: number) => {
     document.getElementById(sectionIds[index])?.scrollIntoView({
@@ -69,7 +81,13 @@ export default function SectionNavigation({ language }: { language: Language }) 
   return (
     <nav
       className="section-navigation"
-      aria-label={language === 'pt' ? 'Navegação entre seções' : language === 'es' ? 'Navegación entre secciones' : 'Section navigation'}
+      aria-label={
+        language === 'pt'
+          ? 'Navegação entre seções'
+          : language === 'es'
+            ? 'Navegación entre secciones'
+            : 'Section navigation'
+      }
     >
       <button
         type="button"
