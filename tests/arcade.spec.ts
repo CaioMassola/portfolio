@@ -303,3 +303,18 @@ test('game buttons fill cards and snake hover changes from green to red', async 
     page.locator('a .lucide-arrow-right, a .lucide-arrow-up-right'),
   ).toHaveCount(0);
 });
+
+test('games navigation reaches the library on desktop and mobile', async ({ page }) => {
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    if (width === 390) await page.locator('.menu-toggle').click();
+    await page.locator('.navigation a[href="#games"]').click();
+    await expect(page).toHaveURL(/#games$/);
+    await expect
+      .poll(() =>
+        page.locator('#games').evaluate((e) => Math.round(e.getBoundingClientRect().top)),
+      )
+      .toBeLessThanOrEqual(127);
+    await expect(page.locator('.navigation')).not.toHaveClass(/open/);
+  }
+});

@@ -103,7 +103,10 @@ export default function Arcade({ language }: { language: Language }) {
         </div>
       </div>
       <div className="arcade-checkers" />
-      <div className="arcade-library">
+      <div
+        className="arcade-library"
+        id="games"
+      >
         <div className="arcade-library-heading">
           <h2>{t.choose}</h2>
           <span>5 GAMES / FREE PLAY</span>

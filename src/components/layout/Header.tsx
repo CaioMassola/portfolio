@@ -50,6 +50,14 @@ export default function Header({
                 : 'Navigation'
           }
         >
+          {arcade && (
+            <a
+              href="#games"
+              onClick={() => setMenuOpen(false)}
+            >
+              {{ pt: 'Jogos', en: 'Games', es: 'Juegos' }[language]}
+            </a>
+          )}
           {t.nav.map((label, i) => (
             <a
               key={sections[i]}

@@ -74,6 +74,8 @@ describe('portfolio application', () => {
     click('.arcade-toggle');
     expect(host.querySelector('.arcade-home')).not.toBeNull();
     expect(localStorage.getItem('cm-arcade')).toBe('on');
+    click('.navigation a[href="#games"]');
+    expect(host.querySelector('.navigation')?.classList.contains('open')).toBeFalse();
     click('.arcade-toggle');
     expect(host.querySelector('.hero-code')).not.toBeNull();
     click('.arcade-toggle');
