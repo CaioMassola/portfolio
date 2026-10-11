@@ -40,9 +40,19 @@ describe('arcade interaction', () => {
     jasmine.clock().uninstall();
     localStorage.clear();
   });
+  it('finishes the entrance and cleans it up with reduced motion', () => {
+    spyOn(window, 'matchMedia').and.returnValue({ matches: true } as MediaQueryList);
+    act(() => root.render(<Arcade language="en" />));
+    expect(host.querySelector('.arcade-entrance')).not.toBeNull();
+    tick(100);
+    expect(host.querySelector('.arcade-entrance')).toBeNull();
+  });
+
   it('opens the library games, restores focus and dispatches existing games', () => {
     act(() => root.render(<Arcade language="pt" />));
 
+    tick(1800);
+    expect(host.querySelector('.arcade-entrance')).toBeNull();
     expect(host.querySelector('.arcade-intro-actions button')).toBeNull();
 
     for (const selector of [

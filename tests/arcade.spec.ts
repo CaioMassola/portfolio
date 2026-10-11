@@ -196,7 +196,7 @@ test('arcade section layouts fit narrow screens and section links still work', a
   }
 
   await page.locator('.menu-toggle').click();
-  await page.locator('.navigation a').nth(2).click();
+  await page.locator('.navigation a[href="#projetos"]').click();
   await expect(page).toHaveURL(/#projetos$/);
   await expect(page.locator('.ap-projects')).toBeInViewport();
 });
@@ -317,4 +317,20 @@ test('games navigation reaches the library on desktop and mobile', async ({ page
       .toBeLessThanOrEqual(127);
     await expect(page.locator('.navigation')).not.toHaveClass(/open/);
   }
+});
+
+test('arcade entrance finishes without moving the page or replaying on language change', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.reload();
+  await expect(page.locator('.arcade-entrance')).toBeVisible();
+  await expect(page.locator('.arcade-entrance')).toHaveCount(0, { timeout: 3000 });
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  await page.locator('.language-control select').selectOption('en');
+  await expect(page.locator('.arcade-entrance')).toHaveCount(0);
+  await page.getByRole('switch').click();
+  await page.getByRole('switch').click();
+  await expect(page.locator('.arcade-entrance')).toBeVisible();
+  await expect(page.locator('.arcade-entrance')).toHaveCount(0, { timeout: 3000 });
 });

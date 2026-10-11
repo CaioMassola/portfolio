@@ -11,11 +11,11 @@ interface ProjectsProps {
 export default function Projects({ t, language }: ProjectsProps) {
   return (
     <section
-      className="shell projects-section section reveal"
+      className="shell projects-section section"
       id={sectionIds[language][3]}
     >
       <div>
-        <div className="section-heading">
+        <div className="section-heading section-enter">
           <div>
             <p className="eyebrow">{t.projectsLabel}</p>
             <h2>{t.projectsTitle}</h2>

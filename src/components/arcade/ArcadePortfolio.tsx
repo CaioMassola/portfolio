@@ -64,7 +64,7 @@ export default function ArcadePortfolio({
         id={ids[1]}
         aria-labelledby="ap-about-title"
       >
-        <div className="ap-shell">
+        <div className="ap-shell section-enter">
           <p className="ap-kicker">{c.player}</p>
           <div className="ap-player-layout">
             <div className="ap-player-card">
@@ -111,7 +111,7 @@ export default function ArcadePortfolio({
         id="technologies"
         aria-labelledby="ap-kit-title"
       >
-        <div className="ap-shell">
+        <div className="ap-shell section-enter">
           <p className="ap-kicker">{c.kit}</p>
           <h2 id="ap-kit-title">{c.kitTitle}</h2>
           <p className="ap-lead">{c.kitIntro}</p>
@@ -133,6 +133,7 @@ export default function ArcadePortfolio({
             ))}
           </div>
           <div
+            key={kit}
             className="ap-kit-content"
             id="ap-kit-content"
           >
@@ -163,7 +164,7 @@ export default function ArcadePortfolio({
         id={ids[2]}
         aria-labelledby="ap-career-title"
       >
-        <div className="ap-shell">
+        <div className="ap-shell section-enter">
           <p className="ap-kicker">{c.career}</p>
           <h2 id="ap-career-title">{c.careerTitle}</h2>
           <p className="ap-lead">{c.careerIntro}</p>
@@ -202,7 +203,7 @@ export default function ArcadePortfolio({
         id={ids[3]}
         aria-labelledby="ap-projects-title"
       >
-        <div className="ap-shell">
+        <div className="ap-shell section-enter">
           <p className="ap-kicker">{c.projects}</p>
           <h2 id="ap-projects-title">{c.projectsTitle}</h2>
           <p className="ap-lead">{c.projectsIntro}</p>
@@ -224,6 +225,7 @@ export default function ArcadePortfolio({
             ))}
           </div>
           <article
+            key={project.id}
             className="ap-project-screen"
             id="ap-project-screen"
           >
@@ -284,7 +286,7 @@ export default function ArcadePortfolio({
         id={ids[4]}
         aria-labelledby="ap-contact-title"
       >
-        <div className="ap-shell ap-coop">
+        <div className="ap-shell ap-coop section-enter">
           <div>
             <p className="ap-kicker">{c.contact}</p>
             <h2 id="ap-contact-title">{c.contactTitle}</h2>
@@ -318,7 +320,7 @@ export function ArcadeFooter({ language }: { language: Language }) {
 
   return (
     <footer className="ap-footer">
-      <div className="ap-shell">
+      <div className="ap-shell section-enter">
         <p>{c.footer}</p>
         <a
           className="ap-button"

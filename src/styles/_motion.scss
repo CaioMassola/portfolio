@@ -56,3 +56,64 @@
     transform: translateY(20px);
   }
 }
+
+// Observe content rather than section boundaries, preserving anchor positions.
+@media (prefers-reduced-motion: no-preference) {
+  .section-enter.is-visible {
+    animation: section-soft-entry 550ms ease-out both;
+  }
+  :root[data-arcade='true'] .section-enter.is-visible {
+    animation: none;
+  }
+  :root[data-arcade='true'] .section-enter.is-visible > * {
+    animation: section-arcade-entry 420ms ease-out both;
+  }
+  @for $i from 1 through 8 {
+    :root[data-arcade='true'] .section-enter.is-visible > :nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 55}ms;
+    }
+  }
+  :root[data-arcade='true'] .section-enter.is-visible .ap-stages > li,
+  :root[data-arcade='true'] .section-enter.is-visible .ap-contact-options > a {
+    animation: section-arcade-entry 420ms ease-out both;
+  }
+  @for $i from 1 through 3 {
+    :root[data-arcade='true'] .section-enter.is-visible .ap-stages > li:nth-child(#{$i}),
+    :root[data-arcade='true']
+      .section-enter.is-visible
+      .ap-contact-options
+      > a:nth-child(#{$i}) {
+      animation-delay: #{180 + ($i - 1) * 80}ms;
+    }
+  }
+}
+@keyframes section-soft-entry {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes section-arcade-entry {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+  75% {
+    opacity: 1;
+    translate: 0 -2px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-enter,
+  .section-enter * {
+    animation: none !important;
+  }
+}

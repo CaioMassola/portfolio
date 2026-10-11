@@ -11,10 +11,10 @@ export function useReveal(arcade: boolean) {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.08 },
     );
 
-    document.querySelectorAll('.reveal').forEach((element) => {
+    document.querySelectorAll('.reveal, .section-enter').forEach((element) => {
       observer.observe(element);
     });
 

@@ -19,7 +19,7 @@ export default function About({ t, language }: AboutProps) {
       className="shell about about-introduction section"
       id={sectionIds[language][1]}
     >
-      <div className="hero-copy">
+      <div className="hero-copy section-enter">
         <p className="eyebrow">{t.aboutLabel}</p>
         <h1>
           {t.headline[0]}
@@ -74,7 +74,7 @@ export default function About({ t, language }: AboutProps) {
           </a>
         </div>
       </div>
-      <div className="hero-visual">
+      <div className="hero-visual section-enter">
         <div className="portrait-frame">
           <img
             src="/caio.jpeg"
@@ -92,7 +92,7 @@ export default function About({ t, language }: AboutProps) {
         </div>
       </div>
       <div
-        className="education"
+        className="education section-enter"
         role="group"
         aria-labelledby="education-label"
       >

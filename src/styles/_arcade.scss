@@ -82,16 +82,7 @@
   font: 700 clamp(14px, 1.4vw, 20px) monospace;
   margin: 0 0 16px;
 }
-.arcade-intro code {
-  display: inline-block;
-  background: #111;
-  padding: 8px 12px;
-  font-size: clamp(12px, 1.25vw, 19px);
-  color: #fff7e3;
-  span {
-    color: #ffeb00;
-  }
-}
+
 .arcade-intro-actions {
   display: flex;
   gap: 20px;
@@ -111,17 +102,7 @@
     box-shadow: 3px 3px #111;
   }
 }
-.arcade-hero-art {
-  background: #004bff;
-  display: grid;
-  align-items: center;
-  padding: 20px;
-  overflow: hidden;
-  svg {
-    width: 100%;
-    max-height: 400px;
-  }
-}
+
 .arcade-checkers {
   height: 20px;
   background: conic-gradient(#111 25%, #fff7e3 0 50%, #111 0 75%, #fff7e3 0) 0 0/20px 20px;
@@ -393,13 +374,7 @@
   .arcade-intro h1 {
     font-size: 28px;
   }
-  .arcade-hero-art {
-    padding: 0;
-    height: 180px;
-    svg {
-      max-height: 180px;
-    }
-  }
+
   .arcade-cards {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -956,4 +931,249 @@
 
 #games {
   scroll-margin-top: 20px;
+}
+
+.arcade-entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #8100ef;
+  color: #fff7e3;
+  pointer-events: none;
+  font-family: 'Press Start 2P', monospace;
+  animation: arcade-curtain 400ms cubic-bezier(0.76, 0, 0.24, 1) 1400ms both;
+}
+.arcade-entrance-player,
+.arcade-entrance-loading {
+  grid-area: 1 / 1;
+  width: min(90%, 720px);
+  text-align: center;
+}
+.arcade-entrance-player {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  animation: arcade-player-intro 750ms both;
+  svg {
+    width: clamp(110px, 18vw, 190px);
+  }
+  span {
+    color: #72f52c;
+    font-size: clamp(12px, 2vw, 19px);
+  }
+  strong {
+    font-size: clamp(20px, 4.5vw, 48px);
+    line-height: 1.6;
+  }
+}
+.arcade-entrance-loading {
+  animation: arcade-loading-intro 150ms 750ms both;
+  p {
+    color: #ffeb00;
+    font-size: clamp(10px, 2vw, 20px);
+    line-height: 1.8;
+  }
+}
+.arcade-entrance-track {
+  margin: 28px auto 0;
+  width: min(100%, 500px);
+  height: 42px;
+  padding: 5px;
+  border: 5px solid #111;
+  background: #fff7e3;
+  box-shadow: 5px 5px #111;
+  span {
+    display: block;
+    height: 100%;
+    background: repeating-linear-gradient(to right, #ffeb00 0 22px, #111 22px 27px);
+    animation: arcade-fill 550ms steps(18, end) 800ms both;
+  }
+}
+.arcade-home .arcade-card {
+  animation: arcade-card-arrive 350ms ease-out both;
+  animation-delay: calc(1400ms + var(--entry-order, 0) * 60ms);
+}
+@for $i from 1 through 5 {
+  .arcade-home .arcade-card:nth-child(#{$i}) {
+    --entry-order: #{$i - 1};
+  }
+}
+@keyframes arcade-player-intro {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+@keyframes arcade-loading-intro {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes arcade-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes arcade-curtain {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes arcade-card-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arcade-entrance {
+    animation: arcade-loading-intro 100ms reverse both;
+  }
+  .arcade-entrance-player,
+  .arcade-entrance-loading,
+  .arcade-entrance-track span,
+  .arcade-home .arcade-card {
+    animation: none;
+  }
+  .arcade-entrance-loading {
+    display: none;
+  }
+}
+
+.arcade-terminal {
+  align-self: center;
+  min-width: 0;
+  margin: 28px;
+  border: 4px solid #111;
+  box-shadow: 8px 8px #111;
+  background: #240044;
+  color: #fff7e3;
+}
+.arcade-terminal-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  background: #ffeb00;
+  color: #111;
+  border-bottom: 4px solid #111;
+  font:
+    12px/1.5 'Press Start 2P',
+    monospace;
+}
+.arcade-terminal-body {
+  padding: 30px 20px;
+  min-height: 220px;
+  font: 700 clamp(12px, 1.5vw, 22px)/1.8 monospace;
+}
+.arcade-terminal-command {
+  display: block;
+  width: 26ch;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font: inherit;
+  span {
+    color: #ffeb00;
+  }
+}
+.arcade-terminal-output {
+  color: #72f52c;
+  margin: 24px 0 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .arcade-terminal-command {
+    animation: arcade-terminal-type 1500ms steps(26, end) 1800ms both;
+  }
+  .arcade-terminal-output {
+    animation: arcade-terminal-print 200ms ease-out 3400ms both;
+  }
+}
+@keyframes arcade-terminal-type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 26ch;
+  }
+}
+@keyframes arcade-terminal-print {
+  from {
+    opacity: 0;
+    translate: 0 5px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@media (max-width: 760px) {
+  .arcade-terminal {
+    margin: 0 20px 28px;
+  }
+  .arcade-terminal-body {
+    font-size: clamp(12px, 3.4vw, 20px);
+    padding: 22px 12px;
+    min-height: 180px;
+  }
+}
+
+.arcade-hero-art {
+  background: #004bff;
+  display: grid;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  svg {
+    width: 100%;
+    max-height: 400px;
+  }
+}
+.arcade-intro .arcade-terminal {
+  margin: 24px 0 0;
+  text-align: left;
+}
+.arcade-intro .arcade-terminal-body {
+  min-height: 150px;
+  padding: 20px 16px;
+  font: 700 clamp(12px, 1.4vw, 20px)/1.8 monospace;
+}
+.arcade-intro .arcade-terminal-output {
+  color: #72f52c;
+  margin: 18px 0 0;
+  font: inherit;
+}
+@media (max-width: 760px) {
+  .arcade-hero-art {
+    padding: 0;
+    height: 220px;
+  }
+  .arcade-hero-art svg {
+    max-height: 220px;
+  }
 }

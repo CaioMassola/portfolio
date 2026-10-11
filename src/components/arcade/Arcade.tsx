@@ -1,3 +1,4 @@
+import ArcadeEntrance from './ArcadeEntrance';
 import ArcadeBoardPlayer from './ArcadeBoardPlayer';
 import { useRef, useState } from 'react';
 import { Gamepad2 } from 'lucide-react';
@@ -18,16 +19,29 @@ export default function Arcade({ language }: { language: Language }) {
       className="arcade-home"
       id={sectionIds[language][0]}
     >
+      <ArcadeEntrance language={language} />
       <div className="arcade-hero">
         <div className="arcade-intro">
           <span className="arcade-eyebrow">
             <Gamepad2 size={18} /> {t.mode}
           </span>
           <h1>{t.headline}</h1>
-          <p>Caio Massola · {t.role}</p>
-          <code>
-            console.log(<span>"Hello World"</span>);
-          </code>
+          <p>{t.role}</p>
+          <div className="arcade-terminal">
+            <div className="arcade-terminal-heading">
+              <span>TERMINAL</span>
+              <span aria-hidden="true">_ []</span>
+            </div>
+            <div className="arcade-terminal-body">
+              <span className="sr-only">console.log("Hello World"); Hello World</span>
+              <div aria-hidden="true">
+                <code className="arcade-terminal-command">
+                  console.log(<span>"Hello World"</span>);
+                </code>
+                <p className="arcade-terminal-output">Hello World</p>
+              </div>
+            </div>
+          </div>
           <div className="arcade-intro-actions">
             <a href={`#${sectionIds[language][3]}`}>{t.projects}</a>
           </div>
@@ -109,7 +123,6 @@ export default function Arcade({ language }: { language: Language }) {
       >
         <div className="arcade-library-heading">
           <h2>{t.choose}</h2>
-          <span>5 GAMES / FREE PLAY</span>
         </div>
         <div className="arcade-cards">
           {(['runner', 'snake', 'blocks', 'tic', 'memory'] as const).map((kind, i) => (

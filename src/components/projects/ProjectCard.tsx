@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index, t }: ProjectCardProps) {
   return (
-    <article className="project-card">
+    <article className="project-card section-enter">
       <a
         className="project-image-link"
         href={project.demo || `${github}/${project.repo}`}
