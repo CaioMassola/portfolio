@@ -14,9 +14,13 @@ export function useReveal(arcade: boolean) {
       { threshold: 0.08 },
     );
 
-    document.querySelectorAll('.reveal, .section-enter').forEach((element) => {
-      observer.observe(element);
-    });
+    document
+      .querySelectorAll(
+        '.reveal, .section-enter, .career-timeline, .post-intro > section, .ap-section, .ap-education, .ap-stages > li',
+      )
+      .forEach((element) => {
+        observer.observe(element);
+      });
 
     return () => observer.disconnect();
   }, [arcade]);

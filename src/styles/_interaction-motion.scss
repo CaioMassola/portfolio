@@ -1,0 +1,179 @@
+// Motion decorates content without changing layout or anchor positions.
+@media (prefers-reduced-motion: no-preference) {
+  .post-intro > section:not(.about-introduction),
+  .ap-section {
+    position: relative;
+  }
+  .post-intro > section:not(.about-introduction)::after,
+  .ap-section::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    pointer-events: none;
+  }
+  .post-intro > section.is-visible::after {
+    animation: divider-draw 650ms ease-out both;
+  }
+  .ap-section.is-visible::after {
+    height: 4px;
+    background: #111;
+    animation: divider-draw 500ms steps(12, end) both;
+  }
+  .education.is-visible > svg,
+  .education.is-visible > div {
+    animation: detail-arrive 450ms ease-out both;
+  }
+  .education.is-visible > div {
+    animation-delay: 100ms;
+  }
+  .ap-education.is-visible > b {
+    display: inline-block;
+    animation: achievement-pop 450ms ease-out both;
+  }
+  .career-timeline.is-visible::before {
+    transform-origin: top;
+    animation: timeline-draw 900ms ease-out both;
+  }
+  .career-step.is-visible .career-marker {
+    animation: achievement-pop 400ms ease-out both;
+  }
+  .ap-stages > li.is-visible .ap-stage-number {
+    animation: stage-light 450ms steps(3, end) both;
+  }
+  .project-links a,
+  .hero-socials a svg,
+  .footer-socials a svg,
+  .contact-actions a svg {
+    transition: translate 180ms ease-out;
+  }
+  .project-links a:is(:hover, :focus-visible),
+  :is(.hero-socials, .footer-socials, .contact-actions) a:is(:hover, :focus-visible) svg {
+    translate: 0 -3px;
+  }
+  .arcade-player[open] {
+    animation: modal-arrive 180ms ease-out both;
+  }
+  .arcade-player[open]::backdrop {
+    animation: backdrop-arrive 180ms ease-out both;
+  }
+  :root[data-arcade='true']
+    :is(
+      .ap-button,
+      .arcade-button,
+      .arcade-intro-actions a,
+      .ap-kit-picker button,
+      .ap-project-picker button,
+      .ap-contact-options a,
+      .arcade-player button
+    ):not(:disabled):active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px #111;
+  }
+  .arcade-score-value,
+  .arcade-record-value {
+    display: inline-block;
+  }
+  .arcade-score-value[data-scored='true'] {
+    animation: score-pop 220ms ease-out;
+  }
+  .arcade-record-value[data-record='true'] {
+    color: #7100d8;
+    animation: achievement-pop 400ms ease-out;
+  }
+  @media (hover: hover) {
+    .arcade-hero-art:hover .arcade-art-controller {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: controller-tilt 500ms ease-out;
+    }
+    .arcade-hero-art:hover .arcade-art-capybara {
+      animation: capybara-hop 500ms steps(6, end);
+    }
+  }
+}
+@keyframes divider-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes timeline-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes detail-arrive {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes achievement-pop {
+  from {
+    opacity: 0;
+    scale: 0.75;
+  }
+  70% {
+    opacity: 1;
+    scale: 1.08;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes stage-light {
+  from {
+    background: #fff7e3;
+  }
+  to {
+    background: #ffeb00;
+  }
+}
+@keyframes modal-arrive {
+  from {
+    opacity: 0;
+    scale: 0.97;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes backdrop-arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes score-pop {
+  50% {
+    translate: 0 -4px;
+    scale: 1.12;
+  }
+}
+@keyframes controller-tilt {
+  35% {
+    rotate: -5deg;
+  }
+  70% {
+    rotate: 3deg;
+  }
+}
+@keyframes capybara-hop {
+  50% {
+    translate: 0 -12px;
+  }
+}

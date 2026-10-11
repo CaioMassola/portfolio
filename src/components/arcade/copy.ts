@@ -4,7 +4,7 @@ export const arcadeCopy = {
   pt: {
     mode: 'Modo arcade',
     headline: 'Caio Massola',
-    role: 'Engenheiro de software frontend',
+    role: 'Engenheiro de Software Frontend',
     choose: 'Escolha o jogo',
     play: 'Jogar',
     runner: 'Capivara Run',
@@ -43,7 +43,7 @@ export const arcadeCopy = {
   en: {
     mode: 'Arcade mode',
     headline: 'Caio Massola',
-    role: 'Frontend software engineer',
+    role: 'Frontend Software Engineer',
     choose: 'Choose your game',
     play: 'Play',
     runner: 'Capybara Run',
@@ -82,7 +82,7 @@ export const arcadeCopy = {
   es: {
     mode: 'Modo arcade',
     headline: 'Caio Massola',
-    role: 'Ingeniero de software frontend',
+    role: 'Ingeniero de Software Frontend',
     choose: 'Elige tu juego',
     play: 'Jugar',
     runner: 'Capibara Run',

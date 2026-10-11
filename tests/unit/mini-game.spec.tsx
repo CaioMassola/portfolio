@@ -132,7 +132,14 @@ describe('mini game controls and matches', () => {
     ['draw', [0, 1, 6, 5, 8], 'A draw! Another round?'],
   ] as const) {
     it(`finishes a ${name} and prevents further moves`, () => {
-      render();
+      act(() =>
+        root.render(
+          <MiniGame
+            language="en"
+            arcade
+          />,
+        ),
+      );
 
       for (const move of moves) {
         cell(move);

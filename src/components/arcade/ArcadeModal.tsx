@@ -1,4 +1,6 @@
-﻿import {
+import ArcadeSoundButton from './ArcadeSoundButton';
+import type { Language } from '../../content';
+import {
   useEffect,
   type KeyboardEventHandler,
   type ReactNode,
@@ -7,6 +9,7 @@
 import { X } from 'lucide-react';
 
 export default function ArcadeModal({
+  language,
   title,
   closeLabel,
   onClose,
@@ -14,6 +17,7 @@ export default function ArcadeModal({
   onKeyDown,
   children,
 }: {
+  language: Language;
   title: string;
   closeLabel: string;
   onClose: () => void;
@@ -48,6 +52,7 @@ export default function ArcadeModal({
     >
       <header className="arcade-player-heading">
         <h2 id="arcade-game-title">{title}</h2>
+        <ArcadeSoundButton language={language} />
         <button
           onClick={onClose}
           aria-label={closeLabel}

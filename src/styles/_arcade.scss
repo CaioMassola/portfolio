@@ -69,7 +69,8 @@
   margin-bottom: 20px;
 }
 .arcade-intro h1 {
-  margin: 0 0 22px;
+  margin: 0 auto 22px;
+  text-align: center;
   max-width: 850px;
   font-family: 'Press Start 2P', monospace !important;
   font-size: clamp(24px, 3.1vw, 48px);
@@ -83,8 +84,13 @@
   margin: 0 0 16px;
 }
 
+.arcade-intro > p {
+  text-align: center;
+}
+
 .arcade-intro-actions {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
   align-items: center;
@@ -345,12 +351,7 @@
     background: #fff7e3;
   }
 }
-@media (min-width: 1800px) {
-  :root[data-arcade='true'] .arcade-hero {
-    padding-inline: max(0px, calc((100vw - 1600px) / 2));
-    background: #8100ef;
-  }
-}
+
 @media (max-width: 1050px) {
   .arcade-cards {
     gap: 18px;
@@ -1093,7 +1094,7 @@
 }
 .arcade-terminal-command {
   display: block;
-  width: 26ch;
+  width: 27ch;
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -1108,7 +1109,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .arcade-terminal-command {
-    animation: arcade-terminal-type 1500ms steps(26, end) 1800ms both;
+    animation: arcade-terminal-type 1500ms steps(27, end) 1800ms both;
   }
   .arcade-terminal-output {
     animation: arcade-terminal-print 200ms ease-out 3400ms both;
@@ -1119,7 +1120,7 @@
     width: 0;
   }
   to {
-    width: 26ch;
+    width: 27ch;
   }
 }
 @keyframes arcade-terminal-print {
@@ -1175,5 +1176,131 @@
   }
   .arcade-hero-art svg {
     max-height: 220px;
+  }
+}
+
+.arcade-player-heading h2 {
+  margin-right: auto;
+}
+.arcade-player-heading .arcade-sound-toggle {
+  flex-shrink: 0;
+}
+
+.arcade-terminal-heading button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 34px;
+  border: 2px solid #111;
+  color: #111;
+  background: #fff7e3;
+  cursor: pointer;
+}
+.arcade-terminal-heading button:is(:hover, :focus-visible) {
+  background: #72f52c;
+}
+.arcade-console {
+  padding: 24px;
+  background: #240044;
+  color: #fff7e3;
+  font: 16px/1.6 monospace;
+  > p {
+    color: #72f52c;
+    margin: 0 0 16px;
+  }
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: inherit;
+    margin: 0;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #fff7e355;
+  }
+  input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #fff7e388;
+    background: #16002f;
+    color: #fff7e3;
+    font: inherit;
+  }
+  input:focus-visible {
+    outline: 2px solid #72f52c;
+    outline-offset: 2px;
+  }
+}
+.arcade-console-log {
+  height: min(52dvh, 480px);
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  padding: 0 12px 16px 0;
+}
+.arcade-console-entry {
+  margin: 0 0 20px;
+}
+.arcade-console-prompt {
+  color: #72f52c;
+  margin: 0 0 6px;
+}
+@media (max-width: 600px) {
+  .arcade-console {
+    padding: 14px;
+    font-size: 14px;
+  }
+  .arcade-console form {
+    gap: 6px;
+  }
+  .arcade-console form button {
+    padding-inline: 8px;
+    font-size: 12px;
+  }
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  :root[data-arcade='true'] {
+    &,
+    body,
+    body * {
+      cursor:
+        url('../assets/cursors/arcade-arrow.svg') 2 2,
+        default;
+    }
+
+    :is(a[href], button, [role='button'], summary, select):not(:disabled):not(
+        [aria-disabled='true']
+      ),
+    :is(a[href], button, [role='button'], summary, select):not(:disabled):not(
+        [aria-disabled='true']
+      )
+      * {
+      cursor:
+        url('../assets/cursors/arcade-hand.svg') 12 2,
+        pointer;
+    }
+
+    input,
+    textarea,
+    [contenteditable='true'],
+    [contenteditable='true'] * {
+      cursor: text;
+    }
+
+    :is(input[type='checkbox'], input[type='radio'], input[type='range']):not(:disabled) {
+      cursor:
+        url('../assets/cursors/arcade-hand.svg') 12 2,
+        pointer;
+    }
+
+    :disabled,
+    [aria-disabled='true'],
+    [aria-disabled='true'] * {
+      cursor: not-allowed;
+    }
   }
 }

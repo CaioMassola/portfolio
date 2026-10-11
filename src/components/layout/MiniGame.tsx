@@ -1,3 +1,4 @@
+import { arcadeAudio } from '../../lib/arcadeAudio';
 import { useEffect, useRef, useState } from 'react';
 import { Gamepad2, Minus, RotateCcw } from 'lucide-react';
 import type { Language } from '../../content';
@@ -73,6 +74,21 @@ export default function MiniGame({
       : thinking
         ? text.thinking
         : text.turn;
+
+  useEffect(() => {
+    if (!arcade || !board.some(Boolean)) return;
+    const result = winner(board);
+
+    arcadeAudio.play(
+      result
+        ? board[result[0]] === 'X'
+          ? 'win'
+          : 'over'
+        : !board.includes(null)
+          ? 'miss'
+          : 'move',
+    );
+  }, [board, arcade]);
 
   useEffect(() => {
     if (!thinking) return;

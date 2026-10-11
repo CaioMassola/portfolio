@@ -1,4 +1,5 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { arcadeAudio } from '../../lib/arcadeAudio';
+import { useEffect, useRef, useState } from 'react';
 import { Code2, Layers, Minus, RotateCcw } from 'lucide-react';
 import type { Language } from '../../content';
 import { createMemoryDeck } from '../../lib/memoryGame';
@@ -95,6 +96,7 @@ export default function MemoryGame({
       return;
 
     if (flipped.length === 0) {
+      if (arcade) arcadeAudio.play('move');
       setFlipped([index]);
 
       return;
@@ -103,9 +105,11 @@ export default function MemoryGame({
     setAttempts((value) => value + 1);
 
     if (deck[flipped[0]] === deck[index]) {
+      if (arcade) arcadeAudio.play(matched.length + 2 === deck.length ? 'win' : 'score');
       setMatched((current) => [...current, flipped[0], index]);
       setFlipped([]);
     } else {
+      if (arcade) arcadeAudio.play('miss');
       setFlipped([flipped[0], index]);
     }
   };

@@ -54,6 +54,29 @@ describe('arcade interaction', () => {
     tick(1800);
     expect(host.querySelector('.arcade-entrance')).toBeNull();
     expect(host.querySelector('.arcade-intro-actions button')).toBeNull();
+    click('.arcade-terminal-heading button');
+    act(() => frame(0));
+
+    const terminalInput = host.querySelector<HTMLInputElement>('input')!;
+
+    act(() => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(
+        terminalInput,
+        'play snake',
+      );
+      terminalInput.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    act(() =>
+      host
+        .querySelector('form')!
+        .dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })),
+    );
+    expect(host.querySelector('dialog h2')?.textContent).toBe('Cobrinha');
+    click('.arcade-player-heading button:not(.arcade-sound-toggle)');
+    act(() => frame(0));
+    expect(host.querySelector('dialog h2')?.textContent).toBe('TERMINAL');
+    expect(document.activeElement).toBe(host.querySelector('input'));
+    click('.arcade-player-heading button:not(.arcade-sound-toggle)');
 
     for (const selector of [
       '.card-runner button',
@@ -76,7 +99,7 @@ describe('arcade interaction', () => {
         expect(host.querySelectorAll('.game-mark').length).toBe(2);
       }
 
-      click('.arcade-player-heading button');
+      click('.arcade-player-heading button:not(.arcade-sound-toggle)');
       act(() => frame(0));
       expect(host.querySelector('dialog')).toBeNull();
       expect(document.activeElement).toBe(host.querySelector(selector));
@@ -130,7 +153,7 @@ describe('arcade interaction', () => {
           .dispatchEvent(new Event('cancel', { cancelable: true })),
       );
       expect(close).toHaveBeenCalled();
-      click('.arcade-player-heading button');
+      click('.arcade-player-heading button:not(.arcade-sound-toggle)');
       expect(close).toHaveBeenCalledTimes(2);
     });
   }
@@ -146,6 +169,7 @@ describe('arcade interaction', () => {
       ),
     );
     click('.arcade-game-overlay button');
+    tick(1100);
     tick(4000);
     expect(host.querySelector('[role="status"]')?.textContent).toBe('Fin del juego');
     expect(Number(localStorage.getItem('cm-arcade-runner'))).toBeGreaterThan(0);

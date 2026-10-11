@@ -48,6 +48,9 @@ describe('memory game', () => {
       ),
     );
     expect(host.querySelectorAll('.memory-card').length).toBe(24);
+    card(0);
+    card(1);
+    tick();
 
     for (let i = 0; i < 12; i++) {
       card(i);

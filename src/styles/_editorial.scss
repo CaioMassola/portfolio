@@ -203,8 +203,8 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: clamp(280px, 38svh, 420px);
-  padding-block: 70px 100px;
+  min-height: clamp(220px, 28svh, 300px);
+  padding-block: 45px 65px;
 }
 .hero-opening .hero-code { width: 100%; }
 .hero-opening .hero-code code { margin-inline: auto; }
@@ -220,7 +220,7 @@ h2 { font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1; letter
 .about-introduction .about-background { max-width: 650px; color: var(--muted); font-size: 16px; line-height: 1.7; }
 .about-introduction .education { grid-column: 1 / -1; margin-top: 0; }
 @media (max-width: 760px) {
-  .hero.hero-opening { min-height: 250px; padding-block: 60px 100px; }
+  .hero.hero-opening { min-height: 200px; padding-block: 40px 60px; }
   .about.about-introduction { grid-template-columns: minmax(0, 1fr); padding-block: 40px 60px; }
   .about-introduction h1 { font-size: clamp(32px, 7.5vw, 46px); }
   .about-introduction .portrait-frame { width: min(60vw, 260px); }
@@ -268,7 +268,7 @@ body:has(#main:target) .about-introduction,
 }
 // Move only the code, leaving the document geometry and scroll position unchanged.
 .hero.hero-opening {
-  --opening-height: clamp(280px, 38svh, 420px);
+  --opening-height: clamp(220px, 28svh, 300px);
   --opening-scale: 1.2;
   height: var(--opening-height);
 }
@@ -285,7 +285,7 @@ body:has(#main:target) .about-introduction,
   to { translate: 0 0; scale: 1; }
 }
 @media (max-width: 760px) {
-  .hero.hero-opening { --opening-height: 250px; --opening-scale: 1.05; }
+  .hero.hero-opening { --opening-height: 200px; --opening-scale: 1.05; }
   @keyframes code-rise {
     from { translate: 0 calc(50svh - 53px - var(--opening-height) / 2); scale: var(--opening-scale); }
     to { translate: 0 0; scale: 1; }

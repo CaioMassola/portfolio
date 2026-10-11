@@ -1,3 +1,4 @@
+import ArcadeTerminal from './ArcadeTerminal';
 import ArcadeEntrance from './ArcadeEntrance';
 import ArcadeBoardPlayer from './ArcadeBoardPlayer';
 import { useRef, useState } from 'react';
@@ -12,7 +13,18 @@ import { arcadeCopy } from './copy';
 export default function Arcade({ language }: { language: Language }) {
   const t = arcadeCopy[language];
   const [active, setActive] = useState<ArcadeGame | 'tic' | 'memory' | null>(null);
+  const returnToTerminal = useRef<(() => void) | null>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
+
+  const closeGame = () => {
+    setActive(null);
+
+    const resumeTerminal = returnToTerminal.current;
+
+    returnToTerminal.current = null;
+    if (resumeTerminal) resumeTerminal();
+    else requestAnimationFrame(() => trigger.current?.focus({ preventScroll: true }));
+  };
 
   return (
     <section
@@ -27,21 +39,14 @@ export default function Arcade({ language }: { language: Language }) {
           </span>
           <h1>{t.headline}</h1>
           <p>{t.role}</p>
-          <div className="arcade-terminal">
-            <div className="arcade-terminal-heading">
-              <span>TERMINAL</span>
-              <span aria-hidden="true">_ []</span>
-            </div>
-            <div className="arcade-terminal-body">
-              <span className="sr-only">console.log("Hello World"); Hello World</span>
-              <div aria-hidden="true">
-                <code className="arcade-terminal-command">
-                  console.log(<span>"Hello World"</span>);
-                </code>
-                <p className="arcade-terminal-output">Hello World</p>
-              </div>
-            </div>
-          </div>
+          <ArcadeTerminal
+            language={language}
+            onPlay={(kind, button, resumeTerminal) => {
+              returnToTerminal.current = resumeTerminal;
+              trigger.current = button;
+              setActive(kind);
+            }}
+          />
           <div className="arcade-intro-actions">
             <a href={`#${sectionIds[language][3]}`}>{t.projects}</a>
           </div>
@@ -54,34 +59,36 @@ export default function Arcade({ language }: { language: Language }) {
             viewBox="0 0 500 330"
             shapeRendering="crispEdges"
           >
-            <path
-              d="M90 58h190v30h30v110h-55v-40H115v40H60V88h30z"
-              fill="#ffeb00"
-              stroke="#111"
-              strokeWidth="10"
-            />
-            <path
-              d="M115 89h22v22h22v22h-22v22h-22v-22H93v-22h22z"
-              fill="#111"
-            />
-            <path
-              d="M225 93h20v20h-20z"
-              fill="#8100ef"
-              stroke="#111"
-              strokeWidth="4"
-            />
-            <path
-              d="M251 120h20v20h-20z"
-              fill="#72f52c"
-              stroke="#111"
-              strokeWidth="4"
-            />
-            <path
-              d="M225 147h20v20h-20z"
-              fill="#0055ff"
-              stroke="#111"
-              strokeWidth="4"
-            />
+            <g className="arcade-art-controller">
+              <path
+                d="M90 58h190v30h30v110h-55v-40H115v40H60V88h30z"
+                fill="#ffeb00"
+                stroke="#111"
+                strokeWidth="10"
+              />
+              <path
+                d="M115 89h22v22h22v22h-22v22h-22v-22H93v-22h22z"
+                fill="#111"
+              />
+              <path
+                d="M225 93h20v20h-20z"
+                fill="#8100ef"
+                stroke="#111"
+                strokeWidth="4"
+              />
+              <path
+                d="M251 120h20v20h-20z"
+                fill="#72f52c"
+                stroke="#111"
+                strokeWidth="4"
+              />
+              <path
+                d="M225 147h20v20h-20z"
+                fill="#0055ff"
+                stroke="#111"
+                strokeWidth="4"
+              />
+            </g>
             <path
               d="M345 70v60h65v85h-45"
               fill="none"
@@ -101,7 +108,9 @@ export default function Arcade({ language }: { language: Language }) {
               strokeWidth="5"
             />
             <g transform="translate(96 204) scale(1.65)">
-              <Capybara />
+              <g className="arcade-art-capybara">
+                <Capybara />
+              </g>
             </g>
             <path
               d="M284 248h30v30h30v30h-60z"
@@ -138,6 +147,7 @@ export default function Arcade({ language }: { language: Language }) {
                   <button
                     className="arcade-button"
                     onClick={(event) => {
+                      returnToTerminal.current = null;
                       trigger.current = event.currentTarget;
                       setActive(kind);
                     }}
@@ -158,24 +168,14 @@ export default function Arcade({ language }: { language: Language }) {
             key={active}
             kind={active}
             language={language}
-            onClose={() => {
-              setActive(null);
-              requestAnimationFrame(() =>
-                trigger.current?.focus({ preventScroll: true }),
-              );
-            }}
+            onClose={closeGame}
           />
         ) : (
           <ArcadePlayer
             key={active}
             kind={active}
             language={language}
-            onClose={() => {
-              setActive(null);
-              requestAnimationFrame(() =>
-                trigger.current?.focus({ preventScroll: true }),
-              );
-            }}
+            onClose={closeGame}
           />
         ))}
     </section>

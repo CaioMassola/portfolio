@@ -1,3 +1,4 @@
+import { arcadeAudio } from '../../lib/arcadeAudio';
 import ArcadeModal from './ArcadeModal';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -37,6 +38,15 @@ export default function ArcadePlayer({
   const [status, setStatus] = useState<'ready' | 'running' | 'paused'>('ready');
   const [record] = useState(() => highScore(kind));
   const dialog = useRef<HTMLDialogElement>(null);
+  const previousScore = useRef(0);
+  const scoreCue = kind === 'runner' ? Math.floor(state.score / 10) : state.score;
+
+  useEffect(() => {
+    if (state.over) arcadeAudio.play('over');
+    else if (scoreCue > previousScore.current) arcadeAudio.play('score');
+    previousScore.current = scoreCue;
+  }, [scoreCue, state.over]);
+
   const interval = intervalFor(state);
   const running = status === 'running' && !state.over;
 
@@ -63,6 +73,7 @@ export default function ArcadePlayer({
   }, [kind, state.over, state.score]);
 
   const command = (value: Command) => {
+    arcadeAudio.play('move');
     setState((current) => commandGame(current, value));
   };
 
@@ -76,6 +87,7 @@ export default function ArcadePlayer({
 
   return (
     <ArcadeModal
+      language={language}
       dialogRef={dialog}
       title={t[kind]}
       closeLabel={t.close}
@@ -108,10 +120,23 @@ export default function ArcadePlayer({
     >
       <div className="arcade-score">
         <span>
-          {t.score} <b>{String(state.score).padStart(4, '0')}</b>
+          {t.score}{' '}
+          <b
+            key={scoreCue}
+            className="arcade-score-value"
+            data-scored={scoreCue > 0}
+          >
+            {String(state.score).padStart(4, '0')}
+          </b>
         </span>
         <span>
-          {t.best} <b>{Math.max(record, state.score)}</b>
+          {t.best}{' '}
+          <b
+            className="arcade-record-value"
+            data-record={state.score > record}
+          >
+            {Math.max(record, state.score)}
+          </b>
         </span>
       </div>
       <div className={`arcade-stage stage-${kind}`}>

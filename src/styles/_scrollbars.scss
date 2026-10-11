@@ -1,0 +1,50 @@
+:root {
+  --scroll-thumb: #ff6846;
+  --scroll-track: var(--bg);
+  --scroll-hover: #ff896e;
+  --scroll-border: var(--bg);
+  --scroll-radius: 8px;
+}
+
+:root[data-theme='light'] {
+  --scroll-thumb: #255ccb;
+  --scroll-hover: #1746a6;
+}
+
+:root[data-arcade='true'] {
+  --scroll-thumb: #ffeb00;
+  --scroll-track: #410078;
+  --scroll-hover: #72f52c;
+  --scroll-border: #111;
+  --scroll-radius: 0;
+}
+
+// Native fallback for engines without WebKit scrollbar styling.
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+  }
+}
+
+@media (forced-colors: none) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: var(--scroll-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-height: 36px;
+    background: var(--scroll-thumb);
+    border: 2px solid var(--scroll-border);
+    border-radius: var(--scroll-radius);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-hover);
+  }
+}

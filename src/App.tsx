@@ -1,3 +1,4 @@
+import { ArcadeAudioEvents } from './components/arcade/ArcadeSoundButton';
 import ArcadePortfolio, { ArcadeFooter } from './components/arcade/ArcadePortfolio';
 import { useEffect, useState } from 'react';
 import Arcade from './components/arcade/Arcade';
@@ -54,6 +55,7 @@ export default function App() {
       >
         {t.skip}
       </a>
+      {arcade && <ArcadeAudioEvents />}
       <Header
         t={t}
         language={language}

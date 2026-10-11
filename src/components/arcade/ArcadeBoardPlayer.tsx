@@ -22,6 +22,7 @@ export default function ArcadeBoardPlayer({
 
   return (
     <ArcadeModal
+      language={language}
       title={t[kind]}
       closeLabel={t.close}
       onClose={onClose}

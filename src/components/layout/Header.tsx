@@ -1,3 +1,4 @@
+import ArcadeSoundButton from '../arcade/ArcadeSoundButton';
 import { useState } from 'react';
 import { Gamepad2, Code2, Globe2, Sun, Moon, Menu, X } from 'lucide-react';
 
@@ -69,6 +70,7 @@ export default function Header({
           ))}
         </nav>
         <div className="preferences">
+          {arcade && <ArcadeSoundButton language={language} />}
           <button
             type="button"
             className="arcade-toggle"
