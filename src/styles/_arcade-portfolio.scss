@@ -661,3 +661,30 @@
     translate: 0 0;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ap-stages .ap-expand {
+    transition: transform 300ms ease;
+  }
+
+  @supports (interpolate-size: allow-keywords) and selector(::details-content) {
+    .ap-stages details {
+      interpolate-size: allow-keywords;
+    }
+
+    .ap-stages details::details-content {
+      block-size: 0;
+      opacity: 0;
+      overflow: clip;
+      transition:
+        block-size 320ms ease,
+        opacity 240ms ease,
+        content-visibility 320ms allow-discrete;
+    }
+
+    .ap-stages details[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+  }
+}
