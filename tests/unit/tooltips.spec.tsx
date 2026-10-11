@@ -50,6 +50,27 @@ describe('icon action tooltips', () => {
     expect(document.querySelector('[role="tooltip"]')).toBeNull();
   });
 
+  it('keeps modal tooltips in the top layer and restores them for page controls', () => {
+    const dialog = document.createElement('dialog');
+    const control = document.createElement('button');
+
+    control.className = 'icon-button';
+    control.setAttribute('aria-label', 'Mute sound');
+    dialog.append(control);
+    host.append(dialog);
+    dialog.showModal();
+    hover(control);
+    expect(tooltip.parentElement).toBe(dialog);
+    expect(tooltip.matches(':popover-open')).toBeTrue();
+    escape();
+    expect(tooltip.matches(':popover-open')).toBeFalse();
+    dialog.close();
+    dialog.remove();
+    hover(button);
+    expect(tooltip.parentElement).toBe(document.body);
+    expect(tooltip.textContent).toBe('Change theme');
+  });
+
   it('opens only for icon controls, preserves descriptions and dismisses with Escape', () => {
     hover(host.querySelector('a')!);
     expect(tooltip.hidden).toBeTrue();
@@ -111,10 +132,14 @@ describe('icon action tooltips', () => {
     hover(button);
     expect(tooltip.hidden).toBeTrue();
     host.dispatchEvent(new PointerEvent('pointerout', { bubbles: true }));
-    button.dispatchEvent(new PointerEvent('pointerout', { bubbles: true, relatedTarget: icon }));
+    button.dispatchEvent(
+      new PointerEvent('pointerout', { bubbles: true, relatedTarget: icon }),
+    );
     hover(icon);
     expect(tooltip.hidden).toBeTrue();
-    button.dispatchEvent(new PointerEvent('pointerout', { bubbles: true, relatedTarget: host }));
+    button.dispatchEvent(
+      new PointerEvent('pointerout', { bubbles: true, relatedTarget: host }),
+    );
     hover(button);
     expect(tooltip.hidden).toBeFalse();
     document.dispatchEvent(new MouseEvent('click'));
@@ -129,9 +154,11 @@ describe('icon action tooltips', () => {
 
     let hovered = true;
 
-    spyOn(button, 'matches').and.callFake((selector: string) =>
-      selector === '.theme-toggle' ||
-      (hovered && [':hover', ':hover, :focus', '.theme-toggle:hover'].includes(selector)),
+    spyOn(button, 'matches').and.callFake(
+      (selector: string) =>
+        selector === '.theme-toggle' ||
+        (hovered &&
+          [':hover', ':hover, :focus', '.theme-toggle:hover'].includes(selector)),
     );
     hover(button);
     button.click();
@@ -148,7 +175,8 @@ describe('icon action tooltips', () => {
   it('keeps restored page focus hidden until deliberate pointer or keyboard interaction', () => {
     const hidden = spyOnProperty(document, 'hidden', 'get').and.returnValue(false);
     const focused = spyOn(document, 'hasFocus').and.returnValue(true);
-    const move = () => button.dispatchEvent(new PointerEvent('pointermove', { bubbles: true }));
+    const move = () =>
+      button.dispatchEvent(new PointerEvent('pointermove', { bubbles: true }));
 
     hover(button);
     move();
@@ -180,8 +208,16 @@ describe('icon action tooltips', () => {
 
   it('centers navigation tooltips to the left of the icon', () => {
     host.classList.add('section-navigation');
-    spyOn(button, 'getBoundingClientRect').and.returnValue({ left: 400, top: 100, width: 40, height: 40 } as DOMRect);
-    spyOn(tooltip, 'getBoundingClientRect').and.returnValue({ width: 120, height: 30 } as DOMRect);
+    spyOn(button, 'getBoundingClientRect').and.returnValue({
+      left: 400,
+      top: 100,
+      width: 40,
+      height: 40,
+    } as DOMRect);
+    spyOn(tooltip, 'getBoundingClientRect').and.returnValue({
+      width: 120,
+      height: 30,
+    } as DOMRect);
     hover(button);
     expect(tooltip.style.left).toBe('272px');
     expect(tooltip.style.top).toBe('105px');

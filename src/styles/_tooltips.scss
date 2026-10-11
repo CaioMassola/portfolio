@@ -1,6 +1,7 @@
 .action-tooltip {
   position: fixed;
-  z-index: 1000;
+  margin: 0;
+  inset: auto;
   width: max-content;
   max-width: min(280px, calc(100vw - 16px));
   padding: 8px 12px;

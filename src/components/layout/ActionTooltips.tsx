@@ -1,7 +1,7 @@
 import { useEffect, useId } from 'react';
 
 const targets =
-  'button.icon-button, .section-navigation button, .hero-socials a, .project-links a.demo-link';
+  'button.icon-button, .section-navigation button, .hero-socials a, .project-links a.demo-link, .arcade-toggle, .arcade-terminal-heading button, .arcade-player-heading button, .game-heading button, .memory-heading button, .arcade-controls button[aria-label]';
 
 export default function ActionTooltips() {
   const id = useId();
@@ -16,6 +16,7 @@ export default function ActionTooltips() {
     tooltip.id = id;
     tooltip.className = 'action-tooltip';
     tooltip.setAttribute('role', 'tooltip');
+    tooltip.setAttribute('popover', 'manual');
     tooltip.hidden = true;
     document.body.append(tooltip);
 
@@ -33,6 +34,7 @@ export default function ActionTooltips() {
       }
 
       active = null;
+      tooltip.hidePopover();
       tooltip.hidden = true;
     };
 
@@ -69,7 +71,9 @@ export default function ActionTooltips() {
       if (active !== element) {
         hide();
         active = element;
+        (element.closest('dialog') ?? document.body).append(tooltip);
         tooltip.hidden = false;
+        tooltip.showPopover();
         element.setAttribute(
           'aria-describedby',
           [element.getAttribute('aria-describedby'), id].filter(Boolean).join(' '),
@@ -97,7 +101,9 @@ export default function ActionTooltips() {
         dismissed &&
         event.target instanceof Node &&
         dismissed.contains(event.target) &&
-        !dismissed.contains((event as PointerEvent | FocusEvent).relatedTarget as Node | null)
+        !dismissed.contains(
+          (event as PointerEvent | FocusEvent).relatedTarget as Node | null,
+        )
       ) {
         dismissed = null;
       }
@@ -145,7 +151,9 @@ export default function ActionTooltips() {
 
     const click = (event: MouseEvent) => {
       const element =
-        event.target instanceof Element ? event.target.closest<HTMLElement>(targets) : null;
+        event.target instanceof Element
+          ? event.target.closest<HTMLElement>(targets)
+          : null;
 
       if (element?.matches('.theme-toggle:hover')) {
         dismissed = null;
