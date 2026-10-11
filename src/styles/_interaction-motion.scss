@@ -84,16 +84,6 @@
     color: #7100d8;
     animation: achievement-pop 400ms ease-out;
   }
-  @media (hover: hover) {
-    .arcade-hero-art:hover .arcade-art-controller {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: controller-tilt 500ms ease-out;
-    }
-    .arcade-hero-art:hover .arcade-art-capybara {
-      animation: capybara-hop 500ms steps(6, end);
-    }
-  }
 }
 @keyframes divider-draw {
   to {
@@ -162,18 +152,5 @@
   50% {
     translate: 0 -4px;
     scale: 1.12;
-  }
-}
-@keyframes controller-tilt {
-  35% {
-    rotate: -5deg;
-  }
-  70% {
-    rotate: 3deg;
-  }
-}
-@keyframes capybara-hop {
-  50% {
-    translate: 0 -12px;
   }
 }

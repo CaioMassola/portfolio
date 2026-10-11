@@ -6,7 +6,8 @@ import { Gamepad2 } from 'lucide-react';
 import type { Language } from '../../content';
 import type { ArcadeGame } from '../../lib/arcade';
 import { sectionIds } from '../../lib/sections';
-import { Capybara, GameArt } from './Artwork';
+import { GameArt } from './Artwork';
+import ArcadeHeroArt from './ArcadeHeroArt';
 import ArcadePlayer from './ArcadePlayer';
 import { arcadeCopy } from './copy';
 
@@ -51,79 +52,7 @@ export default function Arcade({ language }: { language: Language }) {
             <a href={`#${sectionIds[language][3]}`}>{t.projects}</a>
           </div>
         </div>
-        <div
-          className="arcade-hero-art"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 500 330"
-            shapeRendering="crispEdges"
-          >
-            <g className="arcade-art-controller">
-              <path
-                d="M90 58h190v30h30v110h-55v-40H115v40H60V88h30z"
-                fill="#ffeb00"
-                stroke="#111"
-                strokeWidth="10"
-              />
-              <path
-                d="M115 89h22v22h22v22h-22v22h-22v-22H93v-22h22z"
-                fill="#111"
-              />
-              <path
-                d="M225 93h20v20h-20z"
-                fill="#8100ef"
-                stroke="#111"
-                strokeWidth="4"
-              />
-              <path
-                d="M251 120h20v20h-20z"
-                fill="#72f52c"
-                stroke="#111"
-                strokeWidth="4"
-              />
-              <path
-                d="M225 147h20v20h-20z"
-                fill="#0055ff"
-                stroke="#111"
-                strokeWidth="4"
-              />
-            </g>
-            <path
-              d="M345 70v60h65v85h-45"
-              fill="none"
-              stroke="#111"
-              strokeWidth="31"
-            />
-            <path
-              d="M345 70v60h65v85h-45"
-              fill="none"
-              stroke="#72f52c"
-              strokeWidth="22"
-            />
-            <path
-              d="M354 193h30v36h-30z"
-              fill="#72f52c"
-              stroke="#111"
-              strokeWidth="5"
-            />
-            <g transform="translate(96 204) scale(1.65)">
-              <g className="arcade-art-capybara">
-                <Capybara />
-              </g>
-            </g>
-            <path
-              d="M284 248h30v30h30v30h-60z"
-              fill="#8100ef"
-              stroke="#111"
-              strokeWidth="5"
-            />
-            <path
-              d="M440 33h18v18h-18zM40 238h15v15H40z"
-              fill="#ffeb00"
-            />
-          </svg>
-        </div>
+        <ArcadeHeroArt />
       </div>
       <div className="arcade-checkers" />
       <div

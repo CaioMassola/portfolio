@@ -1,0 +1,142 @@
+@media (prefers-reduced-motion: no-preference) {
+  .arcade-hero-art {
+    .arcade-art-controller,
+    .arcade-art-capybara,
+    .arcade-art-snake,
+    .arcade-art-block,
+    .arcade-art-light {
+      animation-duration: 9s;
+      animation-iteration-count: infinite;
+      animation-play-state: paused;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    &.is-playing
+      :is(
+        .arcade-art-controller,
+        .arcade-art-capybara,
+        .arcade-art-snake,
+        .arcade-art-block,
+        .arcade-art-light
+      ) {
+      animation-play-state: running;
+    }
+    .arcade-art-controller {
+      animation-name: scene-controller;
+      animation-timing-function: steps(5, end);
+    }
+    .arcade-art-capybara {
+      animation-name: scene-capybara;
+      animation-timing-function: steps(6, end);
+    }
+    .arcade-art-snake {
+      animation-name: scene-snake;
+      animation-timing-function: steps(3, end);
+    }
+    .arcade-art-block {
+      animation-name: scene-block;
+      animation-timing-function: steps(4, end);
+    }
+    .arcade-art-light {
+      animation-name: scene-light;
+      animation-timing-function: steps(1, end);
+    }
+    .arcade-art-light:nth-of-type(4) {
+      animation-delay: 300ms;
+    }
+    .arcade-art-light:nth-of-type(5) {
+      animation-delay: 600ms;
+    }
+  }
+}
+@keyframes scene-controller {
+  0%,
+  8%,
+  32%,
+  100% {
+    rotate: 0deg;
+  }
+  16% {
+    rotate: -4deg;
+  }
+  24% {
+    rotate: 3deg;
+  }
+}
+@keyframes scene-capybara {
+  0%,
+  10%,
+  60%,
+  100% {
+    translate: 0 0;
+  }
+  16% {
+    translate: 8px -2px;
+  }
+  22% {
+    translate: 16px 0;
+  }
+  28% {
+    translate: 24px -2px;
+  }
+  34% {
+    translate: 32px -20px;
+  }
+  40% {
+    translate: 40px 0;
+  }
+  50% {
+    translate: 20px -2px;
+  }
+}
+@keyframes scene-snake {
+  0%,
+  16%,
+  60%,
+  100% {
+    translate: 0 0;
+  }
+  28% {
+    translate: 18px 0;
+  }
+  40% {
+    translate: 18px 18px;
+  }
+  50% {
+    translate: 0 18px;
+  }
+}
+@keyframes scene-block {
+  0%,
+  24%,
+  62%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  32% {
+    translate: 0 -18px;
+    rotate: 90deg;
+  }
+  42%,
+  48% {
+    translate: 0 0;
+    rotate: 90deg;
+  }
+  54% {
+    translate: 0 -10px;
+    rotate: 0deg;
+  }
+}
+@keyframes scene-light {
+  0%,
+  10%,
+  24%,
+  100% {
+    filter: brightness(1);
+  }
+  14%,
+  20% {
+    filter: brightness(1.8);
+  }
+}
