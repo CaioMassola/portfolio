@@ -74,6 +74,15 @@ export default function ArcadeHeroArt() {
         </g>
         <g className="arcade-art-snake">
           <path
+            d="M330 72V60h6V48h6V38h6v10h6v12h6v12z"
+            fill="#111"
+          />
+          <path
+            d="M335 73V65h6V53h2V43h2v10h4v12h6v8z"
+            fill="#72f52c"
+          />
+
+          <path
             d="M345 70v60h65v85h-45"
             fill="none"
             stroke="#111"

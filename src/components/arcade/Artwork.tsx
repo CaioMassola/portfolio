@@ -157,6 +157,15 @@ export function GameArt({ kind }: { kind: ArcadeGame | 'tic' | 'memory' }) {
             height="220"
             fill="url(#arcade-grid-art)"
           />
+
+          <path
+            d="M53 80V68h7V56h6V46h8v10h6v12h7v12z"
+            fill="#111"
+          />
+          <path
+            d="M58 81V73h7V61h5V51h1v10h4v12h7v8z"
+            fill="#72f52c"
+          />
           <path
             d="M70 78v78h100V80h80"
             fill="none"

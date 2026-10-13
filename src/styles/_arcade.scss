@@ -1,3 +1,6 @@
+.arcade-mode-label {
+  display: none;
+}
 :root[data-arcade='true'] {
   color-scheme: light;
   --bg: #fff7e3;
@@ -666,10 +669,18 @@
     padding-top: 15px;
     position: relative;
   }
-  .header .arcade-toggle {
+  .header .arcade-mode-control {
     position: absolute;
     top: 62px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 12px;
+    white-space: nowrap;
+  }
+  .header .arcade-mode-label {
+    display: inline;
+    font-size: 13px;
+    font-weight: 700;
   }
   .header .navigation {
     top: calc(var(--header-height) - 15px);
@@ -1302,5 +1313,57 @@
     [aria-disabled='true'] * {
       cursor: not-allowed;
     }
+  }
+}
+
+:root[data-arcade='true'] .header .language-control {
+  height: 34px;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 0 4px;
+  border: 2px solid #111;
+  border-radius: 0;
+  background: #ffeb00;
+  color: #111;
+  select {
+    height: 100%;
+    padding: 0;
+    color: #111;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+  }
+  &:focus-within {
+    outline: 2px solid #fff7e3;
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root[data-arcade='true'] .header .header-inner {
+    gap: 8px;
+  }
+  :root[data-arcade='true'] .header .preferences {
+    gap: 6px;
+  }
+}
+@media (max-width: 360px) {
+  :root[data-arcade='true'] .header .brand {
+    font-size: 10px;
+  }
+}
+
+.arcade-mode-control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 760px) {
+  :root[data-arcade='true'] .header .arcade-mode-label {
+    font:
+      400 10px/1.6 'Press Start 2P',
+      monospace;
+    color: #ffeb00;
+    text-shadow: 2px 2px #111;
   }
 }

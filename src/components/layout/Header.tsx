@@ -71,21 +71,29 @@ export default function Header({
         </nav>
         <div className="preferences">
           {arcade && <ArcadeSoundButton language={language} />}
-          <button
-            type="button"
-            className="arcade-toggle"
-            role="switch"
-            aria-checked={arcade}
-            aria-label={language === 'en' ? 'Arcade mode' : 'Modo arcade'}
-            onClick={toggleArcade}
-          >
-            <span className="arcade-toggle-thumb">
-              <Gamepad2
-                size={20}
-                aria-hidden="true"
-              />
+          <div className="arcade-mode-control">
+            <span
+              className="arcade-mode-label"
+              aria-hidden="true"
+            >
+              {language === 'en' ? 'Arcade mode' : 'Modo arcade'}
             </span>
-          </button>
+            <button
+              type="button"
+              className="arcade-toggle"
+              role="switch"
+              aria-checked={arcade}
+              aria-label={language === 'en' ? 'Arcade mode' : 'Modo arcade'}
+              onClick={toggleArcade}
+            >
+              <span className="arcade-toggle-thumb">
+                <Gamepad2
+                  size={20}
+                  aria-hidden="true"
+                />
+              </span>
+            </button>
+          </div>
           <label className="language-control">
             <Globe2 size={16} />
             <span className="sr-only">{t.language}</span>
